@@ -24,7 +24,7 @@ const Header = () => {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 opacity-0 animate-fade-in ${isScrolled ? 'bg-black/95 border-b border-gray-800' : 'bg-transparent'}`} style={{ animationDelay: "2s", animationFillMode: "forwards" }}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 opacity-0 animate-fade-in ${isScrolled ? 'bg-white/95 border-b border-gray-200 shadow-sm' : 'bg-transparent'}`} style={{ animationDelay: "2s", animationFillMode: "forwards" }}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Apple-style Logo */}
@@ -42,7 +42,7 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className={`transition-colors duration-500 font-medium text-sm ${isScrolled ? 'text-body-text hover:text-heading' : 'text-white/80 hover:text-white'}`}
+                className={`transition-colors duration-500 font-medium text-sm ${isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/80 hover:text-white'}`}
               >
                 {item.name}
               </a>
@@ -60,7 +60,7 @@ const Header = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`transition-colors ${isScrolled ? 'text-body-text hover:text-heading' : 'text-white/80 hover:text-white'}`}
+              className={`transition-colors ${isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/80 hover:text-white'}`}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

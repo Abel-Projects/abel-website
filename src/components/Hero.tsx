@@ -3,21 +3,26 @@ import heroImage from "@/assets/hero-image.avif";
 import abelLogo from "@/assets/abel-logo.png";
 import { ArrowRight, MapPin } from "lucide-react";
 import { useState, useEffect } from "react";
+import AnimatedLogo from "./AnimatedLogo";
 
 const Hero = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const heroHeight = window.innerHeight;
-      setIsScrolled(window.scrollY > heroHeight - 100);
+      setScrollY(window.scrollY);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const heroHeight = window.innerHeight;
+  const shouldHideLogo = scrollY > heroHeight * 0.3;
   return (
-    <section className="relative flex items-center justify-center px-6 lg:px-8 overflow-hidden h-screen" style={{ background: "var(--blue-gradient)" }}>
+    <>
+      <AnimatedLogo />
+      <section className="relative flex items-center justify-center px-6 lg:px-8 overflow-hidden h-screen" style={{ background: "var(--blue-gradient)" }}>
       <div className="max-w-7xl mx-auto w-full">
         <div className="flex flex-col lg:flex-row items-center justify-between h-full gap-12 py-20">
           
@@ -29,7 +34,7 @@ const Hero = () => {
                 <img 
                   src={abelLogo} 
                   alt="Abel Mesfin Logo" 
-                  className={`h-32 lg:h-40 xl:h-48 w-auto transition-all duration-700 ${isScrolled ? 'opacity-0 scale-75' : 'opacity-100 scale-100'}`}
+                  className={`h-32 lg:h-40 xl:h-48 w-auto transition-opacity duration-300 ${shouldHideLogo ? 'opacity-0' : 'opacity-100'}`}
                 />
                 
                 {/* Location Bubble */}
@@ -94,6 +99,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
