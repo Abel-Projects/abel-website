@@ -1,79 +1,116 @@
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Award, Zap, Target } from "lucide-react";
 
 const About = () => {
-  const highlights = [
-    "Campaign Strategy & Execution",
-    "Strategic Partnerships & Alliances", 
-    "Content Marketing & Storytelling",
-    "Brand Positioning & Growth",
-    "CEO & Executive Collaboration"
+  const features = [
+    {
+      icon: Award,
+      title: "Fortune 500 Expertise",
+      description: "Proven track record with the world's largest companies"
+    },
+    {
+      icon: Zap,
+      title: "Rapid Results",
+      description: "Strategies that deliver measurable impact in months, not years"
+    },
+    {
+      icon: Target,
+      title: "Strategic Focus",
+      description: "Data-driven partnerships that align with business objectives"
+    }
   ];
 
   return (
-    <section className="py-20 px-6 lg:px-8 bg-background">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Image Side */}
-          <div className="relative animate-fade-up">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-accent rounded-3xl blur-2xl opacity-20 transform scale-105"></div>
-              <div className="relative bg-gradient-subtle rounded-3xl p-8 shadow-card">
-                <div className="space-y-6">
-                  <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center">
-                    <CheckCircle className="w-8 h-8 text-white" />
+    <section id="about" className="py-32 bg-background">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Apple iOS Feature Section */}
+        <div className="grid lg:grid-cols-2 gap-20 items-center mb-32">
+          <div className="space-y-12 animate-fade-up">
+            <div className="space-y-8">
+              <div className="inline-block">
+                <span className="text-primary font-semibold text-lg bg-primary/10 px-6 py-3 rounded-full">
+                  Strategic Partnership Expert
+                </span>
+              </div>
+              
+              <h2 className="text-5xl lg:text-6xl font-bold text-heading leading-tight tracking-tight">
+                Building bridges to 
+                <span className="text-primary block">exponential growth</span>
+              </h2>
+              
+              <p className="text-xl text-body-text leading-relaxed font-light">
+                I'm Abel Mesfin, the strategic mind behind some of the most successful 
+                Fortune 500 partnerships. My proven methodology has generated over $500M 
+                in campaign value and transformed how companies think about growth.
+              </p>
+            </div>
+          </div>
+          
+          <div className="relative animate-scale-in" style={{ animationDelay: "0.2s" }}>
+            <div className="bg-gradient-to-br from-primary/5 to-transparent rounded-[3rem] p-12 border border-card-border">
+              <div className="space-y-8">
+                <div className="text-center space-y-6">
+                  <div className="w-20 h-20 bg-primary/10 rounded-3xl flex items-center justify-center mx-auto">
+                    <CheckCircle className="h-10 w-10 text-primary" />
                   </div>
-                  <div>
-                    <h3 className="text-card-title text-heading mb-2">Trusted Partner</h3>
-                    <p className="text-body-text">
-                      Collaborating with global brands and visionary CEOs to scale influence and drive meaningful impact.
+                  
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-bold text-heading">
+                      Proven Partnership System
+                    </h3>
+                    <p className="text-body-text leading-relaxed">
+                      A methodical approach to building strategic alliances that 
+                      create lasting competitive advantages.
                     </p>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-8 pt-8 border-t border-card-border">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-heading">98%</div>
+                    <div className="text-sm text-muted-text mt-1">Success Rate</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-heading">10+</div>
+                    <div className="text-sm text-muted-text mt-1">Years Experience</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Content Side */}
-          <div className="space-y-8 animate-fade-up" style={{ animationDelay: "0.2s" }}>
-            <div className="space-y-6">
-              <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold">
-                About Abel
-              </div>
-              
-              <h2 className="text-section text-heading">
-                Denver-based strategist, storyteller, and brand partner
-              </h2>
-              
-              <div className="space-y-4 text-lg text-body-text leading-relaxed">
-                <p>
-                  Abel Mesfin has collaborated with CEOs and Fortune 500 brands to scale their 
-                  influence through strategic partnerships and compelling storytelling. Based in 
-                  Denver, he specializes in creating campaigns that drive meaningful growth and impact.
-                </p>
+        {/* Apple iOS Features Grid */}
+        <div className="space-y-16">
+          <div className="text-center space-y-6 animate-fade-up">
+            <h3 className="text-4xl lg:text-5xl font-bold text-heading tracking-tight">
+              Why Fortune 500 companies choose me
+            </h3>
+            <p className="text-xl text-body-text max-w-3xl mx-auto font-light">
+              Three core strengths that set my partnership strategies apart
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-12">
+            {features.map((feature, index) => (
+              <div 
+                key={feature.title}
+                className="text-center space-y-6 animate-slide-up"
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                <div className="w-24 h-24 bg-primary/10 rounded-3xl flex items-center justify-center mx-auto">
+                  <feature.icon className="h-12 w-12 text-primary" />
+                </div>
                 
-                <p>
-                  With a track record of launching successful initiatives across diverse industries, 
-                  Abel brings a unique perspective to brand partnerships, combining strategic thinking 
-                  with authentic storytelling to create campaigns that resonate.
-                </p>
+                <div className="space-y-4">
+                  <h4 className="text-2xl font-bold text-heading">
+                    {feature.title}
+                  </h4>
+                  <p className="text-body-text leading-relaxed text-lg">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
-            </div>
-
-            {/* Highlights */}
-            <div className="space-y-4">
-              <h3 className="text-card-title text-heading">Core Expertise</h3>
-              <div className="grid gap-3">
-                {highlights.map((highlight, index) => (
-                  <div 
-                    key={index}
-                    className="flex items-center gap-3 p-3 rounded-xl bg-card border border-card-border hover:shadow-card transition-all duration-300"
-                  >
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-body-text font-medium">{highlight}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

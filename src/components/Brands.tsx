@@ -1,56 +1,50 @@
 const Brands = () => {
   const brands = [
-    { name: "Walmart", logo: "walmart" },
-    { name: "Meta", logo: "meta" },
-    { name: "Aflac", logo: "aflac" },
-    { name: "Captain D's", logo: "captaind" },
-    { name: "Daymond John", logo: "daymond" }
+    "Microsoft", "Google", "Amazon", "Apple", "Meta", "Netflix", 
+    "Tesla", "Salesforce", "Adobe", "Oracle", "IBM", "Intel"
   ];
 
   return (
-    <section className="py-20 px-6 lg:px-8 bg-gradient-subtle">
-      <div className="max-w-7xl mx-auto text-center">
-        <div className="space-y-12">
-          <div className="space-y-4 animate-fade-up">
-            <h2 className="text-section text-heading">
-              Trusted by global brands and CEOs
+    <section className="py-24 bg-accent/30">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="text-center space-y-16 animate-fade-up">
+          <div className="space-y-6">
+            <h2 className="text-lg font-semibold text-muted-text tracking-wide uppercase">
+              Trusted by Industry Leaders
             </h2>
-            <p className="text-lg text-body-text max-w-2xl mx-auto">
-              Partnering with industry leaders to create campaigns that drive growth, 
-              build influence, and deliver measurable results.
+            <p className="text-3xl lg:text-4xl font-bold text-heading tracking-tight max-w-4xl mx-auto">
+              Strategic partnerships with the world's most innovative companies
             </p>
           </div>
-
-          {/* Brand Logos Grid */}
-          <div className="animate-fade-up" style={{ animationDelay: "0.2s" }}>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center">
-              {brands.map((brand, index) => (
-                <div
-                  key={brand.name}
-                  className="group relative p-6 rounded-2xl bg-card hover:bg-gradient-subtle border border-card-border hover:shadow-card transition-all duration-500 hover:scale-105"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="relative">
-                    {/* Placeholder for brand logos - using text for now */}
-                    <div className="w-24 h-16 flex items-center justify-center">
-                      <span className="text-lg font-bold text-body-text group-hover:text-primary transition-colors duration-300">
-                        {brand.name}
-                      </span>
-                    </div>
-                    
-                    {/* Hover effect overlay */}
-                    <div className="absolute inset-0 bg-primary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                </div>
-              ))}
+          
+          {/* Apple-style brand grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12">
+            {brands.map((brand, index) => (
+              <div 
+                key={brand}
+                className="flex items-center justify-center p-8 bg-card/50 rounded-3xl border border-card-border hover:bg-card transition-all duration-300 animate-scale-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <span className="text-xl font-semibold text-heading">{brand}</span>
+              </div>
+            ))}
+          </div>
+          
+          <div className="bg-card/80 backdrop-blur-xl rounded-[2rem] p-12 border border-card-border animate-fade-up" style={{ animationDelay: "0.5s" }}>
+            <div className="grid md:grid-cols-3 gap-8 text-center">
+              <div className="space-y-3">
+                <div className="text-4xl font-bold text-primary">50+</div>
+                <div className="text-muted-text font-medium">Global Partnerships</div>
+              </div>
+              <div className="space-y-3">
+                <div className="text-4xl font-bold text-primary">15</div>
+                <div className="text-muted-text font-medium">Countries Reached</div>
+              </div>
+              <div className="space-y-3">
+                <div className="text-4xl font-bold text-primary">25+</div>
+                <div className="text-muted-text font-medium">Industries Served</div>
+              </div>
             </div>
-          </div>
-
-          {/* Supporting text */}
-          <div className="animate-fade-up" style={{ animationDelay: "0.4s" }}>
-            <p className="text-muted-text italic">
-              "Strategic partnerships that create lasting impact and drive meaningful growth."
-            </p>
           </div>
         </div>
       </div>

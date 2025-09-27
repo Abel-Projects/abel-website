@@ -1,104 +1,175 @@
-import { Mail, MapPin, Linkedin, Twitter, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Twitter, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
-  const socialLinks = [
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" }
-  ];
-
-  const quickLinks = [
-    { label: "About", href: "#about" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Services", href: "#services" },
-    { label: "Contact", href: "#contact" }
-  ];
+  const navigation = {
+    services: [
+      { name: "Strategic Consulting", href: "#" },
+      { name: "Partnership Development", href: "#" },
+      { name: "Campaign Strategy", href: "#" },
+      { name: "Executive Advisory", href: "#" }
+    ],
+    resources: [
+      { name: "Partnership Playbook", href: "#" },
+      { name: "Case Studies", href: "#" },
+      { name: "Strategy Blog", href: "#" },
+      { name: "Media Kit", href: "#" }
+    ],
+    company: [
+      { name: "About Abel", href: "#about" },
+      { name: "Speaking", href: "#speaking" },
+      { name: "Portfolio", href: "#portfolio" },
+      { name: "Contact", href: "#contact" }
+    ]
+  };
 
   return (
-    <footer className="bg-gradient-subtle border-t border-card-border">
+    <footer className="bg-heading text-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Main Footer Content */}
-        <div className="py-16 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand Column */}
-          <div className="lg:col-span-2 space-y-6">
-            <div>
-              <h3 className="text-2xl font-bold text-heading mb-2">Abel Mesfin</h3>
-              <p className="text-body-text leading-relaxed">
-                Strategic partnerships and campaigns that drive growth. 
-                Helping brands and CEOs tell bigger stories and create lasting impact.
+        {/* Apple-style CTA Section */}
+        <div className="py-24 border-b border-background/10">
+          <div className="text-center space-y-12 animate-fade-up">
+            <div className="space-y-8">
+              <h2 className="text-4xl lg:text-6xl font-bold leading-tight tracking-tight">
+                Ready to build your
+                <span className="text-primary block">strategic advantage?</span>
+              </h2>
+              
+              <p className="text-xl lg:text-2xl text-background/80 max-w-4xl mx-auto leading-relaxed font-light">
+                Join Fortune 500 leaders who trust my partnership strategies for exponential growth.
               </p>
             </div>
             
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 text-body-text">
-                <Mail className="w-5 h-5 text-primary" />
-                <span>hello@abelmesfin.com</span>
-              </div>
-              <div className="flex items-center gap-3 text-body-text">
-                <MapPin className="w-5 h-5 text-primary" />
-                <span>Denver, Colorado</span>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-12 py-6 text-xl font-semibold rounded-full shadow-primary">
+                Apply for Consulting
+                <ArrowRight className="ml-3 h-6 w-6" />
+              </Button>
+              
+              <Button variant="outline" size="lg" className="border-2 border-background/20 text-background hover:bg-background/10 px-12 py-6 text-xl font-semibold rounded-full">
+                Download Playbook
+              </Button>
             </div>
-
-            {/* Social Links */}
-            <div className="flex items-center gap-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="w-10 h-10 bg-primary/10 hover:bg-primary text-primary hover:text-white rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110"
-                >
-                  <social.icon className="w-5 h-5" />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className="space-y-6">
-            <h4 className="font-semibold text-heading">Quick Links</h4>
-            <nav className="space-y-3">
-              {quickLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  className="block text-body-text hover:text-primary transition-colors duration-300"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-          </div>
-
-          {/* Services */}
-          <div className="space-y-6">
-            <h4 className="font-semibold text-heading">Services</h4>
-            <nav className="space-y-3">
-              <div className="text-body-text">Campaign Strategy</div>
-              <div className="text-body-text">Strategic Partnerships</div>
-              <div className="text-body-text">Content Marketing</div>
-              <div className="text-body-text">Brand Positioning</div>
-            </nav>
           </div>
         </div>
-
-        {/* Bottom Bar */}
-        <div className="py-8 border-t border-card-border">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-muted-text text-sm">
-              © {currentYear} Abel Mesfin. All rights reserved.
-            </p>
+        
+        {/* Footer Content */}
+        <div className="py-20">
+          <div className="grid lg:grid-cols-5 gap-12 mb-16">
+            {/* Brand */}
+            <div className="lg:col-span-2 space-y-8">
+              <div className="space-y-6">
+                <h3 className="text-3xl font-bold">Abel Mesfin</h3>
+                <p className="text-background/70 text-lg leading-relaxed font-light max-w-md">
+                  Strategic partnership expert specializing in Fortune 500 campaigns and exponential business growth through proven methodologies.
+                </p>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="text-sm font-semibold tracking-wide uppercase text-background/60">
+                  Connect
+                </div>
+                <div className="flex space-x-4">
+                  <a href="#" className="w-12 h-12 bg-background/10 rounded-full flex items-center justify-center text-background/60 hover:text-background hover:bg-background/20 transition-all">
+                    <Linkedin className="h-6 w-6" />
+                  </a>
+                  <a href="#" className="w-12 h-12 bg-background/10 rounded-full flex items-center justify-center text-background/60 hover:text-background hover:bg-background/20 transition-all">
+                    <Twitter className="h-6 w-6" />
+                  </a>
+                </div>
+              </div>
+            </div>
             
-            <div className="flex items-center gap-6 text-sm">
-              <a href="#" className="text-muted-text hover:text-primary transition-colors duration-300">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-muted-text hover:text-primary transition-colors duration-300">
-                Terms of Service
-              </a>
+            {/* Services */}
+            <div className="space-y-6">
+              <h4 className="font-bold text-lg">Services</h4>
+              <ul className="space-y-4">
+                {navigation.services.map((item) => (
+                  <li key={item.name}>
+                    <a href={item.href} className="text-background/70 hover:text-background transition-colors font-medium">
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            {/* Resources */}
+            <div className="space-y-6">
+              <h4 className="font-bold text-lg">Resources</h4>
+              <ul className="space-y-4">
+                {navigation.resources.map((item) => (
+                  <li key={item.name}>
+                    <a href={item.href} className="text-background/70 hover:text-background transition-colors font-medium">
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            {/* Company */}
+            <div className="space-y-6">
+              <h4 className="font-bold text-lg">Company</h4>
+              <ul className="space-y-4">
+                {navigation.company.map((item) => (
+                  <li key={item.name}>
+                    <a href={item.href} className="text-background/70 hover:text-background transition-colors font-medium">
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          
+          {/* Contact Info */}
+          <div className="bg-background/5 rounded-3xl p-12 mb-16">
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <Mail className="h-6 w-6 text-primary" />
+                  <span className="font-semibold">Email</span>
+                </div>
+                <div className="text-background/80 font-medium">
+                  abel@strategicpartnerships.com
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <Phone className="h-6 w-6 text-primary" />
+                  <span className="font-semibold">Phone</span>
+                </div>
+                <div className="text-background/80 font-medium">
+                  +1 (555) 123-4567
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <MapPin className="h-6 w-6 text-primary" />
+                  <span className="font-semibold">Location</span>
+                </div>
+                <div className="text-background/80 font-medium">
+                  San Francisco, CA
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Bottom Bar */}
+        <div className="border-t border-background/10 py-12">
+          <div className="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0">
+            <div className="text-background/60 font-medium">
+              © 2024 Abel Mesfin. All rights reserved.
+            </div>
+            
+            <div className="flex space-x-8 text-background/60">
+              <a href="#" className="hover:text-background transition-colors font-medium">Privacy Policy</a>
+              <a href="#" className="hover:text-background transition-colors font-medium">Terms of Service</a>
+              <a href="#" className="hover:text-background transition-colors font-medium">Cookie Policy</a>
             </div>
           </div>
         </div>

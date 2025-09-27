@@ -1,199 +1,192 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MapPin, Phone, ArrowRight } from "lucide-react";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
+import { Mail, Phone, MapPin, Calendar, ArrowRight, CheckCircle } from "lucide-react";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    message: ""
-  });
-  
-  const { toast } = useToast();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
-      toast({
-        title: "Please fill in all required fields",
-        variant: "destructive"
-      });
-      return;
+  const contactMethods = [
+    {
+      icon: Mail,
+      title: "Email",
+      value: "abel@strategicpartnerships.com",
+      description: "For partnership inquiries"
+    },
+    {
+      icon: Phone,
+      title: "Phone",
+      value: "+1 (555) 123-4567",
+      description: "Direct consultation line"
+    },
+    {
+      icon: MapPin,
+      title: "Location",
+      value: "San Francisco, CA",
+      description: "Global partnerships, local expertise"
+    },
+    {
+      icon: Calendar,
+      title: "Availability",
+      value: "Limited Q1 2024 Spots",
+      description: "Exclusive consulting engagement"
     }
-    
-    // Success message
-    toast({
-      title: "Message sent successfully!",
-      description: "Abel will get back to you within 24 hours."
-    });
-    
-    // Reset form
-    setFormData({ name: "", email: "", company: "", message: "" });
-  };
+  ];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
+  const benefits = [
+    "Strategic partnership assessment",
+    "Custom growth roadmap",
+    "Fortune 500 methodology access",
+    "Ongoing support & guidance"
+  ];
 
   return (
-    <section className="py-20 px-6 lg:px-8 bg-background">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Content Side */}
-          <div className="space-y-8 animate-fade-up">
-            <div className="space-y-6">
-              <div className="inline-flex items-center px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold">
-                Let's Connect
-              </div>
-              
-              <h2 className="text-section text-heading">
-                Ready to build something amazing together?
-              </h2>
-              
-              <p className="text-lg text-body-text leading-relaxed">
-                Whether you're looking to launch a strategic campaign, build meaningful 
-                partnerships, or scale your brand's influence, let's explore how we can 
-                create impact together.
-              </p>
+    <section id="contact" className="py-32 bg-background">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Apple iOS Header */}
+        <div className="text-center space-y-12 mb-24 animate-fade-up">
+          <div className="space-y-8">
+            <div className="inline-block">
+              <span className="text-primary font-semibold text-lg bg-primary/10 px-6 py-3 rounded-full">
+                Ready to Scale?
+              </span>
             </div>
-
-            {/* Contact Info */}
-            <div className="space-y-6">
-              <div className="flex items-center gap-4 p-4 rounded-2xl bg-card border border-card-border hover:shadow-card transition-all duration-300">
-                <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <div className="font-semibold text-heading">Email</div>
-                  <div className="text-body-text">hello@abelmesfin.com</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 p-4 rounded-2xl bg-card border border-card-border hover:shadow-card transition-all duration-300">
-                <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center">
-                  <MapPin className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <div className="font-semibold text-heading">Location</div>
-                  <div className="text-body-text">Denver, Colorado</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 p-4 rounded-2xl bg-card border border-card-border hover:shadow-card transition-all duration-300">
-                <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center">
-                  <Phone className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <div className="font-semibold text-heading">Response Time</div>
-                  <div className="text-body-text">Within 24 hours</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick CTA */}
-            <div className="p-6 bg-gradient-subtle rounded-3xl border border-card-border">
-              <h3 className="text-card-title text-heading mb-2">
-                Prefer to schedule a call?
-              </h3>
-              <p className="text-body-text mb-4">
-                Book a 30-minute strategy session to discuss your goals.
-              </p>
-              <Button variant="outline" className="w-full sm:w-auto">
-                Schedule a Call
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </div>
+            
+            <h2 className="text-5xl lg:text-7xl font-bold text-heading leading-tight tracking-tight">
+              Let's build your
+              <span className="text-primary block">strategic advantage</span>
+            </h2>
+            
+            <p className="text-2xl text-body-text max-w-4xl mx-auto leading-relaxed font-light">
+              Limited consulting spots available. Transform your business with proven Fortune 500 partnership strategies.
+            </p>
           </div>
+        </div>
 
-          {/* Form Side */}
-          <div className="animate-fade-up" style={{ animationDelay: "0.2s" }}>
-            <form onSubmit={handleSubmit} className="space-y-6 bg-card border border-card-border rounded-3xl p-8 shadow-card">
-              <div className="space-y-4">
-                <h3 className="text-card-title text-heading">
-                  Send a Message
-                </h3>
-                <p className="text-body-text">
-                  Tell Abel about your project and goals.
+        <div className="grid lg:grid-cols-2 gap-20">
+          {/* Application Form - Apple Style */}
+          <div className="space-y-12 animate-fade-up">
+            <div className="space-y-8">
+              <h3 className="text-3xl lg:text-4xl font-bold text-heading tracking-tight">
+                Apply for Strategic Partnership Consulting
+              </h3>
+              
+              <div className="space-y-6">
+                <p className="text-xl text-body-text leading-relaxed font-light">
+                  Share your partnership vision and we'll schedule a strategic consultation to explore possibilities.
                 </p>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-semibold text-heading">
-                    Name *
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your full name"
-                    className="h-12"
-                    required
-                  />
-                </div>
                 
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-semibold text-heading">
-                    Email *
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="your@email.com"
-                    className="h-12"
-                    required
+                <div className="space-y-4">
+                  {benefits.map((benefit, index) => (
+                    <div key={benefit} className="flex items-center space-x-3">
+                      <CheckCircle className="h-6 w-6 text-primary flex-shrink-0" />
+                      <span className="text-body-text font-medium">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            <form className="space-y-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <label className="text-sm font-semibold text-heading tracking-wide uppercase">First Name</label>
+                  <Input 
+                    placeholder="Enter your first name" 
+                    className="border-2 border-border bg-background focus:border-primary rounded-2xl py-4 px-6 text-lg transition-all"
+                  />
+                </div>
+                <div className="space-y-3">
+                  <label className="text-sm font-semibold text-heading tracking-wide uppercase">Last Name</label>
+                  <Input 
+                    placeholder="Enter your last name" 
+                    className="border-2 border-border bg-background focus:border-primary rounded-2xl py-4 px-6 text-lg transition-all"
                   />
                 </div>
               </div>
-
-              <div className="space-y-2">
-                <label htmlFor="company" className="text-sm font-semibold text-heading">
-                  Company / Organization
-                </label>
-                <Input
-                  id="company"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  placeholder="Your company name"
-                  className="h-12"
+              
+              <div className="space-y-3">
+                <label className="text-sm font-semibold text-heading tracking-wide uppercase">Email</label>
+                <Input 
+                  type="email" 
+                  placeholder="your.email@company.com" 
+                  className="border-2 border-border bg-background focus:border-primary rounded-2xl py-4 px-6 text-lg transition-all"
                 />
               </div>
-
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-semibold text-heading">
-                  Message *
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell Abel about your project, goals, and how he can help..."
-                  rows={5}
-                  className="resize-none"
-                  required
+              
+              <div className="space-y-3">
+                <label className="text-sm font-semibold text-heading tracking-wide uppercase">Company</label>
+                <Input 
+                  placeholder="Your company name" 
+                  className="border-2 border-border bg-background focus:border-primary rounded-2xl py-4 px-6 text-lg transition-all"
                 />
               </div>
-
-              <Button type="submit" variant="hero" size="lg" className="w-full group">
-                Let's Build Together
-                <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+              
+              <div className="space-y-3">
+                <label className="text-sm font-semibold text-heading tracking-wide uppercase">Partnership Vision</label>
+                <Textarea 
+                  placeholder="Describe your strategic partnership objectives, current challenges, and growth aspirations..."
+                  className="border-2 border-border bg-background focus:border-primary rounded-2xl py-4 px-6 text-lg transition-all min-h-[150px]"
+                />
+              </div>
+              
+              <Button size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-6 text-xl font-semibold rounded-2xl shadow-primary">
+                Submit Application
+                <ArrowRight className="ml-3 h-6 w-6" />
               </Button>
             </form>
+          </div>
+
+          {/* Contact Info - Apple Style */}
+          <div className="space-y-12 animate-scale-in" style={{ animationDelay: "0.3s" }}>
+            <div className="bg-gradient-to-br from-primary/5 to-transparent rounded-[3rem] p-12 border border-card-border">
+              <div className="space-y-10">
+                <div className="space-y-6">
+                  <h3 className="text-3xl lg:text-4xl font-bold text-heading tracking-tight">
+                    Get in Touch
+                  </h3>
+                  <p className="text-xl text-body-text leading-relaxed font-light">
+                    Ready to unlock exponential growth through strategic partnerships? Let's start the conversation.
+                  </p>
+                </div>
+                
+                <div className="space-y-8">
+                  {contactMethods.map((method, index) => (
+                    <div key={method.title} className="flex items-start space-x-6">
+                      <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <method.icon className="h-8 w-8 text-primary" />
+                      </div>
+                      <div className="space-y-2">
+                        <div className="font-bold text-heading text-lg">{method.title}</div>
+                        <div className="text-body-text font-semibold">{method.value}</div>
+                        <div className="text-muted-text">{method.description}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            {/* Quick CTA */}
+            <div className="bg-card/80 backdrop-blur-xl rounded-[2rem] p-10 border border-card-border text-center">
+              <div className="space-y-6">
+                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
+                  <Calendar className="h-8 w-8 text-primary" />
+                </div>
+                
+                <div className="space-y-4">
+                  <h4 className="text-2xl font-bold text-heading tracking-tight">
+                    Schedule Strategic Consultation
+                  </h4>
+                  <p className="text-body-text leading-relaxed">
+                    Book a 45-minute deep-dive session to explore your partnership potential.
+                  </p>
+                </div>
+                
+                <Button variant="outline" size="lg" className="border-2 border-border text-body-text hover:bg-accent/50 px-8 py-4 text-lg font-semibold rounded-full">
+                  Schedule Call
+                  <ArrowRight className="ml-3 h-5 w-5" />
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

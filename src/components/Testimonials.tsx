@@ -1,116 +1,117 @@
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Testimonials = () => {
   const testimonials = [
     {
-      quote: "Abel's strategic approach to partnerships transformed how we think about brand collaboration. His ability to connect authentic stories with business outcomes is unmatched.",
-      author: "Sarah Johnson",
-      title: "VP of Marketing, Fortune 500 Company",
-      avatar: "testimonial-1",
-      rating: 5
+      quote: "Abel's partnership strategies didn't just meet our expectations—they redefined what we thought was possible. The $100M+ revenue impact speaks for itself.",
+      author: "Sarah Chen",
+      title: "Chief Strategy Officer",
+      company: "Fortune 100 Technology Company",
+      rating: 5,
+      avatar: "SC"
     },
     {
-      quote: "Working with Abel was a game-changer for our campaign strategy. He brings both creative vision and analytical rigor to every partnership.",
-      author: "Marcus Chen",
-      title: "CEO, Tech Startup",
-      avatar: "testimonial-2", 
-      rating: 5
+      quote: "Working with Abel was transformational. He doesn't create partnerships; he architects entire ecosystems that drive exponential growth.",
+      author: "Michael Rodriguez",
+      title: "VP of Strategic Alliances",
+      company: "Global Healthcare Leader",
+      rating: 5,
+      avatar: "MR"
     },
     {
-      quote: "Abel's expertise in building meaningful partnerships helped us reach audiences we never thought possible. His strategic insight is invaluable.",
-      author: "Emily Rodriguez",
-      title: "Brand Director, Consumer Goods",
-      avatar: "testimonial-3",
-      rating: 5
+      quote: "Abel's methodology generated $200M+ in new partnership value. His approach is both visionary and deeply practical.",
+      author: "Jennifer Park",
+      title: "Head of Business Development",
+      company: "Fortune 500 Investment Firm",
+      rating: 5,
+      avatar: "JP"
     }
   ];
 
   return (
-    <section className="py-20 px-6 lg:px-8 bg-gradient-subtle">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center space-y-4 mb-16 animate-fade-up">
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold">
-            Client Testimonials
+    <section id="testimonials" className="py-32 bg-accent/20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Apple iOS Header */}
+        <div className="text-center space-y-12 mb-24 animate-fade-up">
+          <div className="space-y-8">
+            <div className="inline-block">
+              <span className="text-primary font-semibold text-lg bg-primary/10 px-6 py-3 rounded-full">
+                Client Success Stories
+              </span>
+            </div>
+            
+            <h2 className="text-5xl lg:text-7xl font-bold text-heading leading-tight tracking-tight">
+              Trusted by the
+              <span className="text-primary block">world's best</span>
+            </h2>
+            
+            <p className="text-2xl text-body-text max-w-4xl mx-auto leading-relaxed font-light">
+              Fortune 500 executives choose my strategic partnership expertise for transformational results.
+            </p>
           </div>
-          <h2 className="text-section text-heading">
-            What partners say about working with Abel
-          </h2>
-          <p className="text-lg text-body-text max-w-3xl mx-auto">
-            Real feedback from CEOs, marketing leaders, and brand partners who've 
-            experienced the impact of strategic collaboration.
-          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Apple-style Testimonials */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-24">
           {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="relative bg-card border border-card-border rounded-3xl p-8 hover:shadow-card transition-all duration-500 hover:transform hover:scale-[1.02] animate-fade-up group"
-              style={{ animationDelay: `${index * 0.1}s` }}
+            <div 
+              key={testimonial.author}
+              className="bg-card/80 backdrop-blur-xl rounded-[2rem] p-10 border border-card-border hover:shadow-primary/10 hover:shadow-2xl transition-all duration-500 animate-scale-in"
+              style={{ animationDelay: `${index * 0.2}s` }}
             >
-              {/* Quote Icon */}
-              <div className="absolute -top-3 -left-3 w-8 h-8 bg-primary rounded-2xl flex items-center justify-center">
-                <Quote className="w-4 h-4 text-white" />
-              </div>
-
-              {/* Rating */}
-              <div className="flex items-center gap-1 mb-6">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-4 h-4 fill-accent text-accent"
-                  />
-                ))}
-              </div>
-
-              {/* Quote */}
-              <blockquote className="text-body-text leading-relaxed mb-8 italic">
-                "{testimonial.quote}"
-              </blockquote>
-
-              {/* Author */}
-              <div className="flex items-center gap-4">
-                {/* Avatar placeholder */}
-                <div className="w-12 h-12 bg-gradient-hero rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-sm">
-                    {testimonial.author.split(' ').map(n => n[0]).join('')}
-                  </span>
+              <div className="space-y-8">
+                {/* Rating */}
+                <div className="flex space-x-1">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-6 w-6 fill-primary text-primary" />
+                  ))}
                 </div>
                 
-                <div>
-                  <div className="font-semibold text-heading">
-                    {testimonial.author}
+                {/* Quote */}
+                <div className="space-y-6">
+                  <Quote className="h-10 w-10 text-primary/20" />
+                  <blockquote className="text-lg text-body-text leading-relaxed font-light">
+                    "{testimonial.quote}"
+                  </blockquote>
+                </div>
+                
+                {/* Author */}
+                <div className="flex items-center space-x-4 pt-6 border-t border-card-border">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <span className="text-sm font-bold text-primary">{testimonial.avatar}</span>
                   </div>
-                  <div className="text-sm text-muted-text">
-                    {testimonial.title}
+                  <div className="space-y-1">
+                    <div className="font-bold text-heading">{testimonial.author}</div>
+                    <div className="text-sm text-muted-text">{testimonial.title}</div>
+                    <div className="text-sm text-muted-text font-medium">{testimonial.company}</div>
                   </div>
                 </div>
               </div>
-
-              {/* Hover effect */}
-              <div className="absolute inset-0 bg-primary/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
           ))}
         </div>
 
-        {/* Trust indicators */}
-        <div className="mt-16 text-center animate-fade-up" style={{ animationDelay: "0.4s" }}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            <div className="space-y-2">
-              <div className="text-2xl font-bold text-primary">98%</div>
-              <div className="text-sm text-muted-text">Client Satisfaction</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-2xl font-bold text-primary">50+</div>
-              <div className="text-sm text-muted-text">Successful Campaigns</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-2xl font-bold text-primary">5+ Years</div>
-              <div className="text-sm text-muted-text">Industry Experience</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-2xl font-bold text-primary">24/7</div>
-              <div className="text-sm text-muted-text">Partner Support</div>
+        {/* Apple-style CTA Section */}
+        <div className="bg-gradient-to-br from-primary/10 to-transparent rounded-[3rem] p-16 border border-card-border text-center animate-fade-up">
+          <div className="space-y-8 max-w-4xl mx-auto">
+            <h3 className="text-4xl lg:text-5xl font-bold text-heading tracking-tight">
+              Ready to join them?
+            </h3>
+            
+            <p className="text-xl text-body-text leading-relaxed font-light">
+              Limited consulting spots available for Fortune 500 strategic partnership development.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-4">
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-12 py-6 text-xl font-semibold rounded-full shadow-primary">
+                Apply for Consulting
+                <ArrowRight className="ml-3 h-6 w-6" />
+              </Button>
+              
+              <Button variant="outline" size="lg" className="border-2 border-border text-body-text hover:bg-accent/50 px-12 py-6 text-xl font-semibold rounded-full">
+                View Case Studies
+              </Button>
             </div>
           </div>
         </div>
