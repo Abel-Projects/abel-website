@@ -23,7 +23,7 @@ const Header = () => {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 opacity-0 animate-fade-in ${isScrolled ? 'bg-background/95 border-b border-card-border' : 'bg-blue-600/90 border-b border-blue-500/30'}`} style={{ animationDelay: "2s", animationFillMode: "forwards" }}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 opacity-0 animate-fade-in ${isScrolled ? 'bg-black/95 border-b border-gray-800' : 'bg-transparent'}`} style={{ animationDelay: "2s", animationFillMode: "forwards" }}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Apple-style Logo */}
