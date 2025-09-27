@@ -46,6 +46,9 @@
     --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.1), 0 1px 2px 0 hsl(0 0% 0% / 0.06);
     --shadow-hero: 0 10px 40px -10px hsl(0 0% 0% / 0.1);
     
+    /* Gradients */
+    --blue-gradient: linear-gradient(180deg, hsl(220, 80%, 55%), hsl(240, 70%, 25%));
+
     /* Apple-style Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
