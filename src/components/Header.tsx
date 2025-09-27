@@ -14,30 +14,30 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-card-border">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 apple-blur border-b border-card-border">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo/Name */}
+          {/* Apple-style Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-xl font-bold text-heading">Abel Mesfin</h1>
+            <h1 className="text-xl font-semibold text-heading">Abel Mesfin</h1>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Apple-style Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-body-text hover:text-heading transition-colors duration-200 font-medium"
+                className="text-body-text hover:text-heading transition-colors duration-200 font-medium text-sm"
               >
                 {item.name}
               </a>
             ))}
           </nav>
 
-          {/* CTA Button */}
+          {/* Apple-style CTA Button */}
           <div className="hidden md:block">
-            <Button variant="hero" size="sm">
+            <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium">
               Apply Now
             </Button>
           </div>
@@ -55,20 +55,20 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-card-border">
+          <div className="md:hidden border-t border-card-border bg-background/95 apple-blur">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-body-text hover:text-heading transition-colors"
+                  className="block px-3 py-2 text-body-text hover:text-heading transition-colors text-sm font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
               <div className="px-3 py-2">
-                <Button variant="hero" size="sm" className="w-full">
+                <Button size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-medium">
                   Apply Now
                 </Button>
               </div>
