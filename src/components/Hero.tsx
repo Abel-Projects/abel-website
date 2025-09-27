@@ -4,72 +4,76 @@ import { ArrowRight, Play } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 lg:px-8 bg-background">
+    <section className="relative min-h-screen flex items-center justify-center px-6 lg:px-8 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto w-full">
-        <div className="text-center space-y-16 pt-20 pb-24">
-          {/* Apple iOS Style Hero Headline */}
-          <div className="space-y-8 animate-fade-up">
-            <h1 className="text-6xl lg:text-8xl font-bold text-heading leading-[0.9] tracking-tight max-w-6xl mx-auto">
-              Content that
-              <br />
-              <span className="text-primary">Converts</span>
-              <br />
-              Stories that Scale
-            </h1>
+        <div className="flex flex-col lg:flex-row items-center justify-between pt-20 pb-24 gap-12">
+          
+          {/* Text Content - Left Side */}
+          <div className="flex-1 space-y-16 lg:pr-16 z-10">
+            {/* Apple iOS Style Hero Headline */}
+            <div className="space-y-8 animate-fade-up">
+              <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold text-heading leading-[0.9] tracking-tight">
+                Content that
+                <br />
+                <span className="text-primary">Converts</span>
+                <br />
+                Stories that Scale
+              </h1>
+              
+              <p className="text-xl lg:text-2xl text-body-text leading-relaxed font-light max-w-2xl">
+                Creating lead-generating content and authentic brand stories for top companies and CEOs.
+                <span className="block mt-4 text-lg text-muted-text">Content marketing that drives real results</span>
+              </p>
+            </div>
             
-            <p className="text-2xl lg:text-3xl text-body-text leading-relaxed max-w-4xl mx-auto font-light">
-              Creating lead-generating content and authentic brand stories for top companies and CEOs.
-              <span className="block mt-4 text-xl text-muted-text">Content marketing that drives real results</span>
-            </p>
+            {/* Apple-style CTA Section */}
+            <div className="flex flex-col sm:flex-row gap-6 animate-fade-up" style={{ animationDelay: "0.3s" }}>
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-12 py-6 text-xl font-semibold rounded-full shadow-primary">
+                View Portfolio
+                <ArrowRight className="ml-3 h-6 w-6" />
+              </Button>
+              
+              <Button variant="outline" size="lg" className="border-2 border-border text-body-text hover:bg-accent/50 px-12 py-6 text-xl font-semibold rounded-full">
+                <Play className="mr-3 h-6 w-6" />
+                See Work in Action
+              </Button>
+            </div>
           </div>
           
-          {/* Apple-style CTA Section */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-up" style={{ animationDelay: "0.3s" }}>
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-12 py-6 text-xl font-semibold rounded-full shadow-primary">
-              View Portfolio
-              <ArrowRight className="ml-3 h-6 w-6" />
-            </Button>
-            
-            <Button variant="outline" size="lg" className="border-2 border-border text-body-text hover:bg-accent/50 px-12 py-6 text-xl font-semibold rounded-full">
-              <Play className="mr-3 h-6 w-6" />
-              See Work in Action
-            </Button>
-          </div>
-        </div>
-        
-        {/* Apple-style Hero Image */}
-        <div className="relative flex justify-center items-center animate-scale-in" style={{ animationDelay: "0.6s" }}>
-          <div className="relative">
-            <img
-              src={abelTransparent}
-              alt="Abel Mesfin - Strategic Partnership Expert"
-              className="h-[600px] lg:h-[800px] w-auto object-contain"
-            />
-            
-            {/* Apple-style floating elements */}
-            <div className="absolute top-20 -left-32 hidden lg:block">
-              <div className="bg-card/90 backdrop-blur-xl rounded-3xl p-8 shadow-card border border-card-border animate-float">
-                <div className="text-center space-y-3">
-                  <div className="text-4xl font-bold text-primary">100+</div>
-                  <div className="text-sm text-muted-text font-medium">Brand Campaigns</div>
+          {/* Apple-style Hero Image - Right Side with Overlap */}
+          <div className="relative flex-1 flex justify-center lg:justify-end items-center animate-scale-in lg:-ml-32" style={{ animationDelay: "0.6s" }}>
+            <div className="relative">
+              <img
+                src={abelTransparent}
+                alt="Abel Mesfin - Content Marketing Expert"
+                className="h-[500px] lg:h-[700px] xl:h-[800px] w-auto object-contain"
+              />
+              
+              {/* Apple-style floating elements */}
+              <div className="absolute top-16 -left-24 hidden lg:block">
+                <div className="bg-card/90 backdrop-blur-xl rounded-3xl p-6 shadow-card border border-card-border animate-float">
+                  <div className="text-center space-y-2">
+                    <div className="text-3xl font-bold text-primary">100+</div>
+                    <div className="text-xs text-muted-text font-medium">Brand Campaigns</div>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            <div className="absolute top-40 -right-32 hidden lg:block">
-              <div className="bg-card/90 backdrop-blur-xl rounded-3xl p-8 shadow-card border border-card-border animate-float" style={{ animationDelay: "0.5s" }}>
-                <div className="text-center space-y-3">
-                  <div className="text-4xl font-bold text-primary">Top</div>
-                  <div className="text-sm text-muted-text font-medium">Content Creator</div>
+              
+              <div className="absolute top-32 -right-20 hidden lg:block">
+                <div className="bg-card/90 backdrop-blur-xl rounded-3xl p-6 shadow-card border border-card-border animate-float" style={{ animationDelay: "0.5s" }}>
+                  <div className="text-center space-y-2">
+                    <div className="text-3xl font-bold text-primary">Top</div>
+                    <div className="text-xs text-muted-text font-medium">Content Creator</div>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            <div className="absolute bottom-32 -left-24 hidden lg:block">
-              <div className="bg-card/90 backdrop-blur-xl rounded-3xl p-8 shadow-card border border-card-border animate-float" style={{ animationDelay: "1s" }}>
-                <div className="text-center space-y-3">
-                  <div className="text-4xl font-bold text-primary">10M+</div>
-                  <div className="text-sm text-muted-text font-medium">Content Views</div>
+              
+              <div className="absolute bottom-24 -left-16 hidden lg:block">
+                <div className="bg-card/90 backdrop-blur-xl rounded-3xl p-6 shadow-card border border-card-border animate-float" style={{ animationDelay: "1s" }}>
+                  <div className="text-center space-y-2">
+                    <div className="text-3xl font-bold text-primary">10M+</div>
+                    <div className="text-xs text-muted-text font-medium">Content Views</div>
+                  </div>
                 </div>
               </div>
             </div>
