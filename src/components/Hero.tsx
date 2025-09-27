@@ -5,7 +5,7 @@ import { ArrowRight, MapPin } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative flex items-center justify-center px-6 lg:px-8 overflow-hidden" style={{ background: "var(--blue-gradient)", height: "100vh" }}>
+    <section className="relative flex items-center justify-center px-6 lg:px-8 overflow-hidden h-[600px] lg:h-[800px] xl:h-[900px]" style={{ background: "var(--blue-gradient)" }}>
       <div className="max-w-7xl mx-auto w-full">
         <div className="flex flex-col lg:flex-row items-center justify-between h-full gap-12">
           
