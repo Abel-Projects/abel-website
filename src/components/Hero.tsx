@@ -47,7 +47,7 @@ const Hero = () => {
               <img
                 src={heroImage}
                 alt="Abel Mesfin - Content Marketing Expert"
-                className="h-[500px] lg:h-[700px] xl:h-[800px] w-auto object-contain"
+                className="h-[600px] lg:h-[800px] xl:h-[900px] w-auto object-contain"
               />
               
               {/* Enhanced floating bubbles */}
