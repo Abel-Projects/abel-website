@@ -1,78 +1,94 @@
 import { Button } from "@/components/ui/button";
-import abelHeadshot from "@/assets/abel-headshot.jpg";
+import abelTransparent from "@/assets/abel-transparent.png";
 import { ArrowRight, Play } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 lg:px-8 bg-gradient-subtle overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
-      <div className="absolute top-20 right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float"></div>
-      <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }}></div>
+    <section className="relative min-h-screen flex items-center justify-start px-6 lg:px-8 overflow-hidden pt-16">
+      {/* Dynamic Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-orange-500"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent"></div>
       
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Content */}
-          <div className="space-y-8 animate-fade-up">
+      {/* Geometric Background Elements */}
+      <div className="absolute top-20 right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute bottom-20 left-20 w-80 h-80 bg-white/5 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }}></div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
+        <div className="flex items-center min-h-[calc(100vh-4rem)]">
+          {/* Content - Left Side */}
+          <div className="flex-1 max-w-2xl space-y-8 animate-fade-up">
             <div className="space-y-6">
-              <h1 className="text-display text-heading leading-none">
+              <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
                 Strategic Partnerships & Campaigns that{" "}
-                <span className="gradient-text">Drive Growth</span>
+                <span className="text-yellow-400">Drive Growth</span>
               </h1>
               
-              <p className="text-xl lg:text-2xl text-body-text leading-relaxed max-w-2xl">
+              <p className="text-xl lg:text-2xl text-white/90 leading-relaxed">
                 Abel Mesfin helps brands and CEOs tell bigger stories, launch campaigns, 
                 and grow impact through strategic partnerships and compelling narratives.
               </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="lg" className="group">
+              <Button variant="hero" size="lg" className="group bg-white text-gray-900 hover:bg-white/90">
                 Work with Abel
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
               
-              <Button variant="outline" size="lg" className="group">
+              <Button variant="outline" size="lg" className="group border-white text-white hover:bg-white/10">
                 <Play className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
                 View Portfolio
               </Button>
             </div>
-            
-            {/* Quick Stats */}
-            <div className="flex flex-wrap gap-8 pt-8 border-t border-card-border">
-              <div className="text-center sm:text-left">
-                <div className="text-2xl font-bold text-primary">Fortune 500</div>
-                <div className="text-muted-text">Brands Partnered</div>
+          </div>
+          
+          {/* Transparent Portrait - Right Side */}
+          <div className="hidden lg:flex flex-1 justify-end items-end relative">
+            <div className="relative">
+              <img
+                src={abelTransparent}
+                alt="Abel Mesfin - Strategic Partnership Expert"
+                className="h-[600px] w-auto object-contain animate-fade-up"
+                style={{ animationDelay: "0.3s" }}
+              />
+              
+              {/* Floating Achievement Stats */}
+              <div className="absolute top-16 -left-20 bg-white/90 backdrop-blur-lg text-gray-900 px-6 py-4 rounded-2xl font-semibold shadow-lg animate-float">
+                <div className="text-2xl font-bold text-blue-600">Fortune 500</div>
+                <div className="text-sm text-gray-600">Brands Partnered</div>
               </div>
-              <div className="text-center sm:text-left">
-                <div className="text-2xl font-bold text-primary">$100M+</div>
-                <div className="text-muted-text">Campaign Value</div>
+              
+              <div className="absolute top-40 -right-16 bg-white/90 backdrop-blur-lg text-gray-900 px-6 py-4 rounded-2xl font-semibold shadow-lg animate-float" style={{ animationDelay: "0.5s" }}>
+                <div className="text-2xl font-bold text-purple-600">$100M+</div>
+                <div className="text-sm text-gray-600">Campaign Value</div>
               </div>
-              <div className="text-center sm:text-left">
-                <div className="text-2xl font-bold text-primary">50M+</div>
-                <div className="text-muted-text">Total Reach</div>
+              
+              <div className="absolute bottom-32 -left-16 bg-white/90 backdrop-blur-lg text-gray-900 px-6 py-4 rounded-2xl font-semibold shadow-lg animate-float" style={{ animationDelay: "1s" }}>
+                <div className="text-2xl font-bold text-orange-600">50M+</div>
+                <div className="text-sm text-gray-600">Total Reach</div>
+              </div>
+              
+              <div className="absolute bottom-16 right-4 bg-white/90 backdrop-blur-lg text-gray-900 px-6 py-4 rounded-2xl font-semibold shadow-lg animate-float" style={{ animationDelay: "1.5s" }}>
+                <div className="text-lg font-bold text-green-600">Denver Based</div>
+                <div className="text-sm text-gray-600">Strategic Storyteller</div>
               </div>
             </div>
           </div>
-          
-          {/* Image */}
-          <div className="relative animate-fade-up" style={{ animationDelay: "0.2s" }}>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-hero rounded-3xl blur-2xl opacity-20 transform scale-105"></div>
-              <img
-                src={abelHeadshot}
-                alt="Abel Mesfin - Strategic Partnership Expert"
-                className="relative w-full max-w-lg mx-auto rounded-3xl shadow-hero transform hover:scale-[1.02] transition-transform duration-500"
-              />
-            </div>
-            
-            {/* Floating elements */}
-            <div className="absolute -top-4 -right-4 bg-accent text-accent-foreground px-4 py-2 rounded-xl font-semibold shadow-accent animate-float">
-              Denver Based
-            </div>
-            <div className="absolute -bottom-4 -left-4 bg-card text-card-foreground px-4 py-2 rounded-xl font-semibold shadow-card animate-float" style={{ animationDelay: "1.5s" }}>
-              Strategic Storyteller
-            </div>
+        </div>
+        
+        {/* Mobile Stats */}
+        <div className="lg:hidden flex flex-wrap gap-4 mt-8">
+          <div className="bg-white/90 backdrop-blur-lg text-gray-900 px-4 py-3 rounded-xl font-semibold shadow-lg flex-1 min-w-[140px]">
+            <div className="text-lg font-bold text-blue-600">Fortune 500</div>
+            <div className="text-xs text-gray-600">Brands</div>
+          </div>
+          <div className="bg-white/90 backdrop-blur-lg text-gray-900 px-4 py-3 rounded-xl font-semibold shadow-lg flex-1 min-w-[140px]">
+            <div className="text-lg font-bold text-purple-600">$100M+</div>
+            <div className="text-xs text-gray-600">Campaign Value</div>
+          </div>
+          <div className="bg-white/90 backdrop-blur-lg text-gray-900 px-4 py-3 rounded-xl font-semibold shadow-lg flex-1 min-w-[140px]">
+            <div className="text-lg font-bold text-orange-600">50M+</div>
+            <div className="text-xs text-gray-600">Total Reach</div>
           </div>
         </div>
       </div>
