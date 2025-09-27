@@ -4,28 +4,28 @@ import { Button } from "@/components/ui/button";
 const Testimonials = () => {
   const testimonials = [
     {
-      quote: "Abel's partnership strategies didn't just meet our expectations—they redefined what we thought was possible. The $100M+ revenue impact speaks for itself.",
-      author: "Sarah Chen",
-      title: "Chief Strategy Officer",
-      company: "Fortune 100 Technology Company",
+      quote: "Abel's content strategy transformed our brand presence. His authentic storytelling approach drove incredible engagement and real business results.",
+      author: "Marketing Director",
+      title: "Brand Strategy Lead",
+      company: "Fortune 500 Retail Company",
       rating: 5,
-      avatar: "SC"
+      avatar: "MD"
     },
     {
-      quote: "Working with Abel was transformational. He doesn't create partnerships; he architects entire ecosystems that drive exponential growth.",
-      author: "Michael Rodriguez",
-      title: "VP of Strategic Alliances",
-      company: "Global Healthcare Leader",
+      quote: "Working with Abel was game-changing. He doesn't just create content; he crafts narratives that truly connect with audiences and drive action.",
+      author: "Creative Director",
+      title: "Head of Content",
+      company: "Global Technology Brand",
       rating: 5,
-      avatar: "MR"
+      avatar: "CD"
     },
     {
-      quote: "Abel's methodology generated $200M+ in new partnership value. His approach is both visionary and deeply practical.",
-      author: "Jennifer Park",
-      title: "Head of Business Development",
-      company: "Fortune 500 Investment Firm",
+      quote: "Abel's content marketing expertise generated amazing results. His approach is both creative and strategically sound.",
+      author: "Brand Manager",
+      title: "Digital Marketing Lead",
+      company: "Enterprise Software Company",
       rating: 5,
-      avatar: "JP"
+      avatar: "BM"
     }
   ];
 
@@ -42,12 +42,12 @@ const Testimonials = () => {
             </div>
             
             <h2 className="text-5xl lg:text-7xl font-bold text-heading leading-tight tracking-tight">
-              Trusted by the
-              <span className="text-primary block">world's best</span>
+              What clients say about
+              <span className="text-primary block">working with me</span>
             </h2>
             
             <p className="text-2xl text-body-text max-w-4xl mx-auto leading-relaxed font-light">
-              Fortune 500 executives choose my strategic partnership expertise for transformational results.
+              Real feedback from brands who've experienced the power of strategic content marketing.
             </p>
           </div>
         </div>
@@ -96,21 +96,21 @@ const Testimonials = () => {
         <div className="bg-gradient-to-br from-primary/10 to-transparent rounded-[3rem] p-16 border border-card-border text-center animate-fade-up">
           <div className="space-y-8 max-w-4xl mx-auto">
             <h3 className="text-4xl lg:text-5xl font-bold text-heading tracking-tight">
-              Ready to join them?
+              Ready to create something amazing?
             </h3>
             
             <p className="text-xl text-body-text leading-relaxed font-light">
-              Limited consulting spots available for Fortune 500 strategic partnership development.
+              Let's discuss how strategic content can transform your brand's story and drive real results.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-4">
               <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-12 py-6 text-xl font-semibold rounded-full shadow-primary">
-                Apply for Consulting
+                Start a Project
                 <ArrowRight className="ml-3 h-6 w-6" />
               </Button>
               
               <Button variant="outline" size="lg" className="border-2 border-border text-body-text hover:bg-accent/50 px-12 py-6 text-xl font-semibold rounded-full">
-                View Case Studies
+                View Portfolio
               </Button>
             </div>
           </div>

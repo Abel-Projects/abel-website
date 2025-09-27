@@ -4,18 +4,18 @@ const About = () => {
   const features = [
     {
       icon: Award,
-      title: "Fortune 500 Expertise",
-      description: "Proven track record with the world's largest companies"
+      title: "Brand Storytelling",
+      description: "Crafting authentic narratives that resonate with audiences"
     },
     {
       icon: Zap,
-      title: "Rapid Results",
-      description: "Strategies that deliver measurable impact in months, not years"
+      title: "Content That Converts",
+      description: "Lead-generating content strategies that drive real results"
     },
     {
       icon: Target,
-      title: "Strategic Focus",
-      description: "Data-driven partnerships that align with business objectives"
+      title: "Strategic Campaigns",
+      description: "Data-driven content that aligns with business objectives"
     }
   ];
 
@@ -28,19 +28,17 @@ const About = () => {
             <div className="space-y-8">
               <div className="inline-block">
                 <span className="text-primary font-semibold text-lg bg-primary/10 px-6 py-3 rounded-full">
-                  Strategic Partnership Expert
+                  Content Marketing Expert
                 </span>
               </div>
               
               <h2 className="text-5xl lg:text-6xl font-bold text-heading leading-tight tracking-tight">
-                Building bridges to 
-                <span className="text-primary block">exponential growth</span>
+                I'm Abel — creating content that
+                <span className="text-primary block">converts and scales</span>
               </h2>
               
               <p className="text-xl text-body-text leading-relaxed font-light">
-                I'm Abel Mesfin, the strategic mind behind some of the most successful 
-                Fortune 500 partnerships. My proven methodology has generated over $500M 
-                in campaign value and transformed how companies think about growth.
+                Born in Denver, bred for hustle. Since college, I've had the privilege of leveling up the brands of top-level companies, celebrities and CEOs through lead-generating content and authentic brand stories.
               </p>
             </div>
           </div>
@@ -54,23 +52,23 @@ const About = () => {
                   </div>
                   
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-bold text-heading">
-                      Proven Partnership System
-                    </h3>
-                    <p className="text-body-text leading-relaxed">
-                      A methodical approach to building strategic alliances that 
-                      create lasting competitive advantages.
-                    </p>
+                  <h3 className="text-2xl font-bold text-heading">
+                    Content Marketing System
+                  </h3>
+                  <p className="text-body-text leading-relaxed">
+                    A proven methodology for creating lead-generating content 
+                    that builds authentic brand stories and drives growth.
+                  </p>
                   </div>
                 </div>
                 
                 <div className="grid grid-cols-2 gap-8 pt-8 border-t border-card-border">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-heading">98%</div>
-                    <div className="text-sm text-muted-text mt-1">Success Rate</div>
+                    <div className="text-3xl font-bold text-heading">100+</div>
+                    <div className="text-sm text-muted-text mt-1">Brand Campaigns</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-heading">10+</div>
+                    <div className="text-3xl font-bold text-heading">5+</div>
                     <div className="text-sm text-muted-text mt-1">Years Experience</div>
                   </div>
                 </div>
@@ -83,10 +81,10 @@ const About = () => {
         <div className="space-y-16">
           <div className="text-center space-y-6 animate-fade-up">
             <h3 className="text-4xl lg:text-5xl font-bold text-heading tracking-tight">
-              Why Fortune 500 companies choose me
+              What sets my content apart
             </h3>
             <p className="text-xl text-body-text max-w-3xl mx-auto font-light">
-              Three core strengths that set my partnership strategies apart
+              Three core strengths that make content marketing campaigns successful
             </p>
           </div>
           

@@ -8,8 +8,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "abel@strategicpartnerships.com",
-      description: "For partnership inquiries"
+      value: "abelgmesfin@gmail.com",
+      description: "For content & brand inquiries"
     },
     {
       icon: Phone,
@@ -20,22 +20,22 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Location",
-      value: "San Francisco, CA",
-      description: "Global partnerships, local expertise"
+      value: "Denver, CO",
+      description: "Born and bred for hustle"
     },
     {
       icon: Calendar,
       title: "Availability",
-      value: "Limited Q1 2024 Spots",
-      description: "Exclusive consulting engagement"
+      value: "Available for projects",
+      description: "Content marketing & campaigns"
     }
   ];
 
   const benefits = [
-    "Strategic partnership assessment",
-    "Custom growth roadmap",
-    "Fortune 500 methodology access",
-    "Ongoing support & guidance"
+    "Content strategy assessment",
+    "Custom campaign roadmap", 
+    "Brand storytelling framework",
+    "Ongoing creative direction"
   ];
 
   return (
@@ -51,12 +51,12 @@ const Contact = () => {
             </div>
             
             <h2 className="text-5xl lg:text-7xl font-bold text-heading leading-tight tracking-tight">
-              Let's build your
-              <span className="text-primary block">strategic advantage</span>
+              Let's create content
+              <span className="text-primary block">that converts</span>
             </h2>
             
             <p className="text-2xl text-body-text max-w-4xl mx-auto leading-relaxed font-light">
-              Limited consulting spots available. Transform your business with proven Fortune 500 partnership strategies.
+              Ready to level up your brand with content that drives real results? Let's start the conversation.
             </p>
           </div>
         </div>
@@ -66,12 +66,12 @@ const Contact = () => {
           <div className="space-y-12 animate-fade-up">
             <div className="space-y-8">
               <h3 className="text-3xl lg:text-4xl font-bold text-heading tracking-tight">
-                Apply for Strategic Partnership Consulting
+                Let's Work Together
               </h3>
               
               <div className="space-y-6">
                 <p className="text-xl text-body-text leading-relaxed font-light">
-                  Share your partnership vision and we'll schedule a strategic consultation to explore possibilities.
+                  Tell me about your brand and content goals, and I'll show you how we can create something amazing together.
                 </p>
                 
                 <div className="space-y-4">
@@ -120,18 +120,18 @@ const Contact = () => {
                 />
               </div>
               
-              <div className="space-y-3">
-                <label className="text-sm font-semibold text-heading tracking-wide uppercase">Partnership Vision</label>
-                <Textarea 
-                  placeholder="Describe your strategic partnership objectives, current challenges, and growth aspirations..."
-                  className="border-2 border-border bg-background focus:border-primary rounded-2xl py-4 px-6 text-lg transition-all min-h-[150px]"
-                />
-              </div>
+                <div className="space-y-3">
+                  <label className="text-sm font-semibold text-heading tracking-wide uppercase">Project Goals</label>
+                  <Textarea 
+                    placeholder="Tell me about your brand, content goals, and what you're looking to achieve..."
+                    className="border-2 border-border bg-background focus:border-primary rounded-2xl py-4 px-6 text-lg transition-all min-h-[150px]"
+                  />
+                </div>
               
-              <Button size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-6 text-xl font-semibold rounded-2xl shadow-primary">
-                Submit Application
-                <ArrowRight className="ml-3 h-6 w-6" />
-              </Button>
+                <Button size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-6 text-xl font-semibold rounded-2xl shadow-primary">
+                  Send Message
+                  <ArrowRight className="ml-3 h-6 w-6" />
+                </Button>
             </form>
           </div>
 

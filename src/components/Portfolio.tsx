@@ -1,45 +1,45 @@
-import { Briefcase, TrendingUp, Users, Target, Zap, Globe, ArrowRight } from "lucide-react";
+import { Briefcase, TrendingUp, Users, Target, Zap, Globe, ArrowRight, Video, FileText, Camera } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Portfolio = () => {
   const featuredProjects = [
     {
-      title: "Global Technology Alliance",
-      company: "Fortune 100 Tech Giant",
-      description: "Orchestrated a multi-billion dollar partnership ecosystem spanning 15 countries, revolutionizing market entry strategies.",
-      impact: "$250M+ revenue impact",
-      timeline: "18 months",
-      icon: Globe,
-      category: "Technology",
+      title: "Walmart Brand Campaign",
+      company: "Walmart",
+      description: "Created a multi-channel content strategy that increased customer engagement and drove significant sales growth across digital platforms.",
+      impact: "500K+ engagement",
+      timeline: "3 months",
+      icon: TrendingUp,
+      category: "Retail Campaign",
       color: "from-blue-500/10 to-purple-500/10"
     },
     {
-      title: "Healthcare Innovation Network",
-      company: "Leading Healthcare Provider",
-      description: "Built strategic alliances that transformed patient care delivery across North America's largest healthcare network.",
-      impact: "500K+ patients impacted",
-      timeline: "12 months",
-      icon: Zap,
-      category: "Healthcare",
+      title: "Meta Social Strategy",
+      company: "Meta",
+      description: "Developed authentic brand storytelling content that resonated with diverse audiences and strengthened brand positioning.",
+      impact: "2M+ reach",
+      timeline: "6 months",
+      icon: Users,
+      category: "Social Media",
       color: "from-green-500/10 to-teal-500/10"
     },
     {
-      title: "Retail Transformation Hub",
-      company: "Fortune 500 Retail Chain",
-      description: "Created omnichannel partnership framework that redefined customer experience across 2,000+ locations.",
-      impact: "$150M+ sales growth",
-      timeline: "24 months",
-      icon: TrendingUp,
-      category: "Retail",
+      title: "Aflac Content Series",
+      company: "Aflac",
+      description: "Built a comprehensive content marketing framework that educated customers while driving lead generation and conversion.",
+      impact: "150% lead increase",
+      timeline: "4 months",
+      icon: FileText,
+      category: "Content Marketing",
       color: "from-orange-500/10 to-red-500/10"
     }
   ];
 
-  const metrics = [
-    { value: "$500M+", label: "Total Campaign Value" },
-    { value: "50+", label: "Fortune 500 Clients" },
-    { value: "1B+", label: "Media Impressions" },
-    { value: "98%", label: "Success Rate" }
+  const contentTypes = [
+    { type: "Video Content", icon: Video, count: "50+" },
+    { type: "Written Content", icon: FileText, count: "200+" },
+    { type: "Visual Campaigns", icon: Camera, count: "100+" },
+    { type: "Brand Stories", icon: Briefcase, count: "75+" }
   ];
 
   return (
@@ -50,17 +50,17 @@ const Portfolio = () => {
           <div className="space-y-8">
             <div className="inline-block">
               <span className="text-primary font-semibold text-lg bg-primary/10 px-6 py-3 rounded-full">
-                Partnership Portfolio
+                Portfolio
               </span>
             </div>
             
             <h2 className="text-5xl lg:text-7xl font-bold text-heading leading-tight tracking-tight">
-              Partnerships that
-              <span className="text-primary block">transform industries</span>
+              Content that
+              <span className="text-primary block">drives results</span>
             </h2>
             
             <p className="text-2xl text-body-text max-w-4xl mx-auto leading-relaxed font-light">
-              Real partnerships. Real results. Real impact on Fortune 500 growth strategies.
+              Real campaigns. Real brands. Real results that move the needle for business growth.
             </p>
           </div>
         </div>
@@ -122,7 +122,7 @@ const Portfolio = () => {
                     </div>
                     <div className="space-y-2">
                       <div className="text-2xl font-bold text-heading">{project.category}</div>
-                      <div className="text-muted-text">Partnership Strategy</div>
+                      <div className="text-muted-text">Content Strategy</div>
                     </div>
                   </div>
                 </div>
@@ -131,22 +131,27 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Metrics Section */}
+        {/* Content Types Section */}
         <div className="bg-gradient-to-br from-primary/5 to-transparent rounded-[3rem] p-16 border border-card-border animate-fade-up">
           <div className="text-center space-y-12">
             <h3 className="text-3xl lg:text-4xl font-bold text-heading tracking-tight">
-              Partnership Impact by the Numbers
+              Content Portfolio Overview
             </h3>
             
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
-              {metrics.map((metric, index) => (
+              {contentTypes.map((item, index) => (
                 <div 
-                  key={metric.label}
-                  className="text-center space-y-3 animate-slide-up"
+                  key={item.type}
+                  className="text-center space-y-4 animate-slide-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="text-4xl lg:text-6xl font-bold text-primary">{metric.value}</div>
-                  <div className="text-muted-text font-medium">{metric.label}</div>
+                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
+                    <item.icon className="h-8 w-8 text-primary" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="text-3xl lg:text-4xl font-bold text-primary">{item.count}</div>
+                    <div className="text-muted-text font-medium text-sm">{item.type}</div>
+                  </div>
                 </div>
               ))}
             </div>

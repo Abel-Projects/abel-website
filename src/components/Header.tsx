@@ -6,10 +6,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
-    { name: "About", href: "#about" },
     { name: "Portfolio", href: "#portfolio" },
-    { name: "Speaking", href: "#speaking" },
-    { name: "Consulting", href: "#consulting" },
+    { name: "About", href: "#about" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -38,7 +36,7 @@ const Header = () => {
           {/* Apple-style CTA Button */}
           <div className="hidden md:block">
             <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium">
-              Apply Now
+              Get in Touch
             </Button>
           </div>
 
@@ -69,7 +67,7 @@ const Header = () => {
               ))}
               <div className="px-3 py-2">
                 <Button size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-medium">
-                  Apply Now
+                  Get in Touch
                 </Button>
               </div>
             </div>

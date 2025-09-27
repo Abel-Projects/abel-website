@@ -30,24 +30,24 @@ const Footer = () => {
         <div className="py-24 border-b border-background/10">
           <div className="text-center space-y-12 animate-fade-up">
             <div className="space-y-8">
-              <h2 className="text-4xl lg:text-6xl font-bold leading-tight tracking-tight">
-                Ready to build your
-                <span className="text-primary block">strategic advantage?</span>
-              </h2>
-              
-              <p className="text-xl lg:text-2xl text-background/80 max-w-4xl mx-auto leading-relaxed font-light">
-                Join Fortune 500 leaders who trust my partnership strategies for exponential growth.
-              </p>
+            <h2 className="text-4xl lg:text-6xl font-bold leading-tight tracking-tight">
+              Ready to tell your
+              <span className="text-primary block">brand's story?</span>
+            </h2>
+            
+            <p className="text-xl lg:text-2xl text-background/80 max-w-4xl mx-auto leading-relaxed font-light">
+              Let's create content that converts and stories that scale your business.
+            </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-12 py-6 text-xl font-semibold rounded-full shadow-primary">
-                Apply for Consulting
+                Start a Project
                 <ArrowRight className="ml-3 h-6 w-6" />
               </Button>
               
               <Button variant="outline" size="lg" className="border-2 border-background/20 text-background hover:bg-background/10 px-12 py-6 text-xl font-semibold rounded-full">
-                Download Playbook
+                View Portfolio
               </Button>
             </div>
           </div>
@@ -61,7 +61,7 @@ const Footer = () => {
               <div className="space-y-6">
                 <h3 className="text-3xl font-bold">Abel Mesfin</h3>
                 <p className="text-background/70 text-lg leading-relaxed font-light max-w-md">
-                  Strategic partnership expert specializing in Fortune 500 campaigns and exponential business growth through proven methodologies.
+                  Content marketing expert creating lead-generating campaigns and authentic brand stories for top companies and CEOs.
                 </p>
               </div>
               
@@ -84,41 +84,32 @@ const Footer = () => {
             <div className="space-y-6">
               <h4 className="font-bold text-lg">Services</h4>
               <ul className="space-y-4">
-                {navigation.services.map((item) => (
-                  <li key={item.name}>
-                    <a href={item.href} className="text-background/70 hover:text-background transition-colors font-medium">
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
+                <li><a href="#" className="text-background/70 hover:text-background transition-colors font-medium">Content Strategy</a></li>
+                <li><a href="#" className="text-background/70 hover:text-background transition-colors font-medium">Brand Storytelling</a></li>
+                <li><a href="#" className="text-background/70 hover:text-background transition-colors font-medium">Campaign Development</a></li>
+                <li><a href="#" className="text-background/70 hover:text-background transition-colors font-medium">Creative Direction</a></li>
               </ul>
             </div>
             
             {/* Resources */}
             <div className="space-y-6">
-              <h4 className="font-bold text-lg">Resources</h4>
+              <h4 className="font-bold text-lg">Portfolio</h4>
               <ul className="space-y-4">
-                {navigation.resources.map((item) => (
-                  <li key={item.name}>
-                    <a href={item.href} className="text-background/70 hover:text-background transition-colors font-medium">
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
+                <li><a href="#" className="text-background/70 hover:text-background transition-colors font-medium">Case Studies</a></li>
+                <li><a href="#" className="text-background/70 hover:text-background transition-colors font-medium">Brand Campaigns</a></li>
+                <li><a href="#" className="text-background/70 hover:text-background transition-colors font-medium">Content Examples</a></li>
+                <li><a href="#" className="text-background/70 hover:text-background transition-colors font-medium">Client Stories</a></li>
               </ul>
             </div>
             
             {/* Company */}
             <div className="space-y-6">
-              <h4 className="font-bold text-lg">Company</h4>
+              <h4 className="font-bold text-lg">About</h4>
               <ul className="space-y-4">
-                {navigation.company.map((item) => (
-                  <li key={item.name}>
-                    <a href={item.href} className="text-background/70 hover:text-background transition-colors font-medium">
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
+                <li><a href="#about" className="text-background/70 hover:text-background transition-colors font-medium">About Abel</a></li>
+                <li><a href="#portfolio" className="text-background/70 hover:text-background transition-colors font-medium">Portfolio</a></li>
+                <li><a href="#contact" className="text-background/70 hover:text-background transition-colors font-medium">Contact</a></li>
+                <li><a href="#" className="text-background/70 hover:text-background transition-colors font-medium">Process</a></li>
               </ul>
             </div>
           </div>
@@ -132,7 +123,7 @@ const Footer = () => {
                   <span className="font-semibold">Email</span>
                 </div>
                 <div className="text-background/80 font-medium">
-                  abel@strategicpartnerships.com
+                  abelgmesfin@gmail.com
                 </div>
               </div>
               
@@ -152,7 +143,7 @@ const Footer = () => {
                   <span className="font-semibold">Location</span>
                 </div>
                 <div className="text-background/80 font-medium">
-                  San Francisco, CA
+                  Denver, CO
                 </div>
               </div>
             </div>

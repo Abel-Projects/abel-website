@@ -1,7 +1,7 @@
 const Brands = () => {
   const brands = [
-    "Microsoft", "Google", "Amazon", "Apple", "Meta", "Netflix", 
-    "Tesla", "Salesforce", "Adobe", "Oracle", "IBM", "Intel"
+    "Walmart", "Meta", "Aflac", "Aroma360", "Captain D's", "ClickFunnels", 
+    "Trainual", "RocketLawyer", "Alibaba", "Starkey", "Vari", "Medium Rare"
   ];
 
   return (
@@ -13,7 +13,7 @@ const Brands = () => {
               Trusted by Industry Leaders
             </h2>
             <p className="text-3xl lg:text-4xl font-bold text-heading tracking-tight max-w-4xl mx-auto">
-              Strategic partnerships with the world's most innovative companies
+              Creating content for brands that matter
             </p>
           </div>
           
@@ -33,15 +33,15 @@ const Brands = () => {
           <div className="bg-card/80 backdrop-blur-xl rounded-[2rem] p-12 border border-card-border animate-fade-up" style={{ animationDelay: "0.5s" }}>
             <div className="grid md:grid-cols-3 gap-8 text-center">
               <div className="space-y-3">
-                <div className="text-4xl font-bold text-primary">50+</div>
-                <div className="text-muted-text font-medium">Global Partnerships</div>
+                <div className="text-4xl font-bold text-primary">100+</div>
+                <div className="text-muted-text font-medium">Brand Campaigns</div>
               </div>
               <div className="space-y-3">
-                <div className="text-4xl font-bold text-primary">15</div>
-                <div className="text-muted-text font-medium">Countries Reached</div>
+                <div className="text-4xl font-bold text-primary">10M+</div>
+                <div className="text-muted-text font-medium">Content Views</div>
               </div>
               <div className="space-y-3">
-                <div className="text-4xl font-bold text-primary">25+</div>
+                <div className="text-4xl font-bold text-primary">15+</div>
                 <div className="text-muted-text font-medium">Industries Served</div>
               </div>
             </div>
