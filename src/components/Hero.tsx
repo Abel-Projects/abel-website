@@ -2,8 +2,20 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-image.avif";
 import abelLogo from "@/assets/abel-logo.png";
 import { ArrowRight, MapPin } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroHeight = window.innerHeight;
+      setIsScrolled(window.scrollY > heroHeight - 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
     <section className="relative flex items-center justify-center px-6 lg:px-8 overflow-hidden h-screen" style={{ background: "var(--blue-gradient)" }}>
       <div className="max-w-7xl mx-auto w-full">
@@ -17,7 +29,7 @@ const Hero = () => {
                 <img 
                   src={abelLogo} 
                   alt="Abel Mesfin Logo" 
-                  className="h-32 lg:h-40 xl:h-48 w-auto"
+                  className={`h-32 lg:h-40 xl:h-48 w-auto transition-all duration-700 ${isScrolled ? 'opacity-0 scale-75' : 'opacity-100 scale-100'}`}
                 />
                 
                 {/* Location Bubble */}

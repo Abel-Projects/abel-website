@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import abelLogo from "@/assets/abel-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,7 +29,11 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Apple-style Logo */}
           <div className="flex-shrink-0">
-            <h1 className={`text-xl font-semibold transition-colors duration-500 ${isScrolled ? 'text-heading' : 'text-white'}`}>Abel Mesfin</h1>
+            <img 
+              src={abelLogo} 
+              alt="Abel Mesfin Logo" 
+              className={`h-10 w-auto transition-all duration-700 ${isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}
+            />
           </div>
 
           {/* Apple-style Navigation */}
