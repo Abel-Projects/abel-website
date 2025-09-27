@@ -1,7 +1,30 @@
+import walmartLogo from "@/assets/brands/walmart-logo.png";
+import metaLogo from "@/assets/brands/meta-logo.png";
+import aflacLogo from "@/assets/brands/aflac-logo.jpg";
+import aroma360Logo from "@/assets/brands/aroma360-logo.png";
+import captainsLogo from "@/assets/brands/captains-logo.png";
+import clickfunnelsLogo from "@/assets/brands/clickfunnels-logo.png";
+import trainualLogo from "@/assets/brands/trainual-logo.png";
+import rocketlawyerLogo from "@/assets/brands/rocketlawyer-logo.png";
+import alibabaLogo from "@/assets/brands/alibaba-logo.png";
+import starkeyLogo from "@/assets/brands/starkey-logo.png";
+import variLogo from "@/assets/brands/vari-logo.png";
+import mediumrareLogo from "@/assets/brands/mediumrare-logo.png";
+
 const Brands = () => {
   const brands = [
-    "Walmart", "Meta", "Aflac", "Aroma360", "Captain D's", "ClickFunnels", 
-    "Trainual", "RocketLawyer", "Alibaba", "Starkey", "Vari", "Medium Rare"
+    { name: "Walmart", logo: walmartLogo },
+    { name: "Meta", logo: metaLogo },
+    { name: "Aflac", logo: aflacLogo },
+    { name: "Aroma360", logo: aroma360Logo },
+    { name: "Captain D's", logo: captainsLogo },
+    { name: "ClickFunnels", logo: clickfunnelsLogo },
+    { name: "Trainual", logo: trainualLogo },
+    { name: "RocketLawyer", logo: rocketlawyerLogo },
+    { name: "Alibaba", logo: alibabaLogo },
+    { name: "Starkey", logo: starkeyLogo },
+    { name: "Vari", logo: variLogo },
+    { name: "Medium Rare", logo: mediumrareLogo }
   ];
 
   return (
@@ -21,11 +44,15 @@ const Brands = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12">
             {brands.map((brand, index) => (
               <div 
-                key={brand}
+                key={brand.name}
                 className="flex items-center justify-center p-8 bg-card/50 rounded-3xl border border-card-border hover:bg-card transition-all duration-300 animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <span className="text-xl font-semibold text-heading">{brand}</span>
+                <img 
+                  src={brand.logo} 
+                  alt={`${brand.name} logo`}
+                  className="max-h-12 max-w-32 object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                />
               </div>
             ))}
           </div>
