@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import abelTransparent from "@/assets/abel-transparent.png";
+import heroImage from "@/assets/hero-image.avif";
 import { ArrowRight, Play } from "lucide-react";
 
 const Hero = () => {
@@ -44,9 +44,9 @@ const Hero = () => {
           <div className="relative flex-1 flex justify-center lg:justify-end items-center animate-scale-in lg:-ml-32" style={{ animationDelay: "0.6s" }}>
             <div className="relative">
               <img
-                src={abelTransparent}
+                src={heroImage}
                 alt="Abel Mesfin - Content Marketing Expert"
-                className="h-[500px] lg:h-[700px] xl:h-[800px] w-auto object-contain"
+                className="h-[500px] lg:h-[700px] xl:h-[800px] w-auto object-contain rounded-3xl shadow-2xl"
               />
               
               {/* Apple-style floating elements */}
