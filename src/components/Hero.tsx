@@ -46,12 +46,12 @@ const Hero = () => {
               <img
                 src={heroImage}
                 alt="Abel Mesfin - Content Marketing Expert"
-                className="h-[500px] lg:h-[700px] xl:h-[800px] w-auto object-contain rounded-3xl shadow-2xl"
+                className="h-[500px] lg:h-[700px] xl:h-[800px] w-auto object-contain"
               />
               
               {/* Apple-style floating elements */}
               <div className="absolute top-16 -left-24 hidden lg:block">
-                <div className="bg-card/90 backdrop-blur-xl rounded-3xl p-6 shadow-card border border-card-border animate-float">
+                <div className="bg-transparent rounded-3xl p-6 animate-float">
                   <div className="text-center space-y-2">
                     <div className="text-3xl font-bold text-primary">100+</div>
                     <div className="text-xs text-muted-text font-medium">Brand Campaigns</div>
@@ -60,7 +60,7 @@ const Hero = () => {
               </div>
               
               <div className="absolute top-32 -right-20 hidden lg:block">
-                <div className="bg-card/90 backdrop-blur-xl rounded-3xl p-6 shadow-card border border-card-border animate-float" style={{ animationDelay: "0.5s" }}>
+                <div className="bg-transparent rounded-3xl p-6 animate-float" style={{ animationDelay: "0.5s" }}>
                   <div className="text-center space-y-2">
                     <div className="text-3xl font-bold text-primary">Top</div>
                     <div className="text-xs text-muted-text font-medium">Content Creator</div>
@@ -69,7 +69,7 @@ const Hero = () => {
               </div>
               
               <div className="absolute bottom-24 -left-16 hidden lg:block">
-                <div className="bg-card/90 backdrop-blur-xl rounded-3xl p-6 shadow-card border border-card-border animate-float" style={{ animationDelay: "1s" }}>
+                <div className="bg-transparent rounded-3xl p-6 animate-float" style={{ animationDelay: "1s" }}>
                   <div className="text-center space-y-2">
                     <div className="text-3xl font-bold text-primary">10M+</div>
                     <div className="text-xs text-muted-text font-medium">Content Views</div>
