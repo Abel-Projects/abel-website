@@ -5,9 +5,9 @@ import { ArrowRight, MapPin } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative flex items-center justify-center px-6 lg:px-8 overflow-hidden min-h-screen" style={{ background: "var(--blue-gradient)" }}>
+    <section className="relative flex items-center justify-center px-6 lg:px-8 overflow-hidden h-screen" style={{ background: "var(--blue-gradient)" }}>
       <div className="max-w-7xl mx-auto w-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between h-full gap-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between h-full gap-12 py-20">
           
           {/* Text Content - Left Side */}
           <div className="flex-1 space-y-16 lg:pr-16 z-10">
