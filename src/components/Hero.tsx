@@ -15,9 +15,10 @@ const Hero = () => {
               <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold text-heading leading-[0.9] tracking-tight">
                 I'm
                 <br />
-                <span className="text-primary font-black tracking-[0.2em] inline-block w-full text-center">ABEL</span>
-                <br />
-                <span className="text-primary font-light tracking-[0.4em] inline-block w-full text-center">MESFIN</span>
+                <div className="flex flex-col items-center space-y-2">
+                  <span className="text-primary font-black tracking-[0.3em] transform scale-x-125 text-center">ABEL</span>
+                  <span className="text-primary font-light tracking-[0.15em] transform scale-x-75 text-center">MESFIN</span>
+                </div>
               </h1>
               
               <p className="text-xl lg:text-2xl text-body-text leading-relaxed font-light max-w-2xl">
