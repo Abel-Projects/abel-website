@@ -13,11 +13,11 @@ const Hero = () => {
             {/* Apple iOS Style Hero Headline */}
             <div className="space-y-8 animate-fade-up">
               <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold text-heading leading-[0.9] tracking-tight">
-                Content that
+                I'm
                 <br />
-                <span className="text-primary">Converts</span>
+                <span className="text-primary font-black tracking-[0.2em] inline-block w-full text-center">ABEL</span>
                 <br />
-                Stories that Scale
+                <span className="text-primary font-light tracking-[0.4em] inline-block w-full text-center">MESFIN</span>
               </h1>
               
               <p className="text-xl lg:text-2xl text-body-text leading-relaxed font-light max-w-2xl">
