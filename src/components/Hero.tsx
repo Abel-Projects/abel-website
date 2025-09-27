@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-image.avif";
-import { ArrowRight, Play } from "lucide-react";
+import abelLogo from "@/assets/abel-logo.png";
+import { ArrowRight, MapPin } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -10,33 +11,32 @@ const Hero = () => {
           
           {/* Text Content - Left Side */}
           <div className="flex-1 space-y-16 lg:pr-16 z-10">
-            {/* Apple iOS Style Hero Headline */}
+            {/* Logo and Location */}
             <div className="space-y-8 animate-fade-up">
-              <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold text-heading leading-[0.9] tracking-tight">
-                I'm
-                <br />
-                <div className="flex flex-col items-center space-y-2">
-                  <span className="text-primary font-black tracking-[0.3em] transform scale-x-125 text-center">ABEL</span>
-                  <span className="text-primary font-light tracking-[0.15em] transform scale-x-75 text-center">MESFIN</span>
+              <div className="flex flex-col items-start space-y-6">
+                <img 
+                  src={abelLogo} 
+                  alt="Abel Mesfin Logo" 
+                  className="h-16 lg:h-20 xl:h-24 w-auto"
+                />
+                
+                {/* Location Bubble */}
+                <div className="bg-card/90 backdrop-blur-xl rounded-full px-6 py-3 shadow-card border border-card-border flex items-center space-x-2">
+                  <MapPin className="h-4 w-4 text-primary" />
+                  <span className="text-sm font-medium text-body-text">Denver, CO</span>
                 </div>
-              </h1>
+              </div>
               
               <p className="text-xl lg:text-2xl text-body-text leading-relaxed font-light max-w-2xl">
                 Creating lead-generating content and authentic brand stories for top companies and CEOs.
-                <span className="block mt-4 text-lg text-muted-text">Content marketing that drives real results</span>
               </p>
             </div>
             
-            {/* Apple-style CTA Section */}
-            <div className="flex flex-col sm:flex-row gap-6 animate-fade-up" style={{ animationDelay: "0.3s" }}>
+            {/* CTA Section */}
+            <div className="flex justify-start animate-fade-up" style={{ animationDelay: "0.3s" }}>
               <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-12 py-6 text-xl font-semibold rounded-full shadow-primary">
                 View Portfolio
                 <ArrowRight className="ml-3 h-6 w-6" />
-              </Button>
-              
-              <Button variant="outline" size="lg" className="border-2 border-border text-body-text hover:bg-accent/50 px-12 py-6 text-xl font-semibold rounded-full">
-                <Play className="mr-3 h-6 w-6" />
-                See Work in Action
               </Button>
             </div>
           </div>
@@ -50,9 +50,9 @@ const Hero = () => {
                 className="h-[500px] lg:h-[700px] xl:h-[800px] w-auto object-contain"
               />
               
-              {/* Apple-style floating elements */}
+              {/* Enhanced floating bubbles */}
               <div className="absolute top-16 -left-24 hidden lg:block">
-                <div className="bg-transparent rounded-3xl p-6 animate-float">
+                <div className="bg-card/95 backdrop-blur-xl rounded-full p-8 shadow-2xl border-2 border-primary/20 animate-bounce" style={{ animationDuration: "3s", animationDelay: "0s" }}>
                   <div className="text-center space-y-2">
                     <div className="text-3xl font-bold text-primary">100+</div>
                     <div className="text-xs text-muted-text font-medium">Brand Campaigns</div>
@@ -61,7 +61,7 @@ const Hero = () => {
               </div>
               
               <div className="absolute top-32 -right-20 hidden lg:block">
-                <div className="bg-transparent rounded-3xl p-6 animate-float" style={{ animationDelay: "0.5s" }}>
+                <div className="bg-card/95 backdrop-blur-xl rounded-full p-8 shadow-2xl border-2 border-primary/20 animate-bounce" style={{ animationDuration: "2.5s", animationDelay: "0.5s" }}>
                   <div className="text-center space-y-2">
                     <div className="text-3xl font-bold text-primary">Top</div>
                     <div className="text-xs text-muted-text font-medium">Content Creator</div>
@@ -70,7 +70,7 @@ const Hero = () => {
               </div>
               
               <div className="absolute bottom-24 -left-16 hidden lg:block">
-                <div className="bg-transparent rounded-3xl p-6 animate-float" style={{ animationDelay: "1s" }}>
+                <div className="bg-card/95 backdrop-blur-xl rounded-full p-8 shadow-2xl border-2 border-primary/20 animate-bounce" style={{ animationDuration: "3.5s", animationDelay: "1s" }}>
                   <div className="text-center space-y-2">
                     <div className="text-3xl font-bold text-primary">10M+</div>
                     <div className="text-xs text-muted-text font-medium">Content Views</div>
