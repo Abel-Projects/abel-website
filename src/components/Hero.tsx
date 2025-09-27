@@ -19,25 +19,25 @@ const Hero = () => {
           <div className="flex-1 max-w-2xl space-y-8 animate-fade-up">
             <div className="space-y-6">
               <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
-                Strategic Partnerships & Campaigns that{" "}
-                <span className="text-yellow-400">Drive Growth</span>
+                Strategic Partnerships That Build{" "}
+                <span className="text-yellow-400">$100M+ Brands</span>
               </h1>
               
               <p className="text-xl lg:text-2xl text-white/90 leading-relaxed">
-                Abel Mesfin helps brands and CEOs tell bigger stories, launch campaigns, 
-                and grow impact through strategic partnerships and compelling narratives.
+                Learn the exact partnership strategies behind my Fortune 500 successes.
+                <span className="block mt-2 text-lg text-yellow-300 font-semibold">Limited consulting spots available - Next cohort starts soon</span>
               </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="hero" size="lg" className="group bg-white text-gray-900 hover:bg-white/90">
-                Work with Abel
+                Apply for Strategic Partnership Consulting
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
               
               <Button variant="outline" size="lg" className="group border-white text-white hover:bg-white/10">
                 <Play className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
-                View Portfolio
+                Download Partnership Playbook
               </Button>
             </div>
           </div>
@@ -54,23 +54,23 @@ const Hero = () => {
               
               {/* Floating Achievement Stats */}
               <div className="absolute top-16 -left-20 bg-white/90 backdrop-blur-lg text-gray-900 px-6 py-4 rounded-2xl font-semibold shadow-lg animate-float">
-                <div className="text-2xl font-bold text-blue-600">Fortune 500</div>
-                <div className="text-sm text-gray-600">Brands Partnered</div>
+                <div className="text-2xl font-bold text-blue-600">50+</div>
+                <div className="text-sm text-gray-600">Fortune 500 Campaigns</div>
               </div>
               
               <div className="absolute top-40 -right-16 bg-white/90 backdrop-blur-lg text-gray-900 px-6 py-4 rounded-2xl font-semibold shadow-lg animate-float" style={{ animationDelay: "0.5s" }}>
-                <div className="text-2xl font-bold text-purple-600">$100M+</div>
-                <div className="text-sm text-gray-600">Campaign Value</div>
+                <div className="text-2xl font-bold text-purple-600">1B+</div>
+                <div className="text-sm text-gray-600">Media Impressions</div>
               </div>
               
               <div className="absolute bottom-32 -left-16 bg-white/90 backdrop-blur-lg text-gray-900 px-6 py-4 rounded-2xl font-semibold shadow-lg animate-float" style={{ animationDelay: "1s" }}>
-                <div className="text-2xl font-bold text-orange-600">50M+</div>
-                <div className="text-sm text-gray-600">Total Reach</div>
+                <div className="text-2xl font-bold text-orange-600">$500M+</div>
+                <div className="text-sm text-gray-600">Campaign Value</div>
               </div>
               
               <div className="absolute bottom-16 right-4 bg-white/90 backdrop-blur-lg text-gray-900 px-6 py-4 rounded-2xl font-semibold shadow-lg animate-float" style={{ animationDelay: "1.5s" }}>
-                <div className="text-lg font-bold text-green-600">Denver Based</div>
-                <div className="text-sm text-gray-600">Strategic Storyteller</div>
+                <div className="text-lg font-bold text-green-600">Top Partnership</div>
+                <div className="text-sm text-gray-600">Strategist</div>
               </div>
             </div>
           </div>
@@ -79,16 +79,16 @@ const Hero = () => {
         {/* Mobile Stats */}
         <div className="lg:hidden flex flex-wrap gap-4 mt-8">
           <div className="bg-white/90 backdrop-blur-lg text-gray-900 px-4 py-3 rounded-xl font-semibold shadow-lg flex-1 min-w-[140px]">
-            <div className="text-lg font-bold text-blue-600">Fortune 500</div>
-            <div className="text-xs text-gray-600">Brands</div>
+            <div className="text-lg font-bold text-blue-600">50+</div>
+            <div className="text-xs text-gray-600">Fortune 500 Campaigns</div>
           </div>
           <div className="bg-white/90 backdrop-blur-lg text-gray-900 px-4 py-3 rounded-xl font-semibold shadow-lg flex-1 min-w-[140px]">
-            <div className="text-lg font-bold text-purple-600">$100M+</div>
+            <div className="text-lg font-bold text-purple-600">1B+</div>
+            <div className="text-xs text-gray-600">Media Impressions</div>
+          </div>
+          <div className="bg-white/90 backdrop-blur-lg text-gray-900 px-4 py-3 rounded-xl font-semibold shadow-lg flex-1 min-w-[140px]">
+            <div className="text-lg font-bold text-orange-600">$500M+</div>
             <div className="text-xs text-gray-600">Campaign Value</div>
-          </div>
-          <div className="bg-white/90 backdrop-blur-lg text-gray-900 px-4 py-3 rounded-xl font-semibold shadow-lg flex-1 min-w-[140px]">
-            <div className="text-lg font-bold text-orange-600">50M+</div>
-            <div className="text-xs text-gray-600">Total Reach</div>
           </div>
         </div>
       </div>

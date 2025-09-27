@@ -38,7 +38,7 @@ const Header = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button variant="hero" size="sm">
-              Work with Abel
+              Apply Now
             </Button>
           </div>
 
@@ -69,7 +69,7 @@ const Header = () => {
               ))}
               <div className="px-3 py-2">
                 <Button variant="hero" size="sm" className="w-full">
-                  Work with Abel
+                  Apply Now
                 </Button>
               </div>
             </div>
