@@ -17,24 +17,24 @@ const Hero = () => {
                 <img 
                   src={abelLogo} 
                   alt="Abel Mesfin Logo" 
-                  className="h-16 lg:h-20 xl:h-24 w-auto"
+                  className="h-32 lg:h-40 xl:h-48 w-auto"
                 />
                 
                 {/* Location Bubble */}
-                <div className="bg-card/90 backdrop-blur-xl rounded-full px-6 py-3 shadow-card border border-card-border flex items-center space-x-2">
-                  <MapPin className="h-4 w-4 text-primary" />
-                  <span className="text-sm font-medium text-body-text">Denver, CO</span>
+                <div className="bg-white/10 backdrop-blur-xl rounded-full px-6 py-3 shadow-card border border-white/20 flex items-center space-x-2">
+                  <MapPin className="h-4 w-4 text-white" />
+                  <span className="text-sm font-medium text-white">Denver, CO</span>
                 </div>
               </div>
               
-              <p className="text-xl lg:text-2xl text-body-text leading-relaxed font-light max-w-2xl">
+              <p className="text-xl lg:text-2xl text-white leading-relaxed font-light max-w-2xl">
                 Creating lead-generating content and authentic brand stories for top companies and CEOs.
               </p>
             </div>
             
             {/* CTA Section */}
             <div className="flex justify-start animate-fade-up" style={{ animationDelay: "0.3s" }}>
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-12 py-6 text-xl font-semibold rounded-full shadow-primary">
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 px-12 py-6 text-xl font-semibold rounded-full shadow-lg">
                 View Portfolio
                 <ArrowRight className="ml-3 h-6 w-6" />
               </Button>
@@ -52,28 +52,28 @@ const Hero = () => {
               
               {/* Enhanced floating bubbles */}
               <div className="absolute top-16 -left-24 hidden lg:block">
-                <div className="bg-card/95 backdrop-blur-xl rounded-full p-8 shadow-2xl border-2 border-primary/20 animate-bounce" style={{ animationDuration: "3s", animationDelay: "0s" }}>
+                <div className="bg-white/10 backdrop-blur-xl rounded-full p-8 shadow-2xl border-2 border-white/20 animate-bounce" style={{ animationDuration: "3s", animationDelay: "0s" }}>
                   <div className="text-center space-y-2">
-                    <div className="text-3xl font-bold text-primary">100+</div>
-                    <div className="text-xs text-muted-text font-medium">Brand Campaigns</div>
+                    <div className="text-3xl font-bold text-white">100+</div>
+                    <div className="text-xs text-white/80 font-medium">Brand Campaigns</div>
                   </div>
                 </div>
               </div>
               
               <div className="absolute top-32 -right-20 hidden lg:block">
-                <div className="bg-card/95 backdrop-blur-xl rounded-full p-8 shadow-2xl border-2 border-primary/20 animate-bounce" style={{ animationDuration: "2.5s", animationDelay: "0.5s" }}>
+                <div className="bg-white/10 backdrop-blur-xl rounded-full p-8 shadow-2xl border-2 border-white/20 animate-bounce" style={{ animationDuration: "2.5s", animationDelay: "0.5s" }}>
                   <div className="text-center space-y-2">
-                    <div className="text-3xl font-bold text-primary">Top</div>
-                    <div className="text-xs text-muted-text font-medium">Content Creator</div>
+                    <div className="text-3xl font-bold text-white">Top</div>
+                    <div className="text-xs text-white/80 font-medium">Content Creator</div>
                   </div>
                 </div>
               </div>
               
               <div className="absolute bottom-24 -left-16 hidden lg:block">
-                <div className="bg-card/95 backdrop-blur-xl rounded-full p-8 shadow-2xl border-2 border-primary/20 animate-bounce" style={{ animationDuration: "3.5s", animationDelay: "1s" }}>
+                <div className="bg-white/10 backdrop-blur-xl rounded-full p-8 shadow-2xl border-2 border-white/20 animate-bounce" style={{ animationDuration: "3.5s", animationDelay: "1s" }}>
                   <div className="text-center space-y-2">
-                    <div className="text-3xl font-bold text-primary">10M+</div>
-                    <div className="text-xs text-muted-text font-medium">Content Views</div>
+                    <div className="text-3xl font-bold text-white">10M+</div>
+                    <div className="text-xs text-white/80 font-medium">Content Views</div>
                   </div>
                 </div>
               </div>

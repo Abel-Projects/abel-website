@@ -1,9 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroHeight = window.innerHeight;
+      setIsScrolled(window.scrollY > heroHeight - 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navigation = [
     { name: "Portfolio", href: "#portfolio" },
@@ -12,12 +23,12 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 apple-blur border-b border-card-border opacity-0 animate-fade-in" style={{ animationDelay: "2s", animationFillMode: "forwards" }}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 opacity-0 animate-fade-in ${isScrolled ? 'bg-background/95 border-b border-card-border' : 'bg-blue-600/90 border-b border-blue-500/30'}`} style={{ animationDelay: "2s", animationFillMode: "forwards" }}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Apple-style Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-xl font-semibold text-heading">Abel Mesfin</h1>
+            <h1 className={`text-xl font-semibold transition-colors duration-500 ${isScrolled ? 'text-heading' : 'text-white'}`}>Abel Mesfin</h1>
           </div>
 
           {/* Apple-style Navigation */}
@@ -26,7 +37,7 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-body-text hover:text-heading transition-colors duration-200 font-medium text-sm"
+                className={`transition-colors duration-500 font-medium text-sm ${isScrolled ? 'text-body-text hover:text-heading' : 'text-white/80 hover:text-white'}`}
               >
                 {item.name}
               </a>
@@ -44,7 +55,7 @@ const Header = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-body-text hover:text-heading transition-colors"
+              className={`transition-colors ${isScrolled ? 'text-body-text hover:text-heading' : 'text-white/80 hover:text-white'}`}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
