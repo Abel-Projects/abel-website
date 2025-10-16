@@ -4,9 +4,18 @@ import abelLogo from "@/assets/abel-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const handleMenuClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsMenuOpen(false);
+      setIsClosing(false);
+    }, 400); // Match animation duration
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,7 +78,7 @@ const Header = () => {
 
             {/* Menu Button */}
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => isMenuOpen ? handleMenuClose() : setIsMenuOpen(true)}
               className="flex items-center gap-2 text-heading hover:text-primary transition-colors font-medium"
             >
               <span className="text-sm tracking-wide">Menu</span>
@@ -81,7 +90,7 @@ const Header = () => {
 
       {/* Full Viewport Dropdown Menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[100] bg-background animate-fade-in">
+        <div className={`fixed inset-0 z-[100] bg-background ${isClosing ? 'animate-fade-out' : 'animate-fade-in'}`}>
           {/* Close Button */}
           <div className="absolute top-0 left-0 right-0 z-10">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -92,7 +101,7 @@ const Header = () => {
                   className="h-8 w-auto"
                 />
                 <button
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={handleMenuClose}
                   className="flex items-center gap-2 text-heading hover:text-primary transition-colors font-medium"
                 >
                   <span className="text-sm tracking-wide">Close</span>
@@ -110,7 +119,7 @@ const Header = () => {
                 href={item.href}
                 className="group text-6xl lg:text-8xl font-bold text-heading hover:text-primary transition-colors animate-fade-up relative"
                 style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={handleMenuClose}
               >
                 {item.name}
                 <div className="h-1 w-0 group-hover:w-full bg-primary transition-all duration-500 mt-2" />
