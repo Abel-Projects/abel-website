@@ -63,14 +63,12 @@ const Header = () => {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
-            {/* Minimal Logo */}
+            {/* Logo - Always Visible */}
             <div className="flex-shrink-0">
               <img 
                 src={abelLogo} 
                 alt="Abel Mesfin" 
-                className={`h-8 w-auto transition-all duration-500 ${
-                  isScrolled ? 'opacity-100' : 'opacity-0'
-                }`}
+                className="h-16 w-auto"
               />
             </div>
 
