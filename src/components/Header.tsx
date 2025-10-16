@@ -59,8 +59,6 @@ const Header = () => {
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isVisible ? 'translate-y-0' : '-translate-y-full'
-        } ${
-          isScrolled ? 'bg-card/80 backdrop-blur-xl border-b border-card-border shadow-sm' : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -76,13 +74,20 @@ const Header = () => {
               />
             </div>
 
-            {/* Menu Button */}
+            {/* Menu Button - Large Square with Lines */}
             <button
               onClick={() => isMenuOpen ? handleMenuClose() : setIsMenuOpen(true)}
-              className="flex items-center gap-2 text-heading hover:text-primary transition-colors font-medium"
+              className="w-14 h-14 flex flex-col items-center justify-center gap-2 text-heading hover:text-primary transition-colors border-2 border-heading hover:border-primary rounded-lg"
             >
-              <span className="text-sm tracking-wide">Menu</span>
-              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {isMenuOpen ? (
+                <X size={28} strokeWidth={2.5} />
+              ) : (
+                <>
+                  <div className="w-7 h-0.5 bg-current" />
+                  <div className="w-7 h-0.5 bg-current" />
+                  <div className="w-7 h-0.5 bg-current" />
+                </>
+              )}
             </button>
           </div>
         </div>
@@ -102,10 +107,9 @@ const Header = () => {
                 />
                 <button
                   onClick={handleMenuClose}
-                  className="flex items-center gap-2 text-heading hover:text-primary transition-colors font-medium"
+                  className="w-14 h-14 flex items-center justify-center text-heading hover:text-primary transition-colors border-2 border-heading hover:border-primary rounded-lg"
                 >
-                  <span className="text-sm tracking-wide">Close</span>
-                  <X size={20} />
+                  <X size={28} strokeWidth={2.5} />
                 </button>
               </div>
             </div>
