@@ -33,9 +33,9 @@ const Hero = () => {
   const imageY = scrollProgress * 100; // Moves up
   const borderOpacity = 1 - scrollProgress * 0.3; // Border fades slightly
 
-  // Calculate 3D tilt based on mouse position
-  const rotateX = isHovering ? mousePosition.y * 10 : 0; // -5deg to 5deg
-  const rotateY = isHovering ? mousePosition.x * -10 : 0; // -5deg to 5deg
+  // Calculate 3D tilt based on mouse position (reduced by 20%)
+  const rotateX = isHovering ? mousePosition.y * 8 : 0;
+  const rotateY = isHovering ? mousePosition.x * -8 : 0;
 
   const loremText = "CONTENT CREATOR • BRAND STORYTELLER • DIGITAL MARKETING • VIDEO PRODUCTION • ";
 
@@ -94,16 +94,6 @@ const Hero = () => {
               transition: isHovering ? 'transform 0.1s ease-out' : 'transform 0.5s ease-out',
             }}
           >
-            {/* Rectangle Outline */}
-            <div 
-              className="absolute inset-0 flex items-center justify-center pointer-events-none"
-              style={{ opacity: borderOpacity }}
-            >
-              <div className="w-auto h-full max-h-screen flex items-center justify-center p-8">
-                <div className="border-4 border-primary absolute inset-8 rounded-3xl" />
-              </div>
-            </div>
-
             {/* Hero Image */}
             <img
               src={heroImage}
