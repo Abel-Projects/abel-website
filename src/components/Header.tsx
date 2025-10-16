@@ -83,9 +83,9 @@ const Header = () => {
                 <X size={28} strokeWidth={2.5} className="transition-transform duration-300 group-hover:rotate-90" />
               ) : (
                 <>
-                  <div className="w-7 h-1 bg-current transition-all duration-300 group-hover:w-8" />
-                  <div className="w-7 h-1 bg-current transition-all duration-300 group-hover:w-6" />
-                  <div className="w-7 h-1 bg-current transition-all duration-300 group-hover:w-8" />
+                  <div className="w-7 h-0.5 bg-current transition-all duration-300 group-hover:w-8" />
+                  <div className="w-7 h-0.5 bg-current transition-all duration-300 group-hover:w-6" />
+                  <div className="w-7 h-0.5 bg-current transition-all duration-300 group-hover:w-8" />
                 </>
               )}
             </button>
