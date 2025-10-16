@@ -77,15 +77,15 @@ const Header = () => {
             {/* Menu Button - Large Square with Lines */}
             <button
               onClick={() => isMenuOpen ? handleMenuClose() : setIsMenuOpen(true)}
-              className="w-14 h-14 flex flex-col items-center justify-center gap-2 text-heading hover:text-primary transition-colors border-2 border-heading hover:border-primary rounded-lg"
+              className="w-14 h-14 flex flex-col items-center justify-center gap-2 bg-heading text-background hover:bg-primary hover:scale-110 transition-all duration-300 ease-out rounded-lg group"
             >
               {isMenuOpen ? (
-                <X size={28} strokeWidth={2.5} />
+                <X size={28} strokeWidth={2.5} className="transition-transform duration-300 group-hover:rotate-90" />
               ) : (
                 <>
-                  <div className="w-7 h-0.5 bg-current" />
-                  <div className="w-7 h-0.5 bg-current" />
-                  <div className="w-7 h-0.5 bg-current" />
+                  <div className="w-7 h-1 bg-current transition-all duration-300 group-hover:w-8" />
+                  <div className="w-7 h-1 bg-current transition-all duration-300 group-hover:w-6" />
+                  <div className="w-7 h-1 bg-current transition-all duration-300 group-hover:w-8" />
                 </>
               )}
             </button>
@@ -107,9 +107,9 @@ const Header = () => {
                 />
                 <button
                   onClick={handleMenuClose}
-                  className="w-14 h-14 flex items-center justify-center text-heading hover:text-primary transition-colors border-2 border-heading hover:border-primary rounded-lg"
+                  className="w-14 h-14 flex items-center justify-center bg-heading text-background hover:bg-primary hover:scale-110 transition-all duration-300 ease-out rounded-lg group"
                 >
-                  <X size={28} strokeWidth={2.5} />
+                  <X size={28} strokeWidth={2.5} className="transition-transform duration-300 group-hover:rotate-90" />
                 </button>
               </div>
             </div>
