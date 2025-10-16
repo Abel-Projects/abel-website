@@ -1,7 +1,5 @@
-import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-image.avif";
-import { ArrowRight, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
+import heroImage from "@/assets/hero-image.avif";
 
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -11,91 +9,72 @@ const Hero = () => {
       setScrollY(window.scrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const parallaxOffset = scrollY * 0.5;
+  // Calculate scroll-based transformations
+  const scrollProgress = Math.min(scrollY / window.innerHeight, 1);
+  const imageScale = 1 - scrollProgress * 0.5; // Shrinks to 50%
+  const imageOpacity = 1 - scrollProgress * 0.7; // Fades out
+  const textOpacity = Math.min(scrollProgress * 2, 1); // Reveals text
+  const imageY = scrollProgress * 100; // Moves up
 
   return (
-    <section className="relative flex items-center justify-center min-h-screen bg-background scroll-snap-section">
-      <div className="max-w-7xl mx-auto w-full px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-center py-20">
-          
-          {/* Minimal Text Content - Left Side */}
-          <div className="space-y-12 animate-fade-up">
-            <div className="space-y-8">
-              <h1 className="text-7xl lg:text-8xl xl:text-9xl font-bold text-heading leading-[0.9] tracking-tighter">
-                Abel<br />Mesfin
-              </h1>
-              
-              <p className="text-2xl lg:text-3xl text-body-text font-light max-w-xl leading-relaxed">
-                Creating content that converts for top brands and CEOs
-              </p>
-            </div>
-            
-            {/* CTA */}
-            <div className="flex gap-6 animate-fade-up" style={{ animationDelay: "0.2s" }}>
-              <Button 
-                size="lg" 
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-7 text-lg font-semibold rounded-full transition-transform hover:scale-105"
-              >
-                View Work
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="border-2 border-border text-heading hover:bg-accent px-10 py-7 text-lg font-semibold rounded-full transition-transform hover:scale-105"
-              >
-                Contact
-              </Button>
-            </div>
-          </div>
-          
-          {/* Hero Image - Right Side with Parallax */}
+    <section className="relative h-[200vh] bg-background">
+      {/* Fixed container for hero content */}
+      <div className="sticky top-0 h-screen overflow-hidden">
+        
+        {/* Background Image with 3D Parallax Effect */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center"
+          style={{
+            transform: `scale(${imageScale}) translateY(${imageY}px)`,
+            opacity: imageOpacity,
+            transition: 'transform 0.1s ease-out',
+          }}
+        >
           <div 
-            className="relative flex justify-center lg:justify-end items-center animate-scale-in" 
-            style={{ 
-              animationDelay: "0.4s",
-              transform: `translateY(${parallaxOffset}px)`
+            className="relative w-full h-full flex items-center justify-center"
+            style={{
+              transform: `perspective(1000px) rotateX(${scrollProgress * 5}deg) rotateY(${scrollProgress * 5}deg)`,
             }}
           >
-            <div className="relative w-full max-w-lg">
-              <img
-                src={heroImage}
-                alt="Abel Mesfin - Content Marketing Expert"
-                className="w-full h-auto object-contain rounded-3xl"
-              />
-              
-              {/* Minimal Stats Overlay */}
-              <div className="absolute bottom-8 left-8 right-8">
-                <div className="bg-card/90 backdrop-blur-xl rounded-2xl p-6 border border-card-border shadow-card">
-                  <div className="grid grid-cols-3 gap-6 text-center">
-                    <div>
-                      <div className="text-2xl font-bold text-heading">100+</div>
-                      <div className="text-xs text-muted-text">Campaigns</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-heading">10M+</div>
-                      <div className="text-xs text-muted-text">Views</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-heading">Top</div>
-                      <div className="text-xs text-muted-text">Creator</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <img
+              src={heroImage}
+              alt="Abel Mesfin"
+              className="w-auto h-[70vh] object-contain rounded-3xl shadow-hero"
+            />
           </div>
         </div>
-      </div>
-      
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
-        <ChevronDown className="h-8 w-8 text-muted-text" />
+
+        {/* Scrolling Text Overlay */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center pointer-events-none"
+          style={{
+            opacity: textOpacity,
+          }}
+        >
+          <div className="text-center space-y-6 px-6">
+            <h1 className="text-8xl lg:text-9xl font-bold text-heading tracking-tighter leading-[0.9]">
+              Abel<br />Mesfin
+            </h1>
+            <p className="text-2xl lg:text-3xl text-body-text font-light max-w-2xl mx-auto">
+              Creating content that converts for top brands and CEOs
+            </p>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div 
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-muted-text text-sm"
+          style={{ opacity: 1 - scrollProgress * 2 }}
+        >
+          <div className="flex flex-col items-center gap-2">
+            <span>Scroll to explore</span>
+            <div className="w-px h-12 bg-muted-text animate-pulse" />
+          </div>
+        </div>
       </div>
     </section>
   );
