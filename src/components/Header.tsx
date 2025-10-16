@@ -13,8 +13,10 @@ const Header = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Show/hide based on scroll direction
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      // Show only after user starts scrolling
+      if (currentScrollY === 0) {
+        setIsVisible(false);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false); // Scrolling down - hide
       } else {
         setIsVisible(true); // Scrolling up - show
@@ -23,6 +25,11 @@ const Header = () => {
       setIsScrolled(currentScrollY > 100);
       setLastScrollY(currentScrollY);
     };
+
+    // Initial check
+    if (window.scrollY === 0) {
+      setIsVisible(false);
+    }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
