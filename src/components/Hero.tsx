@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import heroImage from "@/assets/hero-image.avif";
 
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,12 +16,26 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!imageContainerRef.current) return;
+    
+    const rect = imageContainerRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
+    const y = (e.clientY - rect.top) / rect.height - 0.5; // -0.5 to 0.5
+    
+    setMousePosition({ x, y });
+  };
+
   // Calculate scroll-based transformations
   const scrollProgress = Math.min(scrollY / window.innerHeight, 1);
   const imageScale = 1 - scrollProgress * 0.5; // Shrinks to 50%
   const imageOpacity = 1 - scrollProgress * 0.7; // Fades out
   const imageY = scrollProgress * 100; // Moves up
   const borderOpacity = 1 - scrollProgress * 0.3; // Border fades slightly
+
+  // Calculate 3D tilt based on mouse position
+  const rotateX = isHovering ? mousePosition.y * 10 : 0; // -5deg to 5deg
+  const rotateY = isHovering ? mousePosition.x * -10 : 0; // -5deg to 5deg
 
   const loremText = "CONTENT CREATOR • BRAND STORYTELLER • DIGITAL MARKETING • VIDEO PRODUCTION • ";
 
@@ -54,19 +71,27 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Hero Image with 3D Parallax Effect & Rectangle Outline - Full Viewport */}
+        {/* Hero Image with Mouse Hover 3D Effect & Rectangle Outline */}
         <div 
           className="absolute inset-0 flex items-center justify-center z-10"
           style={{
             transform: `scale(${imageScale}) translateY(${imageY}px)`,
             opacity: imageOpacity,
-            transition: 'transform 0.1s ease-out',
+            transition: 'transform 0.1s ease-out, opacity 0.1s ease-out',
           }}
         >
           <div 
+            ref={imageContainerRef}
             className="relative w-full h-full flex items-center justify-center"
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => {
+              setIsHovering(false);
+              setMousePosition({ x: 0, y: 0 });
+            }}
             style={{
-              transform: `perspective(1000px) rotateX(${scrollProgress * 5}deg) rotateY(${scrollProgress * 5}deg)`,
+              transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+              transition: isHovering ? 'transform 0.1s ease-out' : 'transform 0.5s ease-out',
             }}
           >
             {/* Rectangle Outline */}
