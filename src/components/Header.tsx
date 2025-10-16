@@ -13,20 +13,24 @@ const Header = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Show only after user starts scrolling
+      // Hide when at the very top
       if (currentScrollY === 0) {
         setIsVisible(false);
-      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false); // Scrolling down - hide
-      } else {
-        setIsVisible(true); // Scrolling up - show
+      } 
+      // Hide when scrolling down past threshold
+      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      } 
+      // Show when scrolling up or just started scrolling
+      else {
+        setIsVisible(true);
       }
       
-      setIsScrolled(currentScrollY > 100);
+      setIsScrolled(currentScrollY > 50);
       setLastScrollY(currentScrollY);
     };
 
-    // Initial check
+    // Initial check - hide at top
     if (window.scrollY === 0) {
       setIsVisible(false);
     }
