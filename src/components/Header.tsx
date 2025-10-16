@@ -5,54 +5,76 @@ import abelLogo from "@/assets/abel-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const heroHeight = window.innerHeight;
-      setIsScrolled(window.scrollY > heroHeight - 100);
+      const currentScrollY = window.scrollY;
+      
+      // Show/hide based on scroll direction
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false); // Scrolling down - hide
+      } else {
+        setIsVisible(true); // Scrolling up - show
+      }
+      
+      setIsScrolled(currentScrollY > 100);
+      setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   const navigation = [
-    { name: "Portfolio", href: "#portfolio" },
+    { name: "Work", href: "#portfolio" },
     { name: "About", href: "#about" },
     { name: "Contact", href: "#contact" },
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 opacity-0 animate-fade-in ${isScrolled ? 'bg-white/95 border-b border-gray-200 shadow-sm' : 'bg-transparent'}`} style={{ animationDelay: "2s", animationFillMode: "forwards" }}>
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Apple-style Logo */}
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      } ${
+        isScrolled ? 'bg-card/80 backdrop-blur-xl border-b border-card-border shadow-sm' : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between h-20">
+          {/* Minimal Logo */}
           <div className="flex-shrink-0">
             <img 
               src={abelLogo} 
-              alt="Abel Mesfin Logo" 
-              className={`h-10 w-auto transition-all duration-700 ${isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}
+              alt="Abel Mesfin" 
+              className={`h-8 w-auto transition-all duration-500 ${
+                isScrolled ? 'opacity-100' : 'opacity-0'
+              }`}
             />
           </div>
 
-          {/* Apple-style Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          {/* Minimal Navigation */}
+          <nav className="hidden md:flex items-center space-x-12">
             {navigation.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className={`transition-colors duration-500 font-medium text-sm ${isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/80 hover:text-white'}`}
+                className="text-heading hover:text-primary transition-colors duration-300 font-medium text-sm tracking-wide"
               >
                 {item.name}
               </a>
             ))}
           </nav>
 
-          {/* Apple-style CTA Button */}
+          {/* Minimal CTA */}
           <div className="hidden md:block">
-            <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium">
-              Get in Touch
+            <Button 
+              size="sm" 
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium rounded-full px-6 transition-transform hover:scale-105"
+            >
+              Let's Talk
             </Button>
           </div>
 
@@ -60,32 +82,35 @@ const Header = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`transition-colors ${isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/80 hover:text-white'}`}
+              className="text-heading hover:text-primary transition-colors"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - Full Screen Overlay */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-card-border bg-background/95 apple-blur">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => (
+          <div className="md:hidden fixed inset-0 top-20 bg-background/98 backdrop-blur-xl animate-fade-in">
+            <div className="flex flex-col items-center justify-center h-full space-y-12 px-6">
+              {navigation.map((item, index) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-body-text hover:text-heading transition-colors text-sm font-medium"
+                  className="text-4xl font-bold text-heading hover:text-primary transition-colors animate-fade-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
-              <div className="px-3 py-2">
-                <Button size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-medium">
-                  Get in Touch
-                </Button>
-              </div>
+              <Button 
+                size="lg" 
+                className="bg-primary text-primary-foreground hover:bg-primary/90 px-12 py-6 text-xl font-semibold rounded-full animate-fade-up"
+                style={{ animationDelay: "0.3s" }}
+              >
+                Let's Talk
+              </Button>
             </div>
           </div>
         )}

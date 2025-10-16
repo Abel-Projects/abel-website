@@ -1,161 +1,134 @@
-import { Briefcase, TrendingUp, Users, Target, Zap, Globe, ArrowRight, Video, FileText, Camera } from "lucide-react";
+import { useRef } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Portfolio = () => {
-  const featuredProjects = [
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const projects = [
     {
-      title: "Walmart Brand Campaign",
-      company: "Walmart",
-      description: "Created a multi-channel content strategy that increased customer engagement and drove significant sales growth across digital platforms.",
+      title: "Walmart",
+      description: "Multi-channel content strategy",
       impact: "500K+ engagement",
-      timeline: "3 months",
-      icon: TrendingUp,
-      category: "Retail Campaign",
-      color: "from-blue-500/10 to-purple-500/10"
+      image: "from-blue-500/20 to-blue-600/20"
     },
     {
-      title: "Meta Social Strategy",
-      company: "Meta",
-      description: "Developed authentic brand storytelling content that resonated with diverse audiences and strengthened brand positioning.",
+      title: "Meta",
+      description: "Authentic brand storytelling",
       impact: "2M+ reach",
-      timeline: "6 months",
-      icon: Users,
-      category: "Social Media",
-      color: "from-green-500/10 to-teal-500/10"
+      image: "from-purple-500/20 to-purple-600/20"
     },
     {
-      title: "Aflac Content Series",
-      company: "Aflac",
-      description: "Built a comprehensive content marketing framework that educated customers while driving lead generation and conversion.",
+      title: "Aflac",
+      description: "Content marketing framework",
       impact: "150% lead increase",
-      timeline: "4 months",
-      icon: FileText,
-      category: "Content Marketing",
-      color: "from-orange-500/10 to-red-500/10"
+      image: "from-orange-500/20 to-orange-600/20"
+    },
+    {
+      title: "Aroma360",
+      description: "Brand campaign strategy",
+      impact: "300K+ impressions",
+      image: "from-green-500/20 to-green-600/20"
+    },
+    {
+      title: "Trainual",
+      description: "Video content series",
+      impact: "1M+ views",
+      image: "from-red-500/20 to-red-600/20"
     }
   ];
 
-  const contentTypes = [
-    { type: "Video Content", icon: Video, count: "50+" },
-    { type: "Written Content", icon: FileText, count: "200+" },
-    { type: "Visual Campaigns", icon: Camera, count: "100+" },
-    { type: "Brand Stories", icon: Briefcase, count: "75+" }
-  ];
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 600;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
-    <section id="portfolio" className="py-32 bg-background">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Apple iOS Hero Section */}
-        <div className="text-center space-y-12 mb-24 animate-fade-up">
-          <div className="space-y-8">
-            <div className="inline-block">
-              <span className="text-primary font-semibold text-lg bg-primary/10 px-6 py-3 rounded-full">
-                Portfolio
-              </span>
-            </div>
-            
-            <h2 className="text-5xl lg:text-7xl font-bold text-heading leading-tight tracking-tight">
-              Content that
-              <span className="text-primary block">drives results</span>
-            </h2>
-            
-            <p className="text-2xl text-body-text max-w-4xl mx-auto leading-relaxed font-light">
-              Real campaigns. Real brands. Real results that move the needle for business growth.
-            </p>
+    <section id="portfolio" className="py-32 bg-background scroll-snap-section min-h-screen flex flex-col justify-center">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full">
+        {/* Minimal Header */}
+        <div className="mb-20 animate-fade-up">
+          <h2 className="text-6xl lg:text-7xl font-bold text-heading mb-6 tracking-tighter">
+            Selected Work
+          </h2>
+          <p className="text-xl lg:text-2xl text-body-text font-light max-w-2xl">
+            Content that drives real results for leading brands
+          </p>
+        </div>
+
+        {/* Horizontal Scrolling Gallery */}
+        <div className="relative">
+          <div 
+            ref={scrollContainerRef}
+            className="horizontal-scroll hide-scrollbar gap-8 pb-4"
+          >
+            {projects.map((project, index) => (
+              <div 
+                key={project.title}
+                className="horizontal-scroll-item w-[500px] lg:w-[600px] animate-fade-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="group cursor-pointer">
+                  <div className={`bg-gradient-to-br ${project.image} rounded-3xl p-12 h-[500px] flex flex-col justify-end border border-card-border transition-transform duration-500 hover:scale-[1.02]`}>
+                    <div className="space-y-4">
+                      <h3 className="text-5xl font-bold text-heading">
+                        {project.title}
+                      </h3>
+                      <p className="text-xl text-body-text">
+                        {project.description}
+                      </p>
+                      <div className="flex items-center justify-between pt-4">
+                        <span className="text-sm font-semibold text-primary">
+                          {project.impact}
+                        </span>
+                        <ArrowRight className="h-6 w-6 text-heading opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Scroll Controls */}
+          <div className="flex gap-4 mt-12 justify-center">
+            <button
+              onClick={() => scroll('left')}
+              className="w-12 h-12 rounded-full bg-card border border-card-border flex items-center justify-center hover:bg-accent transition-colors"
+            >
+              <ChevronLeft className="h-5 w-5 text-heading" />
+            </button>
+            <button
+              onClick={() => scroll('right')}
+              className="w-12 h-12 rounded-full bg-card border border-card-border flex items-center justify-center hover:bg-accent transition-colors"
+            >
+              <ChevronRight className="h-5 w-5 text-heading" />
+            </button>
           </div>
         </div>
 
-        {/* Featured Projects - Apple iOS Style */}
-        <div className="space-y-20 mb-24">
-          {featuredProjects.map((project, index) => (
-            <div 
-              key={project.title}
-              className={`grid lg:grid-cols-2 gap-16 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}
-            >
-              <div className={`space-y-8 animate-fade-up ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                <div className="space-y-6">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
-                      <project.icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <span className="text-muted-text font-medium bg-accent px-4 py-2 rounded-full text-sm">
-                      {project.category}
-                    </span>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <h3 className="text-4xl lg:text-5xl font-bold text-heading leading-tight tracking-tight">
-                      {project.title}
-                    </h3>
-                    <p className="text-xl font-semibold text-primary">
-                      {project.company}
-                    </p>
-                  </div>
-                  
-                  <p className="text-xl text-body-text leading-relaxed font-light">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-6 pt-4">
-                    <div className="space-y-1">
-                      <div className="text-sm text-muted-text font-medium">Impact</div>
-                      <div className="text-lg font-bold text-heading">{project.impact}</div>
-                    </div>
-                    <div className="space-y-1">
-                      <div className="text-sm text-muted-text font-medium">Timeline</div>
-                      <div className="text-lg font-bold text-heading">{project.timeline}</div>
-                    </div>
-                  </div>
-                  
-                  <Button variant="outline" className="border-2 border-border text-body-text hover:bg-accent/50 px-8 py-4 text-lg font-semibold rounded-full">
-                    View Case Study
-                    <ArrowRight className="ml-3 h-5 w-5" />
-                  </Button>
-                </div>
+        {/* Stats */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 mt-32 animate-fade-up">
+          {[
+            { number: "100+", label: "Brand Campaigns" },
+            { number: "10M+", label: "Content Views" },
+            { number: "50+", label: "Video Projects" },
+            { number: "200+", label: "Written Pieces" }
+          ].map((stat, index) => (
+            <div key={stat.label} className="text-center" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div className="text-5xl lg:text-6xl font-bold text-heading mb-2">
+                {stat.number}
               </div>
-              
-              <div className={`animate-scale-in ${index % 2 === 1 ? 'lg:col-start-1' : ''}`} style={{ animationDelay: "0.3s" }}>
-                <div className={`bg-gradient-to-br ${project.color} rounded-[3rem] p-12 h-96 flex items-center justify-center border border-card-border`}>
-                  <div className="text-center space-y-6">
-                    <div className="w-24 h-24 bg-primary/20 rounded-3xl flex items-center justify-center mx-auto">
-                      <project.icon className="h-12 w-12 text-primary" />
-                    </div>
-                    <div className="space-y-2">
-                      <div className="text-2xl font-bold text-heading">{project.category}</div>
-                      <div className="text-muted-text">Content Strategy</div>
-                    </div>
-                  </div>
-                </div>
+              <div className="text-sm text-muted-text tracking-wide">
+                {stat.label}
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Content Types Section */}
-        <div className="bg-gradient-to-br from-primary/5 to-transparent rounded-[3rem] p-16 border border-card-border animate-fade-up">
-          <div className="text-center space-y-12">
-            <h3 className="text-3xl lg:text-4xl font-bold text-heading tracking-tight">
-              Content Portfolio Overview
-            </h3>
-            
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
-              {contentTypes.map((item, index) => (
-                <div 
-                  key={item.type}
-                  className="text-center space-y-4 animate-slide-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
-                    <item.icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <div className="space-y-2">
-                    <div className="text-3xl lg:text-4xl font-bold text-primary">{item.count}</div>
-                    <div className="text-muted-text font-medium text-sm">{item.type}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>

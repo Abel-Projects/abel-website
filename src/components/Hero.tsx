@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-image.avif";
-import abelLogo from "@/assets/abel-logo.png";
-import { ArrowRight, MapPin } from "lucide-react";
-import { useState, useEffect } from "react";
-import AnimatedLogo from "./AnimatedLogo";
+import { ArrowRight, ChevronDown } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -17,80 +15,76 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const heroHeight = window.innerHeight;
-  const shouldHideLogo = scrollY > heroHeight * 0.3;
+  const parallaxOffset = scrollY * 0.5;
+
   return (
-    <>
-      <AnimatedLogo />
-      <section className="relative flex items-center justify-center px-6 lg:px-8 overflow-hidden h-screen" style={{ background: "var(--blue-gradient)" }}>
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between h-full gap-12 py-20">
+    <section className="relative flex items-center justify-center min-h-screen bg-background scroll-snap-section">
+      <div className="max-w-7xl mx-auto w-full px-6 lg:px-12">
+        <div className="grid lg:grid-cols-2 gap-16 items-center py-20">
           
-          {/* Text Content - Left Side */}
-          <div className="flex-1 space-y-16 lg:pr-16 z-10">
-            {/* Logo and Location */}
-            <div className="space-y-8 animate-fade-up">
-              <div className="flex flex-col items-start space-y-6">
-                <img 
-                  src={abelLogo} 
-                  alt="Abel Mesfin Logo" 
-                  className={`h-32 lg:h-40 xl:h-48 w-auto transition-opacity duration-300 ${shouldHideLogo ? 'opacity-0' : 'opacity-100'}`}
-                />
-                
-                {/* Location Bubble */}
-                <div className="bg-white/10 backdrop-blur-xl rounded-full px-6 py-3 shadow-card border border-white/20 flex items-center space-x-2">
-                  <MapPin className="h-4 w-4 text-white" />
-                  <span className="text-sm font-medium text-white">Denver, CO</span>
-                </div>
-              </div>
+          {/* Minimal Text Content - Left Side */}
+          <div className="space-y-12 animate-fade-up">
+            <div className="space-y-8">
+              <h1 className="text-7xl lg:text-8xl xl:text-9xl font-bold text-heading leading-[0.9] tracking-tighter">
+                Abel<br />Mesfin
+              </h1>
               
-              <p className="text-xl lg:text-2xl text-white leading-relaxed font-light max-w-2xl">
-                Creating lead-generating content and authentic brand stories for top companies and CEOs.
+              <p className="text-2xl lg:text-3xl text-body-text font-light max-w-xl leading-relaxed">
+                Creating content that converts for top brands and CEOs
               </p>
             </div>
             
-            {/* CTA Section */}
-            <div className="flex justify-start animate-fade-up" style={{ animationDelay: "0.3s" }}>
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 px-12 py-6 text-xl font-semibold rounded-full shadow-lg">
-                View Portfolio
-                <ArrowRight className="ml-3 h-6 w-6" />
+            {/* CTA */}
+            <div className="flex gap-6 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+              <Button 
+                size="lg" 
+                className="bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-7 text-lg font-semibold rounded-full transition-transform hover:scale-105"
+              >
+                View Work
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="border-2 border-border text-heading hover:bg-accent px-10 py-7 text-lg font-semibold rounded-full transition-transform hover:scale-105"
+              >
+                Contact
               </Button>
             </div>
           </div>
           
-          {/* Apple-style Hero Image - Right Side with Overlap */}
-          <div className="relative flex-1 flex justify-center lg:justify-end items-center animate-scale-in lg:-ml-32" style={{ animationDelay: "0.6s" }}>
-            <div className="relative">
+          {/* Hero Image - Right Side with Parallax */}
+          <div 
+            className="relative flex justify-center lg:justify-end items-center animate-scale-in" 
+            style={{ 
+              animationDelay: "0.4s",
+              transform: `translateY(${parallaxOffset}px)`
+            }}
+          >
+            <div className="relative w-full max-w-lg">
               <img
                 src={heroImage}
                 alt="Abel Mesfin - Content Marketing Expert"
-                className="h-full w-auto object-contain"
+                className="w-full h-auto object-contain rounded-3xl"
               />
               
-              {/* Enhanced floating bubbles */}
-              <div className="absolute top-16 -left-24 hidden lg:block">
-                <div className="bg-white/10 backdrop-blur-xl rounded-full p-8 shadow-2xl border-2 border-white/20 animate-bounce" style={{ animationDuration: "3s", animationDelay: "0s" }}>
-                  <div className="text-center space-y-2">
-                    <div className="text-3xl font-bold text-white">100+</div>
-                    <div className="text-xs text-white/80 font-medium">Brand Campaigns</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="absolute top-32 -right-20 hidden lg:block">
-                <div className="bg-white/10 backdrop-blur-xl rounded-full p-8 shadow-2xl border-2 border-white/20 animate-bounce" style={{ animationDuration: "2.5s", animationDelay: "0.5s" }}>
-                  <div className="text-center space-y-2">
-                    <div className="text-3xl font-bold text-white">Top</div>
-                    <div className="text-xs text-white/80 font-medium">Content Creator</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="absolute bottom-24 -left-16 hidden lg:block">
-                <div className="bg-white/10 backdrop-blur-xl rounded-full p-8 shadow-2xl border-2 border-white/20 animate-bounce" style={{ animationDuration: "3.5s", animationDelay: "1s" }}>
-                  <div className="text-center space-y-2">
-                    <div className="text-3xl font-bold text-white">10M+</div>
-                    <div className="text-xs text-white/80 font-medium">Content Views</div>
+              {/* Minimal Stats Overlay */}
+              <div className="absolute bottom-8 left-8 right-8">
+                <div className="bg-card/90 backdrop-blur-xl rounded-2xl p-6 border border-card-border shadow-card">
+                  <div className="grid grid-cols-3 gap-6 text-center">
+                    <div>
+                      <div className="text-2xl font-bold text-heading">100+</div>
+                      <div className="text-xs text-muted-text">Campaigns</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-heading">10M+</div>
+                      <div className="text-xs text-muted-text">Views</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-heading">Top</div>
+                      <div className="text-xs text-muted-text">Creator</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -98,8 +92,12 @@ const Hero = () => {
           </div>
         </div>
       </div>
+      
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
+        <ChevronDown className="h-8 w-8 text-muted-text" />
+      </div>
     </section>
-    </>
   );
 };
 
