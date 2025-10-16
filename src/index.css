@@ -152,6 +152,24 @@
     }
   }
   
+  @keyframes scroll-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  
+  @keyframes scroll-right {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
   /* Apple-style Component Animations */
   .animate-fade-up {
     animation: fade-up 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -171,6 +189,14 @@
   
   .animate-float {
     animation: float 4s ease-in-out infinite;
+  }
+  
+  .animate-scroll-left {
+    animation: scroll-left 40s linear infinite;
+  }
+  
+  .animate-scroll-right {
+    animation: scroll-right 40s linear infinite;
   }
   
   /* Apple-style Utility Classes */

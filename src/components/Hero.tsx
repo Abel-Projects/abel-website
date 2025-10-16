@@ -20,14 +20,43 @@ const Hero = () => {
   const textOpacity = Math.min(scrollProgress * 2, 1); // Reveals text
   const imageY = scrollProgress * 100; // Moves up
 
+  const loremText = "CONTENT CREATOR • BRAND STORYTELLER • DIGITAL MARKETING • VIDEO PRODUCTION • ";
+
   return (
     <section className="relative h-[200vh] bg-background">
       {/* Fixed container for hero content */}
       <div className="sticky top-0 h-screen overflow-hidden">
         
-        {/* Background Image with 3D Parallax Effect */}
+        {/* Scrolling Background Text */}
+        <div className="absolute inset-0 flex flex-col justify-center gap-12 pointer-events-none overflow-hidden opacity-10">
+          {/* First line - scrolls left */}
+          <div className="whitespace-nowrap">
+            <div className="inline-block animate-scroll-left">
+              <span className="text-8xl font-bold text-heading">
+                {loremText.repeat(3)}
+              </span>
+              <span className="text-8xl font-bold text-heading">
+                {loremText.repeat(3)}
+              </span>
+            </div>
+          </div>
+          
+          {/* Second line - scrolls right */}
+          <div className="whitespace-nowrap">
+            <div className="inline-block animate-scroll-right">
+              <span className="text-8xl font-bold text-heading">
+                {loremText.repeat(3)}
+              </span>
+              <span className="text-8xl font-bold text-heading">
+                {loremText.repeat(3)}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Hero Image with 3D Parallax Effect - Full Viewport */}
         <div 
-          className="absolute inset-0 flex items-center justify-center"
+          className="absolute inset-0 flex items-center justify-center z-10"
           style={{
             transform: `scale(${imageScale}) translateY(${imageY}px)`,
             opacity: imageOpacity,
@@ -43,14 +72,14 @@ const Hero = () => {
             <img
               src={heroImage}
               alt="Abel Mesfin"
-              className="w-auto h-[70vh] object-contain rounded-3xl shadow-hero"
+              className="w-auto h-full max-h-screen object-contain"
             />
           </div>
         </div>
 
         {/* Scrolling Text Overlay */}
         <div 
-          className="absolute inset-0 flex items-center justify-center pointer-events-none"
+          className="absolute inset-0 flex items-center justify-center pointer-events-none z-20"
           style={{
             opacity: textOpacity,
           }}
@@ -67,7 +96,7 @@ const Hero = () => {
 
         {/* Scroll indicator */}
         <div 
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-muted-text text-sm"
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-muted-text text-sm z-20"
           style={{ opacity: 1 - scrollProgress * 2 }}
         >
           <div className="flex flex-col items-center gap-2">
