@@ -17,8 +17,8 @@ const Hero = () => {
   const scrollProgress = Math.min(scrollY / window.innerHeight, 1);
   const imageScale = 1 - scrollProgress * 0.5; // Shrinks to 50%
   const imageOpacity = 1 - scrollProgress * 0.7; // Fades out
-  const textOpacity = Math.min(scrollProgress * 2, 1); // Reveals text
   const imageY = scrollProgress * 100; // Moves up
+  const borderOpacity = 1 - scrollProgress * 0.3; // Border fades slightly
 
   const loremText = "CONTENT CREATOR • BRAND STORYTELLER • DIGITAL MARKETING • VIDEO PRODUCTION • ";
 
@@ -54,7 +54,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Hero Image with 3D Parallax Effect - Full Viewport */}
+        {/* Hero Image with 3D Parallax Effect & Rectangle Outline - Full Viewport */}
         <div 
           className="absolute inset-0 flex items-center justify-center z-10"
           style={{
@@ -69,28 +69,22 @@ const Hero = () => {
               transform: `perspective(1000px) rotateX(${scrollProgress * 5}deg) rotateY(${scrollProgress * 5}deg)`,
             }}
           >
+            {/* Rectangle Outline */}
+            <div 
+              className="absolute inset-0 flex items-center justify-center pointer-events-none"
+              style={{ opacity: borderOpacity }}
+            >
+              <div className="w-auto h-full max-h-screen flex items-center justify-center p-8">
+                <div className="border-4 border-primary absolute inset-8 rounded-3xl" />
+              </div>
+            </div>
+
+            {/* Hero Image */}
             <img
               src={heroImage}
               alt="Abel Mesfin"
-              className="w-auto h-full max-h-screen object-contain"
+              className="w-auto h-full max-h-screen object-contain relative z-10"
             />
-          </div>
-        </div>
-
-        {/* Scrolling Text Overlay */}
-        <div 
-          className="absolute inset-0 flex items-center justify-center pointer-events-none z-20"
-          style={{
-            opacity: textOpacity,
-          }}
-        >
-          <div className="text-center space-y-6 px-6">
-            <h1 className="text-8xl lg:text-9xl font-bold text-heading tracking-tighter leading-[0.9]">
-              Abel<br />Mesfin
-            </h1>
-            <p className="text-2xl lg:text-3xl text-body-text font-light max-w-2xl mx-auto">
-              Creating content that converts for top brands and CEOs
-            </p>
           </div>
         </div>
 
