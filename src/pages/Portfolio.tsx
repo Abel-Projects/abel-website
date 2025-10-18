@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import proclamationImg from "@/assets/bed-proclamation.png";
 import webbyImg from "@/assets/bed-webby.png";
 import anthemImg from "@/assets/bed-anthem.png";
+import bedLogo from "@/assets/bed-logo.png";
 
 const Portfolio = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -108,7 +109,10 @@ const Portfolio = () => {
           }}
         >
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-heading mb-6 hover:text-primary transition-colors duration-300">
+            <div className="flex justify-center mb-8">
+              <img src={bedLogo} alt="Black Entrepreneurs Day" className="h-24 md:h-32 w-auto" />
+            </div>
+            <h2 className="text-5xl font-bold text-heading mb-6 transition-colors duration-300">
               BLACK ENTREPRENEURS DAY
             </h2>
             <p className="text-xl text-body-text italic max-w-3xl mx-auto animate-fade-up" style={{ animationDelay: '0.2s' }}>
@@ -116,8 +120,8 @@ const Portfolio = () => {
             </p>
           </div>
           
-          <div className="bg-card/30 rounded-3xl border border-card-border p-8 lg:p-12 mb-12">
-            <p className="text-lg text-body-text leading-relaxed">
+          <div className="mb-12 max-w-4xl mx-auto">
+            <p className="text-lg text-body-text leading-relaxed text-center">
               Daymond John's <strong>Black Entrepreneurs Day</strong> is an annual celebration of Black business and culture. In partnership with the event production team, Medium Rare, this award-winning event has brought together millions of viewers, iconic celebrity guests, and some of the most impactful conversations about entrepreneurship, featuring hard-hitting roundtables with top brand executives and unforgettable musical performances.
             </p>
           </div>
@@ -157,15 +161,15 @@ const Portfolio = () => {
 
           {/* Stats Section */}
           <div className="grid md:grid-cols-3 gap-8 mt-16 mb-16">
-            <div className="text-center p-8 bg-card/30 rounded-2xl border border-card-border hover:bg-card/50 transition-all duration-300">
+            <div className="text-center p-8 bg-card/30 rounded-2xl border border-card-border hover:bg-card/40 transition-all duration-300">
               <div className="text-4xl md:text-5xl font-bold text-primary mb-2">3 Billion</div>
               <div className="text-lg text-body-text">Impressions Last Year</div>
             </div>
-            <div className="text-center p-8 bg-card/30 rounded-2xl border border-card-border hover:bg-card/50 transition-all duration-300">
+            <div className="text-center p-8 bg-card/30 rounded-2xl border border-card-border hover:bg-card/40 transition-all duration-300">
               <div className="text-4xl md:text-5xl font-bold text-primary mb-2">$1M</div>
               <div className="text-lg text-body-text">Given to Black Owned Businesses</div>
             </div>
-            <div className="text-center p-8 bg-card/30 rounded-2xl border border-card-border hover:bg-card/50 transition-all duration-300">
+            <div className="text-center p-8 bg-card/30 rounded-2xl border border-card-border hover:bg-card/40 transition-all duration-300">
               <div className="text-4xl md:text-5xl font-bold text-primary mb-2">30+</div>
               <div className="text-lg text-body-text">Celebrity Guests</div>
             </div>
