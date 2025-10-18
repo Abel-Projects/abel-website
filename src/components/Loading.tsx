@@ -29,7 +29,7 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
         <img 
           src={abelLogo} 
           alt="Abel Mesfin" 
-          className="h-24 w-auto mx-auto animate-fade-in"
+          className="w-[500px] h-auto mx-auto animate-fade-in"
         />
         <div className="w-64 h-1 bg-accent rounded-full overflow-hidden">
           <div 
