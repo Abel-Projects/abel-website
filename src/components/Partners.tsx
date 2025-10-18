@@ -4,7 +4,7 @@ const Partners = () => {
     { id: 2, logo: 'https://img.logo.dev/aflac.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Aflac' },
     { id: 3, logo: 'https://img.logo.dev/intuit.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Intuit' },
     { id: 4, logo: 'https://img.logo.dev/adobe.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Adobe' },
-    { id: 5, logo: 'https://img.logo.dev/alibaba.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Alibaba' },
+    { id: 5, logo: 'https://img.logo.dev/meta.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Meta' },
     { id: 6, logo: 'https://img.logo.dev/starkey.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Starkey' },
     { id: 7, logo: null, name: 'Partner 7' },
     { id: 8, logo: null, name: 'Partner 8' },
