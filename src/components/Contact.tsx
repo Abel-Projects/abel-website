@@ -21,18 +21,18 @@ const Contact = () => {
             className="p-8 bg-card/50 rounded-3xl border border-card-border hover:bg-card transition-all duration-300 animate-fade-up"
             style={{ animationDelay: '0.1s' }}
           >
-            <div className="flex items-center gap-4 mb-4">
+            <div className="flex flex-col items-center text-center gap-4 mb-4">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                 <Mail className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-2xl font-bold text-heading">Email</h3>
             </div>
-            <p className="text-body-text mb-4">
+            <p className="text-body-text mb-4 text-center">
               Drop me a line and let's start the conversation
             </p>
             <a 
               href="mailto:abelgmesfin@gmail.com" 
-              className="text-primary font-semibold hover:underline inline-block"
+              className="text-primary font-semibold hover:underline block text-center"
             >
               abelgmesfin@gmail.com
             </a>
@@ -43,18 +43,18 @@ const Contact = () => {
             className="p-8 bg-card/50 rounded-3xl border border-card-border hover:bg-card transition-all duration-300 animate-fade-up"
             style={{ animationDelay: '0.2s' }}
           >
-            <div className="flex items-center gap-4 mb-4">
+            <div className="flex flex-col items-center text-center gap-4 mb-4">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                 <Linkedin className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-2xl font-bold text-heading">Connect</h3>
             </div>
-            <p className="text-body-text mb-4">
+            <p className="text-body-text mb-4 text-center">
               Follow my work and connect on social media
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center">
               <a 
-                href="https://linkedin.com" 
+                href="https://linkedin.com/in/abelgmesfin" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary font-semibold hover:underline"
@@ -63,7 +63,7 @@ const Contact = () => {
               </a>
               <span className="text-muted-text">•</span>
               <a 
-                href="https://instagram.com" 
+                href="https://instagram.com/abelmesfinofficial" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary font-semibold hover:underline"
