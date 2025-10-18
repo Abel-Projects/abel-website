@@ -6,8 +6,8 @@ const Partners = () => {
     { id: 4, logo: 'https://img.logo.dev/adobe.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Adobe' },
     { id: 5, logo: 'https://img.logo.dev/meta.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Meta' },
     { id: 6, logo: 'https://img.logo.dev/starkey.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Starkey' },
-    { id: 7, logo: null, name: 'Partner 7' },
-    { id: 8, logo: null, name: 'Partner 8' },
+    { id: 7, logo: 'https://img.logo.dev/rocketlawyer.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Rocket Lawyer' },
+    { id: 8, logo: 'https://img.logo.dev/aroma360.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Aroma360' },
   ];
 
   return (
