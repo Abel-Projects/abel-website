@@ -49,7 +49,7 @@ const Header = () => {
   }, [lastScrollY]);
 
   const navigation = [
-    { name: "Work", href: "/work" },
+    { name: "Portfolio", href: "/portfolio" },
     { name: "About", href: "/about" },
     { name: "Overview Deck", href: "/overview-deck" },
   ];

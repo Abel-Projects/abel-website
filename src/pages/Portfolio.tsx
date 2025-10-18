@@ -1,7 +1,19 @@
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const Work = () => {
+const Portfolio = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const commercials = [
     {
       title: "Captain D's",
@@ -31,35 +43,45 @@ const Work = () => {
       <Header />
       
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-32">
-        {/* Hero Section */}
-        <div className="mb-32 text-center animate-fade-up">
-          <p className="text-sm text-muted-text font-semibold tracking-wide uppercase mb-4">
+        {/* Hero Section with Parallax Effect */}
+        <div 
+          className="mb-32 text-center"
+          style={{
+            transform: `translateY(${scrollY * 0.1}px)`,
+            transition: 'transform 0.1s ease-out'
+          }}
+        >
+          <p className="text-sm text-muted-text font-semibold tracking-wide uppercase mb-4 animate-fade-in">
             Best in Class
           </p>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-heading mb-8 leading-tight">
-            MARKETER<br />
-            Storyteller<br />
-            BRAND PARTNER
+            <span className="block animate-fade-up" style={{ animationDelay: '0.1s' }}>MARKETER</span>
+            <span className="block animate-fade-up" style={{ animationDelay: '0.2s' }}>Storyteller</span>
+            <span className="block animate-fade-up" style={{ animationDelay: '0.3s' }}>BRAND PARTNER</span>
           </h1>
-          <p className="text-2xl lg:text-3xl text-body-text font-light">
+          <p className="text-2xl lg:text-3xl text-body-text font-light animate-fade-up" style={{ animationDelay: '0.4s' }}>
             Dream Big, I'll Handle The Execution
           </p>
         </div>
 
-        {/* Commercials Section */}
+        {/* Commercials Section with Stagger Animation */}
         <div className="mb-32">
-          <h2 className="text-5xl font-bold text-heading mb-16 animate-fade-up">
+          <h2 className="text-5xl font-bold text-heading mb-16 animate-fade-up hover:scale-105 transition-transform duration-300">
             Commercials
           </h2>
           <div className="space-y-20">
             {commercials.map((project, index) => (
               <div 
                 key={project.title}
-                className="grid lg:grid-cols-5 gap-8 items-center animate-fade-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="grid lg:grid-cols-5 gap-8 items-center animate-fade-up group"
+                style={{ 
+                  animationDelay: `${index * 0.2}s`,
+                  transform: `translateX(${index % 2 === 0 ? -scrollY * 0.02 : scrollY * 0.02}px)`,
+                  transition: 'transform 0.1s ease-out'
+                }}
               >
                 <div className="lg:col-span-2">
-                  <div className={`bg-gradient-to-br ${project.image} rounded-3xl h-[300px] border border-card-border`} />
+                  <div className={`bg-gradient-to-br ${project.image} rounded-3xl h-[300px] border border-card-border group-hover:scale-105 transition-transform duration-500`} />
                 </div>
                 <div className="lg:col-span-3 space-y-4">
                   <h3 className="text-3xl font-bold text-heading">
@@ -74,13 +96,19 @@ const Work = () => {
           </div>
         </div>
 
-        {/* Black Entrepreneurs Day Section */}
-        <div className="mb-32 animate-fade-up">
+        {/* Black Entrepreneurs Day Section with Scroll Effects */}
+        <div 
+          className="mb-32 animate-fade-up"
+          style={{
+            transform: `scale(${1 + scrollY * 0.00005})`,
+            transition: 'transform 0.1s ease-out'
+          }}
+        >
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-heading mb-6">
+            <h2 className="text-5xl font-bold text-heading mb-6 hover:text-primary transition-colors duration-300">
               BLACK ENTREPRENEURS DAY
             </h2>
-            <p className="text-xl text-body-text italic max-w-3xl mx-auto">
+            <p className="text-xl text-body-text italic max-w-3xl mx-auto animate-fade-up" style={{ animationDelay: '0.2s' }}>
               The most impactful and buzzed about diversity, equity, and inclusion event of the year!
             </p>
           </div>
@@ -91,19 +119,27 @@ const Work = () => {
             </p>
           </div>
 
-          {/* Awards/Recognition */}
+          {/* Awards/Recognition with Bounce Animation */}
           <div className="grid grid-cols-3 gap-6 mb-12">
-            {["Webby Award", "Anthem Award", "Proc Award"].map((award) => (
-              <div key={award} className="bg-card/50 rounded-2xl border border-card-border p-6 text-center">
+            {["Webby Award", "Anthem Award", "Proc Award"].map((award, index) => (
+              <div 
+                key={award} 
+                className="bg-card/50 rounded-2xl border border-card-border p-6 text-center hover:scale-110 hover:bg-primary/20 transition-all duration-300 animate-scale-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
                 <div className="text-lg font-semibold text-primary">{award}</div>
               </div>
             ))}
           </div>
 
-          {/* Event Images Grid */}
+          {/* Event Images Grid with Stagger */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3, 4, 5, 6].map((num) => (
-              <div key={num} className="bg-gradient-to-br from-purple-500/20 to-blue-600/20 rounded-2xl h-[250px] border border-card-border" />
+              <div 
+                key={num} 
+                className="bg-gradient-to-br from-purple-500/20 to-blue-600/20 rounded-2xl h-[250px] border border-card-border hover:scale-105 hover:shadow-2xl transition-all duration-500 animate-fade-up"
+                style={{ animationDelay: `${num * 0.1}s` }}
+              />
             ))}
           </div>
 
@@ -113,8 +149,12 @@ const Work = () => {
               Partners Have Included:
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {["Apple", "T-Mobile", "Raising Cane's", "McDonald's", "Chase", "Salesforce", "Shopify", "Lowe's", "Hilton"].map((partner) => (
-                <div key={partner} className="bg-card/50 rounded-xl border border-card-border p-6 flex items-center justify-center">
+              {["Apple", "T-Mobile", "Raising Cane's", "McDonald's", "Chase", "Salesforce", "Shopify", "Lowe's", "Hilton"].map((partner, index) => (
+                <div 
+                  key={partner} 
+                  className="bg-card/50 rounded-xl border border-card-border p-6 flex items-center justify-center hover:bg-card hover:scale-110 transition-all duration-300 animate-scale-in"
+                  style={{ animationDelay: `${index * 0.05}s` }}
+                >
                   <span className="text-sm font-semibold text-muted-text">{partner}</span>
                 </div>
               ))}
@@ -124,7 +164,7 @@ const Work = () => {
 
         {/* Branded Social Media Section */}
         <div className="mb-32 animate-fade-up">
-          <h2 className="text-5xl font-bold text-heading mb-8">
+          <h2 className="text-5xl font-bold text-heading mb-8 hover:scale-105 transition-transform duration-300">
             BRANDED SOCIAL MEDIA
           </h2>
           <p className="text-lg text-body-text mb-12 max-w-3xl">
@@ -135,10 +175,14 @@ const Work = () => {
             {socialMediaBrands.map((brand, index) => (
               <div 
                 key={brand.name}
-                className="group"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="group animate-fade-up"
+                style={{ 
+                  animationDelay: `${index * 0.15}s`,
+                  transform: `translateY(${Math.sin(scrollY * 0.01 + index) * 10}px)`,
+                  transition: 'transform 0.3s ease-out'
+                }}
               >
-                <div className={`bg-gradient-to-br ${brand.image} rounded-3xl h-[400px] border border-card-border mb-4 group-hover:scale-105 transition-transform duration-300`} />
+                <div className={`bg-gradient-to-br ${brand.image} rounded-3xl h-[400px] border border-card-border mb-4 group-hover:scale-110 group-hover:rotate-2 transition-all duration-500 shadow-lg group-hover:shadow-2xl`} />
                 <h3 className="text-xl font-semibold text-heading text-center">
                   {brand.name}
                 </h3>
@@ -173,7 +217,7 @@ const Work = () => {
             ].map((service, index) => (
               <div 
                 key={service.title}
-                className="p-6 bg-card/50 rounded-2xl border border-card-border"
+                className="p-6 bg-card/50 rounded-2xl border border-card-border hover:scale-105 transition-transform duration-300"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <h3 className="text-xl font-bold text-heading mb-3">
@@ -188,20 +232,27 @@ const Work = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[1, 2, 3].map((num) => (
-              <div key={num} className="bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-2xl h-[200px] border border-card-border" />
+              <div 
+                key={num} 
+                className="bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-2xl h-[200px] border border-card-border hover:scale-105 transition-transform duration-500"
+              />
             ))}
           </div>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 pt-32 border-t border-card-border animate-fade-up">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 pt-32 border-t border-card-border">
           {[
             { number: "100+", label: "Brand Campaigns" },
             { number: "10M+", label: "Content Views" },
             { number: "50+", label: "Video Projects" },
             { number: "200+", label: "Written Pieces" }
           ].map((stat, index) => (
-            <div key={stat.label} className="text-center" style={{ animationDelay: `${index * 0.1}s` }}>
+            <div 
+              key={stat.label} 
+              className="text-center animate-fade-up hover:scale-110 transition-transform duration-300" 
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
               <div className="text-5xl lg:text-6xl font-bold text-heading mb-2">
                 {stat.number}
               </div>
@@ -218,4 +269,4 @@ const Work = () => {
   );
 };
 
-export default Work;
+export default Portfolio;
