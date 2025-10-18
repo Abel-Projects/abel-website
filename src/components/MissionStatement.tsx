@@ -31,12 +31,10 @@ const MissionStatement = () => {
   }, []);
 
   const lines = [
-    "Born in Denver,",
-    "bred for hustle.",
-    "Since college, I've had the",
-    "privilege in leveling up the",
-    "brands of top-level companies,",
-    "celebrities, and CEOs"
+    "Born in Denver, bred for hustle.",
+    "Since college, I've had the privilege",
+    "in leveling up the brands of top-level",
+    "companies, celebrities, and CEOs"
   ];
 
   return (
@@ -44,19 +42,26 @@ const MissionStatement = () => {
       ref={sectionRef}
       className="relative min-h-[150vh] bg-background flex items-center justify-center px-6 py-20"
     >
-      <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-heading leading-tight">
+      <div className="max-w-6xl mx-auto text-center">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-heading leading-tight">
           {lines.map((line, index) => (
             <span
               key={index}
               ref={(el) => (lineRefs.current[index] = el)}
-              className={`block mb-4 transition-all duration-1000 ${
-                visibleLines.includes(index)
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-10'
-              }`}
+              className="block mb-6 relative overflow-hidden"
             >
-              {line}
+              <span className="relative inline-block">
+                {line}
+                {/* Blue reveal box */}
+                <span 
+                  className={`absolute inset-0 bg-blue-500 transition-transform duration-1000 ${
+                    visibleLines.includes(index)
+                      ? 'translate-x-full'
+                      : 'translate-x-0'
+                  }`}
+                  style={{ transformOrigin: 'left' }}
+                />
+              </span>
             </span>
           ))}
         </h2>
