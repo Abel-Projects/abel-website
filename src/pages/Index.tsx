@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import MissionStatement from "@/components/MissionStatement";
 import ScrollGallery from "@/components/ScrollGallery";
 import About from "@/components/About";
-import Brands from "@/components/Brands";
 import Portfolio from "@/components/Portfolio";
 import Partners from "@/components/Partners";
 import Testimonials from "@/components/Testimonials";
@@ -28,7 +27,6 @@ const Index = () => {
         <ScrollGallery />
         <Partners />
         <About />
-        <Brands />
         <Testimonials />
         <Contact />
       </main>
