@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import MissionStatement from "@/components/MissionStatement";
 import ScrollGallery from "@/components/ScrollGallery";
 import About from "@/components/About";
 import Brands from "@/components/Brands";
@@ -23,6 +24,7 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
+        <MissionStatement />
         <ScrollGallery />
         <Partners />
         <About />
