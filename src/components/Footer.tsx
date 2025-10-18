@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-heading text-background" id="contact">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Footer Content */}
-        <div className="py-20">
+        <div className="py-20 pb-8">
           <div className="grid lg:grid-cols-3 gap-12 mb-16">
             {/* Brand */}
             <div className="lg:col-span-2 space-y-8">
@@ -35,7 +35,7 @@ const Footer = () => {
             {/* Navigation */}
             <div className="space-y-6">
               <h4 className="font-bold text-lg">Navigation</h4>
-              <ul className="space-y-4">
+              <ul className="grid grid-cols-2 gap-x-8 gap-y-4">
                 <li><Link to="/" className="text-background/70 hover:text-background transition-colors font-medium">Home</Link></li>
                 <li><Link to="/portfolio" className="text-background/70 hover:text-background transition-colors font-medium">Portfolio</Link></li>
                 <li><Link to="/about" className="text-background/70 hover:text-background transition-colors font-medium">About</Link></li>
@@ -47,7 +47,7 @@ const Footer = () => {
         </div>
         
         {/* Bottom Bar */}
-        <div className="border-t border-background/10 py-12">
+        <div className="border-t border-background/10 py-8">
           <div className="text-center text-background/60 font-medium">
             © 2025 Abel Mesfin. All rights reserved.
           </div>
