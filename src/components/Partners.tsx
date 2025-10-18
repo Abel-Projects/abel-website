@@ -1,7 +1,7 @@
 const Partners = () => {
   const partners = [
     { id: 1, logo: 'https://img.logo.dev/walmart.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Walmart' },
-    { id: 2, logo: null, name: 'Partner 2' },
+    { id: 2, logo: 'https://img.logo.dev/aflac.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Aflac' },
     { id: 3, logo: null, name: 'Partner 3' },
     { id: 4, logo: null, name: 'Partner 4' },
     { id: 5, logo: null, name: 'Partner 5' },
