@@ -93,22 +93,47 @@ const About = () => {
           <div className="space-y-8">
             {[
               {
-                company: "Top Brands",
-                role: "Content Creator & Strategist",
-                period: "2020 - Present",
-                description: "Leading content strategy and production for Fortune 500 companies and high-profile clients"
+                company: "The Shark Group",
+                role: "Strategic Partnership Coordinator",
+                period: "January 2023 - Present",
+                location: "New York, NY",
+                highlights: [
+                  "Collaborate closely with Daymond John from the multi-Emmy® Award-winning Business TV Show, Shark Tank.",
+                  "Manage and assist strategic partnerships using John's NIL for brand activations, investment deals, barters and exclusive partnerships.",
+                  "Managed 10+ high-value partnership deals generating ~$2.5M in new revenue",
+                  "Curate, develop, and produce social media content for John's and the Black Entrepreneur's Day social platforms growing Instagram reach by 143.6% in less than three months.",
+                  "Effectively manage the 4th and 5th annual Black Entrepreneur's Day giving away $250,000 in grants and featuring the likes of Shaq, Kelly Rowland, Kevin Hart, Spike Lee, Venus Williams, and many more.",
+                  "Launch a new entity, CEOAccess, in elevating the brand and presence of CEOs of Billion-Dollar companies",
+                  "Fine-tune the Salesforce and sales process for partnership opportunities, web leads, and data cleanup.",
+                  "Team management of projects for partnership deliverables, CEO consulting, and social media content.",
+                  "Spearhead one-off projects ranging from web development, brand positioning, media decks, legal, contract negotiations, and more."
+                ]
               },
               {
-                company: "Digital Agency",
-                role: "Creative Director",
-                period: "2018 - 2020",
-                description: "Directed creative campaigns for diverse clients across multiple industries"
+                company: "Vital Learning, LLC",
+                role: "Marketing Coordinator",
+                period: "June 2022 - Present",
+                location: "Denver, CO",
+                highlights: [
+                  "Create blog content written to drive SEO related to Leadership Development and other related topics.",
+                  "Generate reports based on blog performance and reach.",
+                  "Operated within CRM (Hubspot) for constructing email campaigns, blog subscriber content, and tidiness.",
+                  "Create mock posts for social media and track analytics."
+                ]
               },
               {
-                company: "Media Company",
-                role: "Video Producer",
-                period: "2016 - 2018",
-                description: "Produced engaging video content for brands and digital platforms"
+                company: "Dune7",
+                role: "Business & Partnership Development Intern",
+                period: "June 2022 - August 2022",
+                location: "New York, NY - Remote",
+                highlights: [
+                  "Execute biz dev outreach strategy through new business prospecting, utilizing all available channels (LinkedIn, email, telephone, events).",
+                  "Set a framework for approaching new prospects - obtain a deep understanding of the company and key contacts.",
+                  "Maintain CRM (Hubspot) with a keen focus on data hygiene.",
+                  "Secure new prospect calls with clients in the travel space.",
+                  "Attend new business conference calls, compiling detailed notes for follow-up.",
+                  "Participate in link-building outreach for existing travel client projects."
+                ]
               }
             ].map((job, index) => (
               <div 
@@ -116,20 +141,28 @@ const About = () => {
                 className="p-8 bg-card/30 rounded-2xl border border-card-border"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                  <h3 className="text-2xl font-bold text-heading">
-                    {job.company}
-                  </h3>
-                  <span className="text-sm text-muted-text font-semibold">
-                    {job.period}
-                  </span>
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-heading">
+                      {job.role}
+                    </h3>
+                    <div className="text-lg font-semibold text-primary mt-1">
+                      {job.company}
+                    </div>
+                  </div>
+                  <div className="text-sm text-muted-text font-semibold mt-2 md:mt-0 text-right">
+                    <div>{job.period}</div>
+                    <div>{job.location}</div>
+                  </div>
                 </div>
-                <div className="text-lg font-semibold text-primary mb-2">
-                  {job.role}
-                </div>
-                <p className="text-body-text">
-                  {job.description}
-                </p>
+                <ul className="space-y-2 mt-4">
+                  {job.highlights.map((highlight, idx) => (
+                    <li key={idx} className="text-body-text flex items-start">
+                      <span className="text-primary mr-2 mt-1">•</span>
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
