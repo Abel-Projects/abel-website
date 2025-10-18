@@ -1,5 +1,6 @@
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import abelLogo from "@/assets/abel-logo.png";
 
 const Header = () => {
@@ -48,10 +49,9 @@ const Header = () => {
   }, [lastScrollY]);
 
   const navigation = [
-    { name: "Work", href: "#portfolio" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
-    { name: "Testimonials", href: "#testimonials" },
+    { name: "Work", href: "/work" },
+    { name: "About", href: "/about" },
+    { name: "Overview Deck", href: "/overview-deck" },
   ];
 
   return (
@@ -64,13 +64,13 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
             {/* Logo - Always Visible */}
-            <div className="flex-shrink-0">
+            <Link to="/" className="flex-shrink-0">
               <img 
                 src={abelLogo} 
                 alt="Abel Mesfin" 
                 className="h-16 w-auto"
               />
-            </div>
+            </Link>
 
             {/* Menu Button - Large Square with Lines */}
             <button
@@ -98,11 +98,13 @@ const Header = () => {
           <div className="absolute top-0 left-0 right-0 z-10">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
               <div className="flex items-center justify-between h-20">
-                <img 
-                  src={abelLogo} 
-                  alt="Abel Mesfin" 
-                  className="h-8 w-auto"
-                />
+                <Link to="/">
+                  <img 
+                    src={abelLogo} 
+                    alt="Abel Mesfin" 
+                    className="h-8 w-auto"
+                  />
+                </Link>
                 <button
                   onClick={handleMenuClose}
                   className="w-14 h-14 flex items-center justify-center bg-heading text-background hover:bg-primary hover:scale-110 transition-all duration-300 ease-out rounded-lg group"
@@ -116,16 +118,16 @@ const Header = () => {
           {/* Navigation Items */}
           <div className="flex flex-col items-center justify-center h-full space-y-8 px-6">
             {navigation.map((item, index) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.href}
                 className="group text-6xl lg:text-8xl font-bold text-heading hover:text-primary transition-colors animate-fade-up relative"
                 style={{ animationDelay: `${index * 0.1}s` }}
                 onClick={handleMenuClose}
               >
                 {item.name}
                 <div className="h-1 w-0 group-hover:w-full bg-primary transition-all duration-500 mt-2" />
-              </a>
+              </Link>
             ))}
           </div>
 

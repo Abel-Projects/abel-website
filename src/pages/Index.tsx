@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import MissionStatement from "@/components/MissionStatement";
 import ScrollGallery from "@/components/ScrollGallery";
 import Partners from "@/components/Partners";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Loading from "@/components/Loading";
 
@@ -23,7 +22,6 @@ const Index = () => {
         <MissionStatement />
         <ScrollGallery />
         <Partners />
-        <Contact />
       </main>
       <Footer />
     </div>
