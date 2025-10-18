@@ -23,8 +23,8 @@ const ScrollGallery = () => {
   }, []);
 
   // Calculate horizontal translation based on scroll
-  // Move from right to left as user scrolls down
-  const translateX = -scrollProgress * 50; // Adjust multiplier for speed
+  // Slower scroll speed - user needs to scroll more to see all photos
+  const translateX = -scrollProgress * 150; // Higher multiplier = needs more scrolling
 
   // Define different sizes and vertical offsets for variety
   const boxes = [
@@ -47,9 +47,9 @@ const ScrollGallery = () => {
         {boxes.map(({ num, size, offsetY }) => (
           <div
             key={num}
-            className={`flex-shrink-0 ${size} ${offsetY} bg-muted rounded-lg flex items-center justify-center`}
+            className={`flex-shrink-0 ${size} ${offsetY} bg-gray-800 border-2 border-gray-600 rounded-lg flex items-center justify-center`}
           >
-            <span className="text-6xl font-bold text-muted-foreground">{num}</span>
+            <span className="text-6xl font-bold text-gray-400">{num}</span>
           </div>
         ))}
       </div>
