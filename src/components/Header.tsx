@@ -142,10 +142,10 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
                   <a href="mailto:hello@abelmesfin.com" className="hover:text-primary transition-colors">
                     Email
                   </a>
-                  <a href="https://linkedin.com" className="hover:text-primary transition-colors">
+                  <a href="https://linkedin.com/in/abelgmesfin" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                     LinkedIn
                   </a>
-                  <a href="https://instagram.com" className="hover:text-primary transition-colors">
+                  <a href="https://instagram.com/abelmesfinofficial" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                     Instagram
                   </a>
                 </div>

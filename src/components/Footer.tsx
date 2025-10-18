@@ -1,4 +1,4 @@
-import { Linkedin, Twitter } from "lucide-react";
+import { Linkedin, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -22,11 +22,11 @@ const Footer = () => {
                   Connect
                 </div>
                 <div className="flex space-x-4">
-                  <a href="#" className="w-12 h-12 bg-background/10 rounded-full flex items-center justify-center text-background/60 hover:text-background hover:bg-background/20 transition-all">
+                  <a href="https://linkedin.com/in/abelgmesfin" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-background/10 rounded-full flex items-center justify-center text-background/60 hover:text-background hover:bg-background/20 transition-all">
                     <Linkedin className="h-6 w-6" />
                   </a>
-                  <a href="#" className="w-12 h-12 bg-background/10 rounded-full flex items-center justify-center text-background/60 hover:text-background hover:bg-background/20 transition-all">
-                    <Twitter className="h-6 w-6" />
+                  <a href="https://instagram.com/abelmesfinofficial" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-background/10 rounded-full flex items-center justify-center text-background/60 hover:text-background hover:bg-background/20 transition-all">
+                    <Instagram className="h-6 w-6" />
                   </a>
                 </div>
               </div>
@@ -40,7 +40,6 @@ const Footer = () => {
                 <li><Link to="/portfolio" className="text-background/70 hover:text-background transition-colors font-medium">Portfolio</Link></li>
                 <li><Link to="/about" className="text-background/70 hover:text-background transition-colors font-medium">About</Link></li>
                 <li><Link to="/overview-deck" className="text-background/70 hover:text-background transition-colors font-medium">Overview Deck</Link></li>
-                <li><Link to="/contact" className="text-background/70 hover:text-background transition-colors font-medium">Contact</Link></li>
               </ul>
             </div>
           </div>
