@@ -59,7 +59,7 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           variant === "static" 
-            ? 'bg-card/80 backdrop-blur-md border-b border-card-border' 
+            ? '' 
             : isVisible ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
