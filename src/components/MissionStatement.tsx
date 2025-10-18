@@ -32,9 +32,9 @@ const MissionStatement = () => {
 
   const lines = [
     "Born in Denver, bred for hustle.",
-    "Since college, I've had the privilege",
-    "in leveling up the brands of top-level",
-    "companies, celebrities, and CEOs"
+    "Since college, I've had the privilege in",
+    "leveling up the brands of top-level companies,",
+    "celebrities, and CEOs"
   ];
 
   return (
@@ -48,10 +48,10 @@ const MissionStatement = () => {
             <span
               key={index}
               ref={(el) => (lineRefs.current[index] = el)}
-              className="block mb-6 relative overflow-hidden"
+              className="block mb-6 relative"
             >
-              <span className="relative inline-block">
-                {line}
+              <span className="relative inline-block overflow-hidden">
+                <span className="relative z-0">{line}</span>
                 {/* Blue reveal box */}
                 <span 
                   className={`absolute inset-0 bg-blue-500 z-10 transition-transform duration-1200 ease-out ${
