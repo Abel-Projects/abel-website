@@ -123,24 +123,24 @@ const Portfolio = () => {
           </div>
 
           {/* Awards/Recognition */}
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-8 mb-12 max-w-4xl mx-auto">
             <div 
-              className="flex items-center justify-center animate-scale-in"
+              className="flex items-center justify-center animate-scale-in hover:scale-110 transition-transform duration-300 cursor-pointer"
               style={{ animationDelay: '0s' }}
             >
-              <img src={proclamationImg} alt="2x Proclamation Official Day in NYC & ATL" className="w-full h-auto" />
+              <img src={proclamationImg} alt="2x Proclamation Official Day in NYC & ATL" className="w-full h-auto max-w-[250px]" />
             </div>
             <div 
-              className="flex items-center justify-center animate-scale-in"
+              className="flex items-center justify-center animate-scale-in hover:scale-110 transition-transform duration-300 cursor-pointer"
               style={{ animationDelay: '0.1s' }}
             >
-              <img src={webbyImg} alt="Webby Awards 4x Winner" className="w-full h-auto" />
+              <img src={webbyImg} alt="Webby Awards 4x Winner" className="w-full h-auto max-w-[250px]" />
             </div>
             <div 
-              className="flex items-center justify-center animate-scale-in"
+              className="flex items-center justify-center animate-scale-in hover:scale-110 transition-transform duration-300 cursor-pointer"
               style={{ animationDelay: '0.2s' }}
             >
-              <img src={anthemImg} alt="Anthem Awards 3x Winner" className="w-full h-auto" />
+              <img src={anthemImg} alt="Anthem Awards 3x Winner" className="w-full h-auto max-w-[250px]" />
             </div>
           </div>
 
