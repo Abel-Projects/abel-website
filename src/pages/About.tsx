@@ -37,56 +37,51 @@ const About = () => {
           </div>
         </div>
 
-        {/* Skills Showcase */}
+        {/* Expertise Section */}
         <div className="mb-32 animate-fade-up">
           <h2 className="text-4xl font-bold text-heading mb-12">
-            Core Competencies
+            Expertise
           </h2>
-          <div className="bg-card/30 rounded-3xl border border-card-border p-12 lg:p-16">
-            <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-8">
-              <span className="text-5xl lg:text-7xl font-bold text-heading hover:text-primary transition-colors duration-300 cursor-default">
-                Brand Partnerships
-              </span>
-              <span className="text-4xl lg:text-6xl font-bold text-heading hover:text-primary transition-colors duration-300 cursor-default">
-                Branded Activations
-              </span>
-              <span className="text-4xl lg:text-5xl font-bold text-heading hover:text-primary transition-colors duration-300 cursor-default">
-                Sponsorship Management
-              </span>
-              <span className="text-3xl lg:text-4xl font-semibold text-body-text hover:text-primary transition-colors duration-300 cursor-default">
-                Campaign Ideation
-              </span>
-              <span className="text-3xl lg:text-4xl font-semibold text-body-text hover:text-primary transition-colors duration-300 cursor-default">
-                Contract Negotiation
-              </span>
-              <span className="text-2xl lg:text-3xl font-medium text-body-text hover:text-primary transition-colors duration-300 cursor-default">
-                Social Media Content
-              </span>
-              <span className="text-2xl lg:text-3xl font-medium text-body-text hover:text-primary transition-colors duration-300 cursor-default">
-                Digital Marketing
-              </span>
-              <span className="text-2xl lg:text-3xl font-medium text-body-text hover:text-primary transition-colors duration-300 cursor-default">
-                Client Relations
-              </span>
-              <span className="text-3xl lg:text-4xl font-semibold text-body-text hover:text-primary transition-colors duration-300 cursor-default">
-                Partnership Outreach
-              </span>
-              <span className="text-2xl lg:text-3xl font-medium text-body-text hover:text-primary transition-colors duration-300 cursor-default">
-                Salesforce CRM
-              </span>
-              <span className="text-xl lg:text-2xl font-medium text-muted-text hover:text-primary transition-colors duration-300 cursor-default">
-                Custom Curriculum
-              </span>
-              <span className="text-xl lg:text-2xl font-medium text-muted-text hover:text-primary transition-colors duration-300 cursor-default">
-                Celebrity Brand Builder
-              </span>
-              <span className="text-xl lg:text-2xl font-medium text-muted-text hover:text-primary transition-colors duration-300 cursor-default">
-                Logistics Coordinator
-              </span>
-              <span className="text-xl lg:text-2xl font-medium text-muted-text hover:text-primary transition-colors duration-300 cursor-default">
-                Event Management
-              </span>
-            </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Partnership Development",
+                description: "Brand partnerships, sponsorship management, partnership outreach, and strategic collaborations"
+              },
+              {
+                title: "Campaign Strategy",
+                description: "Campaign ideation, branded activations, custom curriculum development, and creative execution"
+              },
+              {
+                title: "Content & Marketing",
+                description: "Social media content creation, digital marketing, celebrity brand building, and audience engagement"
+              },
+              {
+                title: "Operations Management",
+                description: "Contract negotiation, client relations, logistics coordination, and event management"
+              },
+              {
+                title: "CRM & Sales",
+                description: "Salesforce CRM optimization, sales process management, and data-driven decision making"
+              },
+              {
+                title: "Brand Building",
+                description: "Celebrity brand development, brand positioning, media strategy, and reputation management"
+              }
+            ].map((skill, index) => (
+              <div 
+                key={skill.title}
+                className="p-8 bg-card/50 rounded-2xl border border-card-border hover:bg-card transition-all duration-300"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <h3 className="text-2xl font-bold text-heading mb-3">
+                  {skill.title}
+                </h3>
+                <p className="text-body-text">
+                  {skill.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
