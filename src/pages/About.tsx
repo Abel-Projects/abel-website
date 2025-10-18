@@ -37,51 +37,56 @@ const About = () => {
           </div>
         </div>
 
-        {/* Expertise Section */}
+        {/* Skills Showcase */}
         <div className="mb-32 animate-fade-up">
           <h2 className="text-4xl font-bold text-heading mb-12">
-            Expertise
+            Core Competencies
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Content Strategy",
-                description: "Multi-channel content frameworks that drive engagement and conversions"
-              },
-              {
-                title: "Brand Storytelling",
-                description: "Authentic narratives that resonate with target audiences"
-              },
-              {
-                title: "Video Production",
-                description: "High-quality video content from concept to final delivery"
-              },
-              {
-                title: "Digital Marketing",
-                description: "Data-driven campaigns that deliver measurable results"
-              },
-              {
-                title: "Social Media",
-                description: "Platform-specific strategies that build communities"
-              },
-              {
-                title: "Creative Direction",
-                description: "Leading creative teams to execute bold, innovative ideas"
-              }
-            ].map((skill, index) => (
-              <div 
-                key={skill.title}
-                className="p-8 bg-card/50 rounded-2xl border border-card-border hover:bg-card transition-all duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <h3 className="text-2xl font-bold text-heading mb-3">
-                  {skill.title}
-                </h3>
-                <p className="text-body-text">
-                  {skill.description}
-                </p>
-              </div>
-            ))}
+          <div className="bg-card/30 rounded-3xl border border-card-border p-12 lg:p-16">
+            <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-8">
+              <span className="text-5xl lg:text-7xl font-bold text-heading hover:text-primary transition-colors duration-300 cursor-default">
+                Brand Partnerships
+              </span>
+              <span className="text-4xl lg:text-6xl font-bold text-heading hover:text-primary transition-colors duration-300 cursor-default">
+                Branded Activations
+              </span>
+              <span className="text-4xl lg:text-5xl font-bold text-heading hover:text-primary transition-colors duration-300 cursor-default">
+                Sponsorship Management
+              </span>
+              <span className="text-3xl lg:text-4xl font-semibold text-body-text hover:text-primary transition-colors duration-300 cursor-default">
+                Campaign Ideation
+              </span>
+              <span className="text-3xl lg:text-4xl font-semibold text-body-text hover:text-primary transition-colors duration-300 cursor-default">
+                Contract Negotiation
+              </span>
+              <span className="text-2xl lg:text-3xl font-medium text-body-text hover:text-primary transition-colors duration-300 cursor-default">
+                Social Media Content
+              </span>
+              <span className="text-2xl lg:text-3xl font-medium text-body-text hover:text-primary transition-colors duration-300 cursor-default">
+                Digital Marketing
+              </span>
+              <span className="text-2xl lg:text-3xl font-medium text-body-text hover:text-primary transition-colors duration-300 cursor-default">
+                Client Relations
+              </span>
+              <span className="text-3xl lg:text-4xl font-semibold text-body-text hover:text-primary transition-colors duration-300 cursor-default">
+                Partnership Outreach
+              </span>
+              <span className="text-2xl lg:text-3xl font-medium text-body-text hover:text-primary transition-colors duration-300 cursor-default">
+                Salesforce CRM
+              </span>
+              <span className="text-xl lg:text-2xl font-medium text-muted-text hover:text-primary transition-colors duration-300 cursor-default">
+                Custom Curriculum
+              </span>
+              <span className="text-xl lg:text-2xl font-medium text-muted-text hover:text-primary transition-colors duration-300 cursor-default">
+                Celebrity Brand Builder
+              </span>
+              <span className="text-xl lg:text-2xl font-medium text-muted-text hover:text-primary transition-colors duration-300 cursor-default">
+                Logistics Coordinator
+              </span>
+              <span className="text-xl lg:text-2xl font-medium text-muted-text hover:text-primary transition-colors duration-300 cursor-default">
+                Event Management
+              </span>
+            </div>
           </div>
         </div>
 
