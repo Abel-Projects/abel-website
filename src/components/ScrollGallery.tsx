@@ -1,18 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const ScrollGallery = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
+      if (!sectionRef.current) return;
+      
+      const rect = sectionRef.current.getBoundingClientRect();
+      const sectionTop = rect.top;
+      const sectionHeight = rect.height;
       const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
       
-      // Calculate scroll progress (0 to 1)
-      const maxScroll = documentHeight - windowHeight;
-      const progress = Math.min(scrollY / maxScroll, 1);
+      // Calculate how much of the section has been scrolled through
+      // Start when section enters viewport, end after scrolling past it
+      const scrollStart = -sectionHeight;
+      const scrollEnd = windowHeight;
+      const scrollRange = scrollEnd - scrollStart;
+      const currentScroll = -sectionTop;
       
+      const progress = Math.max(0, Math.min(1, (currentScroll - scrollStart) / scrollRange));
       setScrollProgress(progress);
     };
 
@@ -22,9 +30,11 @@ const ScrollGallery = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Calculate horizontal translation based on scroll
-  // Slower scroll speed - user needs to scroll more to see all photos
-  const translateX = -scrollProgress * 150; // Higher multiplier = needs more scrolling
+  // Start with first photo centered, then scroll left
+  // translateX starts at ~45% (centering first photo) and moves to -150%
+  const startPosition = 45;
+  const endPosition = -150;
+  const translateX = startPosition + (scrollProgress * (endPosition - startPosition));
 
   // Define different sizes and vertical offsets for variety
   const boxes = [
@@ -39,9 +49,9 @@ const ScrollGallery = () => {
   ];
 
   return (
-    <section className="py-20 bg-background overflow-hidden">
+    <section ref={sectionRef} className="h-screen bg-background overflow-hidden flex items-center">
       <div 
-        className="flex gap-6 transition-transform duration-100 ease-out pb-20"
+        className="flex gap-6 transition-transform duration-100 ease-out w-full"
         style={{ transform: `translateX(${translateX}%)` }}
       >
         {boxes.map(({ num, size, offsetY }) => (
