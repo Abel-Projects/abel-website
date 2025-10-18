@@ -42,7 +42,7 @@ const About = () => {
           <h2 className="text-4xl font-bold text-heading mb-12">
             Expertise
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               {
                 title: "Partnership Development",
@@ -71,13 +71,13 @@ const About = () => {
             ].map((skill, index) => (
               <div 
                 key={skill.title}
-                className="p-8 bg-card/50 rounded-2xl border border-card-border hover:bg-card transition-all duration-300"
+                className="p-6 bg-card/50 rounded-2xl border border-card-border hover:bg-card transition-all duration-300"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <h3 className="text-2xl font-bold text-heading mb-4">
+                <h3 className="text-xl font-bold text-heading mb-3">
                   {skill.title}
                 </h3>
-                <ul className="space-y-2">
+                <ul className="space-y-1">
                   {skill.skills.map((item, idx) => (
                     <li key={idx} className="text-body-text flex items-start">
                       <span className="text-primary mr-2">•</span>
