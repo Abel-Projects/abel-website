@@ -98,7 +98,7 @@ const Hero = () => {
             <img
               src={heroImage}
               alt="Abel Mesfin"
-              className="w-auto h-full max-h-screen object-contain relative z-10"
+              className="w-auto h-full max-h-screen object-contain mx-auto relative z-10"
             />
           </div>
         </div>

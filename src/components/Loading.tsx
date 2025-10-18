@@ -27,7 +27,7 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
 
   return (
     <div className={`fixed inset-0 z-50 bg-gray-100 flex items-center justify-center transition-transform duration-700 ease-in-out ${isExiting ? '-translate-y-full' : 'translate-y-0'}`}>
-      <div className="text-center space-y-4">
+      <div className="flex flex-col items-center justify-center space-y-4">
         <img 
           src={abelLogo} 
           alt="Abel Mesfin" 
