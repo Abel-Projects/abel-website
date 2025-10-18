@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const OverviewDeck = () => {
-  const [pdfUrl, setPdfUrl] = useState<string>("");
+  const [pdfUrl] = useState<string>("/Abel_Mesfin_Overview_Deck.pdf");
 
   return (
     <div className="min-h-screen bg-background">
