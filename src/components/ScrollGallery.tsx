@@ -38,7 +38,7 @@ const ScrollGallery = () => {
 
   // Start with first photo centered, end with last photo centered
   const startPosition = 45;
-  const endPosition = -75; // Adjusted so photo #7 is centered at the end
+  const endPosition = -95; // Adjusted so photo #7 is centered at the end
   const translateX = startPosition + (scrollProgress * (endPosition - startPosition));
 
   // Define different sizes and vertical offsets for variety
