@@ -43,14 +43,14 @@ const ScrollGallery = () => {
 
   // Define different sizes and vertical offsets for variety
   const boxes = [
-    { num: 1, size: 'w-64 h-64', offsetY: 'mt-0' },
-    { num: 2, size: 'w-80 h-80', offsetY: 'mt-20' },
-    { num: 3, size: 'w-56 h-56', offsetY: 'mt-12' },
-    { num: 4, size: 'w-72 h-72', offsetY: 'mt-32' },
-    { num: 5, size: 'w-60 h-60', offsetY: 'mt-8' },
-    { num: 6, size: 'w-96 h-96', offsetY: 'mt-24' },
-    { num: 7, size: 'w-52 h-52', offsetY: 'mt-16' },
-    { num: 8, size: 'w-88 h-88', offsetY: 'mt-40' },
+    { num: 1, size: 'w-64 h-64', offsetY: 'mt-0', text: 'Creative Vision' },
+    { num: 2, size: 'w-80 h-80', offsetY: 'mt-20', text: 'Brand Stories' },
+    { num: 3, size: 'w-56 h-56', offsetY: 'mt-12', text: 'Digital Content' },
+    { num: 4, size: 'w-72 h-72', offsetY: 'mt-32', text: 'Production Work' },
+    { num: 5, size: 'w-60 h-60', offsetY: 'mt-8', text: 'Video Magic' },
+    { num: 6, size: 'w-96 h-96', offsetY: 'mt-24', text: 'Marketing Impact' },
+    { num: 7, size: 'w-52 h-52', offsetY: 'mt-16', text: 'Bold Ideas' },
+    { num: 8, size: 'w-88 h-88', offsetY: 'mt-40', text: 'Visual Stories' },
   ];
 
   return (
@@ -59,15 +59,19 @@ const ScrollGallery = () => {
       {/* Sticky container that pins to viewport */}
       <div className="sticky top-0 h-screen overflow-hidden flex items-center">
         <div 
-          className="flex gap-6 transition-transform duration-100 ease-out w-full"
+          className="flex gap-12 transition-transform duration-100 ease-out w-full"
           style={{ transform: `translateX(${translateX}%)` }}
         >
-          {boxes.map(({ num, size, offsetY }) => (
-            <div
-              key={num}
-              className={`flex-shrink-0 ${size} ${offsetY} bg-gray-800 border-2 border-gray-600 rounded-lg flex items-center justify-center`}
-            >
-              <span className="text-6xl font-bold text-gray-400">{num}</span>
+          {boxes.map(({ num, size, offsetY, text }) => (
+            <div key={num} className={`flex-shrink-0 ${offsetY}`}>
+              <div
+                className={`${size} bg-gray-800 border-2 border-gray-600 rounded-lg flex items-center justify-center mb-4`}
+              >
+                <span className="text-6xl font-bold text-gray-400">{num}</span>
+              </div>
+              <p className="text-center text-sm font-thin tracking-wide text-gray-400">
+                {text}
+              </p>
             </div>
           ))}
         </div>
