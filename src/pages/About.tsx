@@ -46,27 +46,27 @@ const About = () => {
             {[
               {
                 title: "Partnership Development",
-                description: "Brand partnerships, sponsorship management, partnership outreach, and strategic collaborations"
+                skills: ["Brand Partnerships", "Sponsorship Management", "Partnership Outreach", "Strategic Collaborations"]
               },
               {
                 title: "Campaign Strategy",
-                description: "Campaign ideation, branded activations, custom curriculum development, and creative execution"
+                skills: ["Campaign Ideation", "Branded Activations", "Custom Curriculum", "Creative Execution"]
               },
               {
                 title: "Content & Marketing",
-                description: "Social media content creation, digital marketing, celebrity brand building, and audience engagement"
+                skills: ["Social Media Content", "Digital Marketing", "Celebrity Brand Building", "Audience Engagement"]
               },
               {
                 title: "Operations Management",
-                description: "Contract negotiation, client relations, logistics coordination, and event management"
+                skills: ["Contract Negotiation", "Client Relations", "Logistics Coordination", "Event Management"]
               },
               {
                 title: "CRM & Sales",
-                description: "Salesforce CRM optimization, sales process management, and data-driven decision making"
+                skills: ["Salesforce CRM", "Sales Process Management", "Data-Driven Decisions", "Lead Generation"]
               },
               {
                 title: "Brand Building",
-                description: "Celebrity brand development, brand positioning, media strategy, and reputation management"
+                skills: ["Celebrity Brands", "Brand Positioning", "Media Strategy", "Reputation Management"]
               }
             ].map((skill, index) => (
               <div 
@@ -74,12 +74,17 @@ const About = () => {
                 className="p-8 bg-card/50 rounded-2xl border border-card-border hover:bg-card transition-all duration-300"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <h3 className="text-2xl font-bold text-heading mb-3">
+                <h3 className="text-2xl font-bold text-heading mb-4">
                   {skill.title}
                 </h3>
-                <p className="text-body-text">
-                  {skill.description}
-                </p>
+                <ul className="space-y-2">
+                  {skill.skills.map((item, idx) => (
+                    <li key={idx} className="text-body-text flex items-start">
+                      <span className="text-primary mr-2">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
