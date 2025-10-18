@@ -4,7 +4,7 @@ const Partners = () => {
   return (
     <section className="relative py-32 bg-background overflow-hidden">
       {/* Large handwritten-style "Collabs" text in background */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 z-0">
         <h2 
           className="text-[20rem] font-bold text-blue-500 select-none"
           style={{ 
@@ -37,8 +37,8 @@ const Partners = () => {
           <div className="absolute right-0 top-0 bottom-0 w-24 md:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
           {/* Partner logos - infinite scroll */}
-          <div className="flex items-center overflow-hidden">
-            <div className="flex items-center gap-8 md:gap-12 animate-scroll-left">
+          <div className="flex items-center overflow-hidden relative z-10">
+            <div className="flex items-center gap-8 md:gap-12 animate-scroll-right">
               {/* First set */}
               {partners.map((num) => (
                 <div
