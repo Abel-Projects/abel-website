@@ -153,7 +153,7 @@ const Portfolio = () => {
             {[1, 2, 3, 4, 5, 6].map((num) => (
               <div 
                 key={num} 
-                className="bg-gradient-to-br from-purple-500/20 to-blue-600/20 rounded-2xl h-[250px] border border-card-border hover:scale-105 hover:shadow-2xl transition-all duration-500 animate-fade-up"
+                className="bg-gradient-to-br from-purple-500/20 to-blue-600/20 rounded-2xl h-[250px] border border-card-border transition-all duration-300 animate-fade-up"
                 style={{ animationDelay: `${num * 0.1}s` }}
               />
             ))}
