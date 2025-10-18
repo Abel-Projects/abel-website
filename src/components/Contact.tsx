@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Instagram } from "lucide-react";
+import { Mail, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Contact = () => {
@@ -45,7 +45,7 @@ const Contact = () => {
           >
             <div className="flex flex-col items-center text-center gap-4 mb-4">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                <Linkedin className="h-6 w-6 text-primary" />
+                <Share2 className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-2xl font-bold text-heading">Connect</h3>
             </div>
