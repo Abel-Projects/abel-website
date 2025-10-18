@@ -6,6 +6,7 @@ import ScrollGallery from "@/components/ScrollGallery";
 import About from "@/components/About";
 import Brands from "@/components/Brands";
 import Portfolio from "@/components/Portfolio";
+import Partners from "@/components/Partners";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -25,7 +26,7 @@ const Index = () => {
         <Hero />
         <MeetAbel />
         <ScrollGallery />
-        <Portfolio />
+        <Partners />
         <About />
         <Brands />
         <Testimonials />
