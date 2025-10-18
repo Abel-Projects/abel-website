@@ -40,7 +40,7 @@ const Hero = () => {
   const loremText = "CONTENT CREATOR • BRAND STORYTELLER • DIGITAL MARKETING • VIDEO PRODUCTION • ";
 
   return (
-    <section className="relative h-[200vh] bg-background">
+    <section className="relative h-[150vh] bg-background">
       {/* Fixed container for hero content */}
       <div className="sticky top-0 h-screen overflow-hidden">
         
