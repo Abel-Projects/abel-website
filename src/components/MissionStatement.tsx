@@ -18,7 +18,7 @@ const MissionStatement = () => {
               );
             }
           },
-          { threshold: 0.5 }
+          { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
         );
         observer.observe(lineRef);
         observers.push(observer);
@@ -54,12 +54,11 @@ const MissionStatement = () => {
                 {line}
                 {/* Blue reveal box */}
                 <span 
-                  className={`absolute inset-0 bg-blue-500 transition-transform duration-1000 ${
+                  className={`absolute inset-0 bg-blue-500 z-10 transition-transform duration-1200 ease-out ${
                     visibleLines.includes(index)
                       ? 'translate-x-full'
                       : 'translate-x-0'
                   }`}
-                  style={{ transformOrigin: 'left' }}
                 />
               </span>
             </span>
