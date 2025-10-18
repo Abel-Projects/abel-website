@@ -105,7 +105,7 @@ const Hero = () => {
 
         {/* Scroll indicator */}
         <div 
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white text-sm z-20"
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white text-sm z-20 animate-bounce"
           style={{ opacity: 1 - scrollProgress * 2 }}
         >
           <div className="flex flex-col items-center gap-2">
