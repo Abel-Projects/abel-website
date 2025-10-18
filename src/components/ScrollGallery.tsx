@@ -2,36 +2,41 @@ import { useEffect, useState, useRef } from "react";
 
 const ScrollGallery = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const sectionRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current) return;
+      if (!containerRef.current) return;
       
-      const rect = sectionRef.current.getBoundingClientRect();
-      const sectionTop = rect.top;
-      const sectionHeight = rect.height;
+      const container = containerRef.current;
+      const rect = container.getBoundingClientRect();
+      const containerTop = rect.top + window.scrollY;
+      const containerHeight = rect.height;
       const windowHeight = window.innerHeight;
+      const scrollY = window.scrollY;
       
-      // Calculate how much of the section has been scrolled through
-      // Start when section enters viewport, end after scrolling past it
-      const scrollStart = -sectionHeight;
-      const scrollEnd = windowHeight;
-      const scrollRange = scrollEnd - scrollStart;
-      const currentScroll = -sectionTop;
+      // Calculate progress through the container
+      // Start when container reaches top of viewport
+      const scrollStart = containerTop;
+      const scrollEnd = containerTop + containerHeight - windowHeight;
       
-      const progress = Math.max(0, Math.min(1, (currentScroll - scrollStart) / scrollRange));
-      setScrollProgress(progress);
+      if (scrollY < scrollStart) {
+        setScrollProgress(0);
+      } else if (scrollY > scrollEnd) {
+        setScrollProgress(1);
+      } else {
+        const progress = (scrollY - scrollStart) / (scrollEnd - scrollStart);
+        setScrollProgress(progress);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial calculation
+    handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Start with first photo centered, then scroll left
-  // translateX starts at ~45% (centering first photo) and moves to -150%
+  // Start with first photo centered, then scroll left through all photos
   const startPosition = 45;
   const endPosition = -150;
   const translateX = startPosition + (scrollProgress * (endPosition - startPosition));
@@ -49,21 +54,25 @@ const ScrollGallery = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="h-screen bg-background overflow-hidden flex items-center">
-      <div 
-        className="flex gap-6 transition-transform duration-100 ease-out w-full"
-        style={{ transform: `translateX(${translateX}%)` }}
-      >
-        {boxes.map(({ num, size, offsetY }) => (
-          <div
-            key={num}
-            className={`flex-shrink-0 ${size} ${offsetY} bg-gray-800 border-2 border-gray-600 rounded-lg flex items-center justify-center`}
-          >
-            <span className="text-6xl font-bold text-gray-400">{num}</span>
-          </div>
-        ))}
+    // Container with extra height to create scroll distance
+    <div ref={containerRef} className="relative h-[300vh] bg-background">
+      {/* Sticky container that pins to viewport */}
+      <div className="sticky top-0 h-screen overflow-hidden flex items-center">
+        <div 
+          className="flex gap-6 transition-transform duration-100 ease-out w-full"
+          style={{ transform: `translateX(${translateX}%)` }}
+        >
+          {boxes.map(({ num, size, offsetY }) => (
+            <div
+              key={num}
+              className={`flex-shrink-0 ${size} ${offsetY} bg-gray-800 border-2 border-gray-600 rounded-lg flex items-center justify-center`}
+            >
+              <span className="text-6xl font-bold text-gray-400">{num}</span>
+            </div>
+          ))}
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 
