@@ -36,9 +36,9 @@ const ScrollGallery = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Start with first photo centered, then scroll left through all photos
+  // Start with first photo centered, end with last photo centered
   const startPosition = 45;
-  const endPosition = -150;
+  const endPosition = -100; // Adjusted so last photo is centered
   const translateX = startPosition + (scrollProgress * (endPosition - startPosition));
 
   // Define different sizes and vertical offsets for variety
