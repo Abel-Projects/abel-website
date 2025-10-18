@@ -155,7 +155,22 @@ const Portfolio = () => {
             ))}
           </div>
 
-          {/* Partners */}
+          {/* Stats Section */}
+          <div className="grid md:grid-cols-3 gap-8 mt-16 mb-16">
+            <div className="text-center p-8 bg-card/30 rounded-2xl border border-card-border hover:bg-card/50 transition-all duration-300">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">3 Billion</div>
+              <div className="text-lg text-body-text">Impressions Last Year</div>
+            </div>
+            <div className="text-center p-8 bg-card/30 rounded-2xl border border-card-border hover:bg-card/50 transition-all duration-300">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">$1M</div>
+              <div className="text-lg text-body-text">Given to Black Owned Businesses</div>
+            </div>
+            <div className="text-center p-8 bg-card/30 rounded-2xl border border-card-border hover:bg-card/50 transition-all duration-300">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">30+</div>
+              <div className="text-lg text-body-text">Celebrity Guests</div>
+            </div>
+          </div>
+
           <div className="mt-16">
             <h3 className="text-2xl font-bold text-heading mb-8 text-center">
               Partners Have Included:
