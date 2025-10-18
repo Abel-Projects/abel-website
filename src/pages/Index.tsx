@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import MeetAbel from "@/components/MeetAbel";
 import About from "@/components/About";
 import Brands from "@/components/Brands";
 import Portfolio from "@/components/Portfolio";
@@ -21,6 +22,7 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
+        <MeetAbel />
         <Portfolio />
         <About />
         <Brands />
