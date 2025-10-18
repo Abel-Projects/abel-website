@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import proclamationImg from "@/assets/bed-proclamation.png";
+import webbyImg from "@/assets/bed-webby.png";
+import anthemImg from "@/assets/bed-anthem.png";
 
 const Portfolio = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -120,16 +123,25 @@ const Portfolio = () => {
           </div>
 
           {/* Awards/Recognition with Bounce Animation */}
-          <div className="grid grid-cols-3 gap-6 mb-12">
-            {["Webby Award", "Anthem Award", "Proc Award"].map((award, index) => (
-              <div 
-                key={award} 
-                className="bg-card/50 rounded-2xl border border-card-border p-6 text-center hover:scale-110 hover:bg-primary/20 transition-all duration-300 animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="text-lg font-semibold text-primary">{award}</div>
-              </div>
-            ))}
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div 
+              className="bg-card/50 rounded-2xl border border-card-border p-6 flex items-center justify-center hover:scale-105 transition-all duration-300 animate-scale-in"
+              style={{ animationDelay: '0s' }}
+            >
+              <img src={proclamationImg} alt="2x Proclamation Official Day in NYC & ATL" className="w-full h-auto" />
+            </div>
+            <div 
+              className="bg-card/50 rounded-2xl border border-card-border p-6 flex items-center justify-center hover:scale-105 transition-all duration-300 animate-scale-in"
+              style={{ animationDelay: '0.1s' }}
+            >
+              <img src={webbyImg} alt="Webby Awards 4x Winner" className="w-full h-auto" />
+            </div>
+            <div 
+              className="bg-card/50 rounded-2xl border border-card-border p-6 flex items-center justify-center hover:scale-105 transition-all duration-300 animate-scale-in"
+              style={{ animationDelay: '0.2s' }}
+            >
+              <img src={anthemImg} alt="Anthem Awards 3x Winner" className="w-full h-auto" />
+            </div>
           </div>
 
           {/* Event Images Grid with Stagger */}
