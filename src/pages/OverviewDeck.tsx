@@ -8,8 +8,8 @@ const OverviewDeck = () => {
   const [pdfUrl] = useState<string>("/Abel_Mesfin_Overview_Deck.pdf");
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-card/20">
+      <Header variant="static" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-32">
         {/* Header */}
         <div className="mb-12 animate-fade-up">
