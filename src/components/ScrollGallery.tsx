@@ -26,16 +26,28 @@ const ScrollGallery = () => {
   // Move from right to left as user scrolls down
   const translateX = -scrollProgress * 50; // Adjust multiplier for speed
 
+  // Define different sizes and vertical offsets for variety
+  const boxes = [
+    { num: 1, size: 'w-64 h-64', offsetY: 'mt-0' },
+    { num: 2, size: 'w-80 h-80', offsetY: 'mt-20' },
+    { num: 3, size: 'w-56 h-56', offsetY: 'mt-12' },
+    { num: 4, size: 'w-72 h-72', offsetY: 'mt-32' },
+    { num: 5, size: 'w-60 h-60', offsetY: 'mt-8' },
+    { num: 6, size: 'w-96 h-96', offsetY: 'mt-24' },
+    { num: 7, size: 'w-52 h-52', offsetY: 'mt-16' },
+    { num: 8, size: 'w-88 h-88', offsetY: 'mt-40' },
+  ];
+
   return (
     <section className="py-20 bg-background overflow-hidden">
       <div 
-        className="flex gap-6 transition-transform duration-100 ease-out"
+        className="flex gap-6 transition-transform duration-100 ease-out pb-20"
         style={{ transform: `translateX(${translateX}%)` }}
       >
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+        {boxes.map(({ num, size, offsetY }) => (
           <div
             key={num}
-            className="flex-shrink-0 w-80 h-96 bg-muted rounded-lg flex items-center justify-center"
+            className={`flex-shrink-0 ${size} ${offsetY} bg-muted rounded-lg flex items-center justify-center`}
           >
             <span className="text-6xl font-bold text-muted-foreground">{num}</span>
           </div>
