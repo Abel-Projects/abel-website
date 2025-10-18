@@ -122,22 +122,22 @@ const Portfolio = () => {
             </p>
           </div>
 
-          {/* Awards/Recognition with Bounce Animation */}
+          {/* Awards/Recognition */}
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div 
-              className="bg-card/50 rounded-2xl border border-card-border p-6 flex items-center justify-center hover:scale-105 transition-all duration-300 animate-scale-in"
+              className="flex items-center justify-center animate-scale-in"
               style={{ animationDelay: '0s' }}
             >
               <img src={proclamationImg} alt="2x Proclamation Official Day in NYC & ATL" className="w-full h-auto" />
             </div>
             <div 
-              className="bg-card/50 rounded-2xl border border-card-border p-6 flex items-center justify-center hover:scale-105 transition-all duration-300 animate-scale-in"
+              className="flex items-center justify-center animate-scale-in"
               style={{ animationDelay: '0.1s' }}
             >
               <img src={webbyImg} alt="Webby Awards 4x Winner" className="w-full h-auto" />
             </div>
             <div 
-              className="bg-card/50 rounded-2xl border border-card-border p-6 flex items-center justify-center hover:scale-105 transition-all duration-300 animate-scale-in"
+              className="flex items-center justify-center animate-scale-in"
               style={{ animationDelay: '0.2s' }}
             >
               <img src={anthemImg} alt="Anthem Awards 3x Winner" className="w-full h-auto" />
