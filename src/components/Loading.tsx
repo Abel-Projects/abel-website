@@ -26,7 +26,7 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
   }, [onLoadingComplete]);
 
   return (
-    <div className={`fixed inset-0 z-50 bg-background flex items-center justify-center transition-transform duration-700 ease-in-out ${isExiting ? '-translate-y-full' : 'translate-y-0'}`}>
+    <div className={`fixed inset-0 z-50 bg-heading/10 flex items-center justify-center transition-transform duration-700 ease-in-out ${isExiting ? '-translate-y-full' : 'translate-y-0'}`}>
       <div className="text-center space-y-4">
         <img 
           src={abelLogo} 
