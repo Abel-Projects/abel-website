@@ -1,58 +1,10 @@
-import { Mail, Phone, MapPin, Linkedin, Twitter, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Mail, Phone, MapPin, Linkedin, Twitter } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const navigation = {
-    services: [
-      { name: "Strategic Consulting", href: "#" },
-      { name: "Partnership Development", href: "#" },
-      { name: "Campaign Strategy", href: "#" },
-      { name: "Executive Advisory", href: "#" }
-    ],
-    resources: [
-      { name: "Partnership Playbook", href: "#" },
-      { name: "Case Studies", href: "#" },
-      { name: "Strategy Blog", href: "#" },
-      { name: "Media Kit", href: "#" }
-    ],
-    company: [
-      { name: "About Abel", href: "#about" },
-      { name: "Speaking", href: "#speaking" },
-      { name: "Portfolio", href: "#portfolio" },
-      { name: "Contact", href: "#contact" }
-    ]
-  };
-
   return (
-    <footer className="bg-heading text-background">
+    <footer className="bg-heading text-background" id="contact">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Apple-style CTA Section */}
-        <div className="py-24 border-b border-background/10">
-          <div className="text-center space-y-12 animate-fade-up">
-            <div className="space-y-8">
-            <h2 className="text-4xl lg:text-6xl font-bold leading-tight tracking-tight">
-              Ready to tell your
-              <span className="text-primary block">brand's story?</span>
-            </h2>
-            
-            <p className="text-xl lg:text-2xl text-background/80 max-w-4xl mx-auto leading-relaxed font-light">
-              Let's create content that converts and stories that scale your business.
-            </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-12 py-6 text-xl font-semibold rounded-full shadow-primary">
-                Start a Project
-                <ArrowRight className="ml-3 h-6 w-6" />
-              </Button>
-              
-              <Button variant="outline" size="lg" className="border-2 border-background/20 text-background hover:bg-background/10 px-12 py-6 text-xl font-semibold rounded-full">
-                View Portfolio
-              </Button>
-            </div>
-          </div>
-        </div>
-        
         {/* Footer Content */}
         <div className="py-20">
           <div className="grid lg:grid-cols-5 gap-12 mb-16">
@@ -102,14 +54,15 @@ const Footer = () => {
               </ul>
             </div>
             
-            {/* Company */}
+            {/* Navigation */}
             <div className="space-y-6">
-              <h4 className="font-bold text-lg">About</h4>
+              <h4 className="font-bold text-lg">Navigation</h4>
               <ul className="space-y-4">
-                <li><a href="#about" className="text-background/70 hover:text-background transition-colors font-medium">About Abel</a></li>
-                <li><a href="#portfolio" className="text-background/70 hover:text-background transition-colors font-medium">Portfolio</a></li>
-                <li><a href="#contact" className="text-background/70 hover:text-background transition-colors font-medium">Contact</a></li>
-                <li><a href="#" className="text-background/70 hover:text-background transition-colors font-medium">Process</a></li>
+                <li><Link to="/" className="text-background/70 hover:text-background transition-colors font-medium">Home</Link></li>
+                <li><Link to="/portfolio" className="text-background/70 hover:text-background transition-colors font-medium">Portfolio</Link></li>
+                <li><Link to="/about" className="text-background/70 hover:text-background transition-colors font-medium">About</Link></li>
+                <li><Link to="/overview-deck" className="text-background/70 hover:text-background transition-colors font-medium">Overview Deck</Link></li>
+                <li><Link to="/contact" className="text-background/70 hover:text-background transition-colors font-medium">Contact</Link></li>
               </ul>
             </div>
           </div>

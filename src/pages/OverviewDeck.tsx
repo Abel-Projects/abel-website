@@ -59,21 +59,6 @@ const OverviewDeck = () => {
           )}
         </div>
 
-        {/* Optional: Key Highlights */}
-        <div className="mt-32 grid md:grid-cols-3 gap-8 animate-fade-up" style={{ animationDelay: '0.4s' }}>
-          <div className="p-8 bg-card/50 rounded-2xl border border-card-border text-center">
-            <div className="text-4xl font-bold text-primary mb-2">100+</div>
-            <div className="text-body-text">Brand Campaigns</div>
-          </div>
-          <div className="p-8 bg-card/50 rounded-2xl border border-card-border text-center">
-            <div className="text-4xl font-bold text-primary mb-2">10M+</div>
-            <div className="text-body-text">Content Views</div>
-          </div>
-          <div className="p-8 bg-card/50 rounded-2xl border border-card-border text-center">
-            <div className="text-4xl font-bold text-primary mb-2">15+</div>
-            <div className="text-body-text">Industries Served</div>
-          </div>
-        </div>
       </div>
       <Footer />
     </div>

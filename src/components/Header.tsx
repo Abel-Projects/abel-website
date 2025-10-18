@@ -52,6 +52,7 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
     { name: "Portfolio", href: "/portfolio" },
     { name: "About", href: "/about" },
     { name: "Overview Deck", href: "/overview-deck" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
