@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import abelLogo from "@/assets/abel-logo.png";
 
 interface LoadingProps {
   onLoadingComplete: () => void;
@@ -25,9 +26,11 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
   return (
     <div className="fixed inset-0 z-50 bg-background flex items-center justify-center">
       <div className="text-center space-y-8">
-        <h1 className="text-7xl lg:text-8xl font-bold text-heading tracking-tighter animate-fade-in">
-          AM
-        </h1>
+        <img 
+          src={abelLogo} 
+          alt="Abel Mesfin" 
+          className="h-24 w-auto mx-auto animate-fade-in"
+        />
         <div className="w-64 h-1 bg-accent rounded-full overflow-hidden">
           <div 
             className="h-full bg-primary transition-all duration-300 ease-out"
