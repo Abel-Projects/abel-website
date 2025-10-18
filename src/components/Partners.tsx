@@ -1,5 +1,14 @@
 const Partners = () => {
-  const partners = [1, 2, 3, 4, 5, 6, 7, 8];
+  const partners = [
+    { id: 1, logo: 'https://img.logo.dev/walmart.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Walmart' },
+    { id: 2, logo: null, name: 'Partner 2' },
+    { id: 3, logo: null, name: 'Partner 3' },
+    { id: 4, logo: null, name: 'Partner 4' },
+    { id: 5, logo: null, name: 'Partner 5' },
+    { id: 6, logo: null, name: 'Partner 6' },
+    { id: 7, logo: null, name: 'Partner 7' },
+    { id: 8, logo: null, name: 'Partner 8' },
+  ];
 
   return (
     <section className="relative py-32 bg-background overflow-hidden">
@@ -42,25 +51,41 @@ const Partners = () => {
           <div className="overflow-hidden relative">
             <div className="flex items-center gap-8 md:gap-12 animate-scroll-right" style={{ width: 'max-content' }}>
               {/* First set */}
-              {partners.map((num) => (
+              {partners.map((partner) => (
                 <div
-                  key={`first-${num}`}
-                  className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-muted border-2 border-border rounded-lg flex items-center justify-center hover:scale-105 transition-transform duration-300"
+                  key={`first-${partner.id}`}
+                  className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-muted border-2 border-border rounded-lg flex items-center justify-center hover:scale-105 transition-transform duration-300 p-4"
                 >
-                  <span className="text-3xl md:text-4xl font-bold text-muted-foreground">
-                    {num}
-                  </span>
+                  {partner.logo ? (
+                    <img 
+                      src={partner.logo} 
+                      alt={partner.name}
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <span className="text-3xl md:text-4xl font-bold text-muted-foreground">
+                      {partner.id}
+                    </span>
+                  )}
                 </div>
               ))}
               {/* Duplicate set for seamless loop */}
-              {partners.map((num) => (
+              {partners.map((partner) => (
                 <div
-                  key={`second-${num}`}
-                  className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-muted border-2 border-border rounded-lg flex items-center justify-center hover:scale-105 transition-transform duration-300"
+                  key={`second-${partner.id}`}
+                  className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-muted border-2 border-border rounded-lg flex items-center justify-center hover:scale-105 transition-transform duration-300 p-4"
                 >
-                  <span className="text-3xl md:text-4xl font-bold text-muted-foreground">
-                    {num}
-                  </span>
+                  {partner.logo ? (
+                    <img 
+                      src={partner.logo} 
+                      alt={partner.name}
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <span className="text-3xl md:text-4xl font-bold text-muted-foreground">
+                      {partner.id}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
