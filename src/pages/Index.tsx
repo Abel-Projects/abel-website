@@ -15,7 +15,7 @@ const Index = () => {
   return (
     <>
       <AnimatedBackground />
-      <div className="min-h-screen bg-background relative z-0">
+      <div className="min-h-screen bg-background/80 backdrop-blur-sm relative z-0">
         <Header />
         <main>
           <Hero />
