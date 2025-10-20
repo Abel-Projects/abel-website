@@ -247,15 +247,25 @@
 
   body {
     @apply bg-background text-foreground;
+    scroll-behavior: smooth;
   }
 
   html {
     scroll-behavior: smooth;
-    scroll-snap-type: y proximity;
   }
-
+  
+  /* Smooth scroll snap for sections */
+  body {
+    scroll-snap-type: y mandatory;
+  }
+  
   .snap-section {
     scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  
+  .no-snap {
+    scroll-snap-align: none;
     scroll-snap-stop: normal;
   }
   
