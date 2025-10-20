@@ -52,11 +52,17 @@ const MissionStatement = () => {
               className="block mb-2 relative"
             >
               <span 
-                className={`relative inline-block w-full transition-all duration-1000 ease-out ${
-                  visibleLines.includes(index)
-                    ? 'opacity-100 translate-y-0'
-                    : 'opacity-0 translate-y-8'
-                }`}
+                className={`relative inline-block w-full transition-all duration-1000 ease-out`}
+                style={{
+                  background: visibleLines.includes(index) 
+                    ? 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #06b6d4 100%)'
+                    : 'linear-gradient(135deg, transparent 0%, transparent 50%, transparent 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  opacity: visibleLines.includes(index) ? 1 : 0.2,
+                  transform: visibleLines.includes(index) ? 'translateY(0)' : 'translateY(20px)'
+                }}
               >
                 <span className="relative z-0 pb-2 block">{line}</span>
               </span>
