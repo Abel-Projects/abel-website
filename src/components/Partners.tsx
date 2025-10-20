@@ -48,13 +48,13 @@ const Partners = () => {
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none" />
 
           {/* Partner logos - infinite scroll */}
-          <div className="overflow-hidden relative">
+          <div className="overflow-hidden relative py-4">
             <div className="flex items-center gap-8 md:gap-12 animate-scroll-right" style={{ width: 'max-content' }}>
               {/* First set */}
               {partners.map((partner) => (
                 <div
                   key={`first-${partner.id}`}
-                  className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-muted border-2 border-border rounded-lg flex items-center justify-center hover:scale-105 transition-transform duration-300 p-4"
+                  className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-muted border-2 border-border rounded-lg flex items-center justify-center hover:scale-105 hover:z-10 transition-transform duration-300 p-4"
                 >
                   {partner.logo ? (
                     <img 
@@ -73,7 +73,7 @@ const Partners = () => {
               {partners.map((partner) => (
                 <div
                   key={`second-${partner.id}`}
-                  className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-muted border-2 border-border rounded-lg flex items-center justify-center hover:scale-105 transition-transform duration-300 p-4"
+                  className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-muted border-2 border-border rounded-lg flex items-center justify-center hover:scale-105 hover:z-10 transition-transform duration-300 p-4"
                 >
                   {partner.logo ? (
                     <img 
