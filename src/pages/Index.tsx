@@ -7,13 +7,15 @@ import Partners from "@/components/Partners";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Loading from "@/components/Loading";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
     <>
-      <div className="min-h-screen bg-background">
+      <AnimatedBackground />
+      <div className="min-h-screen bg-background relative z-0">
         <Header />
         <main>
           <Hero />
