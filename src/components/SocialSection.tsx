@@ -6,32 +6,32 @@ const SocialSection = () => {
     {
       id: 1,
       image: "/src/assets/gallery-1.jpg",
-      link: "https://instagram.com/abelmesfin"
+      link: "https://instagram.com/abelmesfinofficial"
     },
     {
       id: 2,
       image: "/src/assets/gallery-2.jpg",
-      link: "https://instagram.com/abelmesfin"
+      link: "https://instagram.com/abelmesfinofficial"
     },
     {
       id: 3,
       image: "/src/assets/gallery-3.jpg",
-      link: "https://instagram.com/abelmesfin"
+      link: "https://instagram.com/abelmesfinofficial"
     },
     {
       id: 4,
       image: "/src/assets/gallery-4.jpg",
-      link: "https://instagram.com/abelmesfin"
+      link: "https://instagram.com/abelmesfinofficial"
     },
     {
       id: 5,
       image: "/src/assets/gallery-5.jpg",
-      link: "https://instagram.com/abelmesfin"
+      link: "https://instagram.com/abelmesfinofficial"
     },
     {
       id: 6,
       image: "/src/assets/gallery-6.jpg",
-      link: "https://instagram.com/abelmesfin"
+      link: "https://instagram.com/abelmesfinofficial"
     }
   ];
 
@@ -42,13 +42,13 @@ const SocialSection = () => {
           Social
         </h2>
         <a 
-          href="https://instagram.com/abelmesfin" 
+          href="https://instagram.com/abelmesfinofficial" 
           target="_blank" 
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
         >
           <Instagram className="w-6 h-6" />
-          <span className="font-semibold">@abelmesfin</span>
+          <span className="font-semibold">@abelmesfinofficial</span>
         </a>
       </div>
       
