@@ -43,21 +43,21 @@ const MissionStatement = () => {
       className="relative min-h-[150vh] bg-background flex items-center justify-center px-6 py-20"
     >
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-heading leading-tight">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-heading leading-relaxed">
           {lines.map((line, index) => (
             <span
               key={index}
               ref={(el) => (lineRefs.current[index] = el)}
-              className="block mb-6 relative"
+              className="block mb-6 relative overflow-hidden"
             >
-              <span className="relative inline-block overflow-hidden">
-                <span className="relative z-0">{line}</span>
+              <span className="relative inline-block">
+                <span className="relative z-0 pb-2 inline-block">{line}</span>
                 {/* Blue reveal box */}
                 <span 
-                  className={`absolute inset-0 bg-blue-500 z-10 transition-transform duration-1200 ease-out ${
+                  className={`absolute inset-0 bg-primary z-10 transition-transform duration-1000 ease-out ${
                     visibleLines.includes(index)
-                      ? 'translate-x-full'
-                      : 'translate-x-0'
+                      ? 'translate-x-[110%]'
+                      : '-translate-x-full'
                   }`}
                 />
               </span>
