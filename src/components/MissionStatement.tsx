@@ -42,16 +42,16 @@ const MissionStatement = () => {
       ref={sectionRef}
       className="relative min-h-[150vh] bg-background flex items-center justify-center px-6 py-20"
     >
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-heading leading-relaxed">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-heading leading-relaxed text-justify">
           {lines.map((line, index) => (
             <span
               key={index}
               ref={(el) => (lineRefs.current[index] = el)}
               className="block mb-2 relative"
             >
-              <span className="relative inline-block overflow-hidden">
-                <span className="relative z-0 pb-2 inline-block">{line}</span>
+              <span className="relative inline-block overflow-hidden w-full">
+                <span className="relative z-0 pb-2 block">{line}</span>
                 {/* Blue reveal box */}
                 <span 
                   className={`absolute inset-0 bg-primary transition-transform duration-[2500ms] ease-out ${
