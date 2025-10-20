@@ -45,7 +45,7 @@ const ScrollGallery = () => {
 
   // Start with first photo centered, end with last photo centered
   const startPosition = 45;
-  const endPosition = -200; // Move far enough to center the last photo
+  const endPosition = -100; // Center the last (5th) photo
   const translateX = startPosition + (scrollProgress * (endPosition - startPosition));
 
   // Define different sizes and vertical offsets for variety
@@ -55,8 +55,6 @@ const ScrollGallery = () => {
     { num: 3, size: 'w-56 h-56', offsetY: 'mt-16', text: 'Daymond John, 2024', image: gallery3 },
     { num: 4, size: 'w-72 h-72', offsetY: 'mt-48', text: 'Black Entrepreneurs Day, 2024', image: gallery4 },
     { num: 5, size: 'w-60 h-60', offsetY: 'mt-8', text: 'Waka Flocka, 2024', image: gallery5 },
-    { num: 6, size: 'w-96 h-96', offsetY: 'mt-40', text: 'Marketing Impact', image: gallery6 },
-    { num: 7, size: 'w-52 h-52', offsetY: 'mt-24', text: 'Waka Flocka, 2024', image: gallery7 },
   ];
 
   return (
