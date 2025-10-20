@@ -50,12 +50,12 @@ const MissionStatement = () => {
       ref={sectionRef}
       className="relative min-h-[300vh] bg-muted"
     >
-      <div className="sticky top-0 h-screen flex items-center justify-center px-6">
+      <div className="sticky top-0 h-screen flex items-center justify-start px-6">
         {/* Video placeholder - replace with video element later */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-700 via-slate-600 to-slate-700" />
+        <div className="absolute inset-0 bg-heading" />
         
-        <div className="relative z-10 max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-relaxed inline-block text-justify" style={{ textAlignLast: 'justify' }}>
+        <div className="relative z-10 max-w-6xl mx-auto px-12 w-full">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-relaxed text-left">
             {lines.map((line, index) => (
               <span
                 key={index}
