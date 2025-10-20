@@ -14,12 +14,12 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          // Wait 2 seconds before starting the exit animation
+          // Wait 1 second before starting the exit animation
           setTimeout(() => {
             setIsExiting(true);
             // Then wait for the animation to complete
             setTimeout(onLoadingComplete, 800);
-          }, 2000);
+          }, 1000);
           return 100;
         }
         return prev + 2;
