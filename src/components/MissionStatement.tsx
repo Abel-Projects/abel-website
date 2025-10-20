@@ -56,9 +56,12 @@ const MissionStatement = () => {
                 <span 
                   className={`absolute inset-0 bg-primary z-10 transition-transform duration-1000 ease-out ${
                     visibleLines.includes(index)
-                      ? 'translate-x-[110%]'
+                      ? 'translate-x-[120%]'
                       : '-translate-x-full'
                   }`}
+                  style={{
+                    transitionDelay: visibleLines.includes(index) ? `${index * 200}ms` : '0ms'
+                  }}
                 />
               </span>
             </span>
