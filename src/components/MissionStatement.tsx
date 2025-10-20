@@ -48,20 +48,20 @@ const MissionStatement = () => {
             <span
               key={index}
               ref={(el) => (lineRefs.current[index] = el)}
-              className="block mb-6 relative overflow-hidden"
+              className="block mb-2 relative overflow-hidden"
             >
               <span className="relative inline-block">
                 <span className="relative z-0 pb-2 inline-block">{line}</span>
                 {/* Blue reveal box */}
                 <span 
-                  className={`absolute inset-0 bg-primary transition-all duration-1000 ease-out ${
+                  className={`absolute inset-0 bg-primary transition-transform duration-1000 ease-out ${
                     visibleLines.includes(index)
-                      ? 'translate-x-[120%] opacity-0'
-                      : '-translate-x-full opacity-100'
+                      ? 'translate-x-[120%]'
+                      : '-translate-x-full'
                   }`}
                   style={{
                     transitionDelay: visibleLines.includes(index) ? `${index * 200}ms` : '0ms',
-                    zIndex: visibleLines.includes(index) ? -1 : 10
+                    zIndex: 10
                   }}
                 />
               </span>
