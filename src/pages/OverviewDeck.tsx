@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
@@ -6,6 +6,10 @@ import Footer from "@/components/Footer";
 
 const OverviewDeck = () => {
   const [pdfUrl] = useState<string>("/Abel_Mesfin_Overview_Deck.pdf");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
