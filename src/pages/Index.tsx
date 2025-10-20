@@ -15,16 +15,28 @@ const Index = () => {
   return (
     <>
       <AnimatedBackground />
-      <div className="min-h-screen bg-background/80 backdrop-blur-sm relative z-0">
+      <div className="min-h-screen bg-background/80 backdrop-blur-sm relative z-0 scroll-smooth">
         <Header />
-        <main>
-          <Hero />
-          <MissionStatement />
-          <ScrollGallery />
-          <Partners />
-          <Contact />
+        <main className="snap-y snap-mandatory overflow-y-scroll h-screen">
+          <section className="snap-start snap-always min-h-screen">
+            <Hero />
+          </section>
+          <section className="snap-start snap-always min-h-screen">
+            <MissionStatement />
+          </section>
+          <section className="snap-start snap-always min-h-screen">
+            <ScrollGallery />
+          </section>
+          <section className="snap-start snap-always min-h-screen">
+            <Partners />
+          </section>
+          <section className="snap-start snap-always min-h-screen">
+            <Contact />
+          </section>
+          <section className="snap-start snap-always">
+            <Footer />
+          </section>
         </main>
-        <Footer />
       </div>
       {isLoading && <Loading onLoadingComplete={() => setIsLoading(false)} />}
     </>
