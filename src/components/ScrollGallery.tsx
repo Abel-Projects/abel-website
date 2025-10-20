@@ -43,9 +43,9 @@ const ScrollGallery = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Start with first photo centered, end with middle photo centered
+  // Start with first photo centered, end with last photo centered
   const startPosition = 45;
-  const endPosition = -45; // End with photo centered
+  const endPosition = -200; // Move far enough to center the last photo
   const translateX = startPosition + (scrollProgress * (endPosition - startPosition));
 
   // Define different sizes and vertical offsets for variety
@@ -61,7 +61,7 @@ const ScrollGallery = () => {
 
   return (
     // Container with extra height to create scroll distance - exclude from snap
-    <div ref={containerRef} className="relative h-[300vh] bg-background no-snap">
+    <div ref={containerRef} className="relative h-[400vh] bg-background no-snap">
       {/* Sticky container that pins to viewport */}
       <div className="sticky top-0 h-screen overflow-hidden flex items-center">
         <div 
