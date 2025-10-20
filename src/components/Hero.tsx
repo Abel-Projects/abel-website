@@ -74,31 +74,29 @@ const Hero = () => {
         {/* Hero Image with Mouse Hover 3D Effect & Rectangle Outline */}
         <div 
           className="absolute inset-0 flex items-center justify-center z-10"
-          style={{
-            transform: `scale(${imageScale}) translateY(${imageY}px)`,
-            opacity: imageOpacity,
-            transition: 'transform 0.1s ease-out, opacity 0.1s ease-out',
-          }}
         >
           <div 
             ref={imageContainerRef}
-            className="relative w-full h-full flex items-center justify-center bg-primary p-8"
+            className="relative bg-primary p-8 flex items-center justify-center"
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => {
               setIsHovering(false);
               setMousePosition({ x: 0, y: 0 });
             }}
-            style={{
-              transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-              transition: isHovering ? 'transform 0.1s ease-out' : 'transform 0.5s ease-out',
-            }}
           >
             {/* Hero Image */}
             <img
               src={heroImage}
               alt="Abel Mesfin"
-              className="w-auto h-full max-h-screen object-contain mx-auto relative z-10"
+              className="h-[80vh] w-auto object-contain relative z-10"
+              style={{
+                transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${imageScale}) translateY(${imageY}px)`,
+                opacity: imageOpacity,
+                transition: isHovering 
+                  ? 'transform 0.1s ease-out, opacity 0.1s ease-out' 
+                  : 'transform 0.5s ease-out, opacity 0.1s ease-out',
+              }}
             />
           </div>
         </div>
