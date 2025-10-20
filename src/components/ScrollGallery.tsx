@@ -43,9 +43,9 @@ const ScrollGallery = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Start with first photo centered, end with last photo centered
+  // Start with first photo centered, end with middle photo centered
   const startPosition = 45;
-  const endPosition = -95; // Adjusted so photo #7 is centered at the end
+  const endPosition = -45; // End with photo centered
   const translateX = startPosition + (scrollProgress * (endPosition - startPosition));
 
   // Define different sizes and vertical offsets for variety
@@ -54,7 +54,7 @@ const ScrollGallery = () => {
     { num: 2, size: 'w-80 h-80', offsetY: 'mt-32', text: 'Flavor Flav, 2024', image: gallery2 },
     { num: 3, size: 'w-56 h-56', offsetY: 'mt-16', text: 'Daymond John, 2024', image: gallery3 },
     { num: 4, size: 'w-72 h-72', offsetY: 'mt-48', text: 'Black Entrepreneurs Day, 2024', image: gallery4 },
-    { num: 5, size: 'w-60 h-60', offsetY: 'mt-8', text: 'Video Magic', image: gallery5 },
+    { num: 5, size: 'w-60 h-60', offsetY: 'mt-8', text: 'Waka Flocka, 2024', image: gallery5 },
     { num: 6, size: 'w-96 h-96', offsetY: 'mt-40', text: 'Marketing Impact', image: gallery6 },
     { num: 7, size: 'w-52 h-52', offsetY: 'mt-24', text: 'Waka Flocka, 2024', image: gallery7 },
   ];
