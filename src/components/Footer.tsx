@@ -10,15 +10,15 @@ const Footer = () => {
         <div className="py-20 pb-8">
           <div className="grid lg:grid-cols-3 gap-12 mb-16">
             {/* Brand */}
-            <div className="lg:col-span-2 space-y-8">
-              <div className="space-y-6">
-                <img src={amLogo} alt="Abel Mesfin" className="h-[98px] w-auto" />
+            <div className="lg:col-span-2 space-y-6">
+              <div className="space-y-4">
+                <img src={amLogo} alt="Abel Mesfin" className="h-[78px] w-auto" />
                 <p className="text-background/70 text-lg leading-relaxed font-light max-w-md">
                   Content marketing expert creating lead-generating campaigns and authentic brand stories for top companies and CEOs.
                 </p>
               </div>
               
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <div className="text-sm font-semibold tracking-wide uppercase text-background/60">
                   Connect
                 </div>
@@ -47,7 +47,7 @@ const Footer = () => {
         </div>
         
         {/* Bottom Bar */}
-        <div className="border-t border-background/10 py-8">
+        <div className="border-t border-background/10 py-6">
           <div className="text-center text-background/60 font-medium">
             © 2025 Abel Mesfin. All rights reserved.
           </div>
