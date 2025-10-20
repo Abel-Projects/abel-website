@@ -16,17 +16,17 @@ const Index = () => {
       <div className="min-h-screen bg-background relative z-0">
         <Header />
         <main>
-          <section className="snap-start snap-always min-h-screen">
+          <section className="snap-section min-h-screen">
             <Hero />
           </section>
-          <section className="snap-start snap-always min-h-screen">
+          <section className="snap-section min-h-screen">
             <MissionStatement />
           </section>
           <ScrollGallery />
-          <section className="snap-start snap-always">
+          <section className="snap-section">
             <Partners />
           </section>
-          <section className="snap-start snap-always">
+          <section className="snap-section">
             <Contact />
           </section>
         </main>
