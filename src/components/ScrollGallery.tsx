@@ -1,4 +1,11 @@
 import { useEffect, useState, useRef } from "react";
+import gallery1 from "@/assets/gallery-1.jpg";
+import gallery2 from "@/assets/gallery-2.jpg";
+import gallery3 from "@/assets/gallery-3.jpg";
+import gallery4 from "@/assets/gallery-4.jpg";
+import gallery5 from "@/assets/gallery-5.jpg";
+import gallery6 from "@/assets/gallery-6.jpg";
+import gallery7 from "@/assets/gallery-7.jpg";
 
 const ScrollGallery = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -43,13 +50,13 @@ const ScrollGallery = () => {
 
   // Define different sizes and vertical offsets for variety
   const boxes = [
-    { num: 1, size: 'w-64 h-64', offsetY: 'mt-0', text: 'Creative Vision' },
-    { num: 2, size: 'w-80 h-80', offsetY: 'mt-32', text: 'Brand Stories' },
-    { num: 3, size: 'w-56 h-56', offsetY: 'mt-16', text: 'Digital Content' },
-    { num: 4, size: 'w-72 h-72', offsetY: 'mt-48', text: 'Production Work' },
-    { num: 5, size: 'w-60 h-60', offsetY: 'mt-8', text: 'Video Magic' },
-    { num: 6, size: 'w-96 h-96', offsetY: 'mt-40', text: 'Marketing Impact' },
-    { num: 7, size: 'w-52 h-52', offsetY: 'mt-24', text: 'Bold Ideas' },
+    { num: 1, size: 'w-64 h-64', offsetY: 'mt-0', text: 'Creative Vision', image: gallery1 },
+    { num: 2, size: 'w-80 h-80', offsetY: 'mt-32', text: 'Brand Stories', image: gallery2 },
+    { num: 3, size: 'w-56 h-56', offsetY: 'mt-16', text: 'Digital Content', image: gallery3 },
+    { num: 4, size: 'w-72 h-72', offsetY: 'mt-48', text: 'Production Work', image: gallery4 },
+    { num: 5, size: 'w-60 h-60', offsetY: 'mt-8', text: 'Video Magic', image: gallery5 },
+    { num: 6, size: 'w-96 h-96', offsetY: 'mt-40', text: 'Marketing Impact', image: gallery6 },
+    { num: 7, size: 'w-52 h-52', offsetY: 'mt-24', text: 'Bold Ideas', image: gallery7 },
   ];
 
   return (
@@ -61,12 +68,16 @@ const ScrollGallery = () => {
           className="flex gap-[200px] transition-transform duration-100 ease-out w-full"
           style={{ transform: `translateX(${translateX}%)` }}
         >
-          {boxes.map(({ num, size, offsetY, text }) => (
+          {boxes.map(({ num, size, offsetY, text, image }) => (
             <div key={num} className={`flex-shrink-0 ${offsetY}`}>
               <div
-                className={`${size} bg-gray-800 border-2 border-gray-600 rounded-lg flex items-center justify-center mb-4`}
+                className={`${size} rounded-lg overflow-hidden mb-4 shadow-lg`}
               >
-                <span className="text-6xl font-bold text-gray-400">{num}</span>
+                <img 
+                  src={image} 
+                  alt={text}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <p className="text-center text-sm font-thin tracking-wide text-gray-400">
                 {text}
