@@ -48,15 +48,15 @@ const MissionStatement = () => {
             <span
               key={index}
               ref={(el) => (lineRefs.current[index] = el)}
-              className="block mb-2 relative overflow-hidden"
+              className="block mb-2 relative"
             >
-              <span className="relative inline-block">
+              <span className="relative inline-block overflow-hidden">
                 <span className="relative z-0 pb-2 inline-block">{line}</span>
                 {/* Blue reveal box */}
                 <span 
                   className={`absolute inset-0 bg-primary transition-transform duration-1000 ease-out ${
                     visibleLines.includes(index)
-                      ? 'translate-x-[120%]'
+                      ? 'translate-x-[200%]'
                       : '-translate-x-full'
                   }`}
                   style={{
