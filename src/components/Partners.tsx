@@ -60,7 +60,7 @@ const Partners = () => {
                     <img 
                       src={partner.logo} 
                       alt={partner.name}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-contain rounded-lg"
                     />
                   ) : (
                     <span className="text-3xl md:text-4xl font-bold text-muted-foreground">
@@ -79,7 +79,7 @@ const Partners = () => {
                     <img 
                       src={partner.logo} 
                       alt={partner.name}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-contain rounded-lg"
                     />
                   ) : (
                     <span className="text-3xl md:text-4xl font-bold text-muted-foreground">
