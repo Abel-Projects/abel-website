@@ -20,9 +20,7 @@ const About = () => {
             <div className="space-y-4 text-lg text-body-text leading-relaxed">
               <p>I've been immersed in the world of marketing and strategic partnerships for several years now, and I’ve had the privilege of working closely with industry leaders. My focus today is on helping brands, entrepreneurs, and influencers elevate their presence. I’m passionate about using my skills in partnerships to amplify the voices of those who are doing good things for others.</p>
               <p>I specialize in driving social media growth, producing content that resonates with audiences in an authentic way. My experience spans across writing engaging social posts, SEO ranking blogs, email campaigns and more.</p>
-              <p>
-                My approach combines creative vision with data-driven strategy, ensuring every piece of content serves a purpose and tells a compelling story.
-              </p>
+              
             </div>
           </div>
 
