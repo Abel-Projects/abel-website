@@ -11,7 +11,7 @@ const Partners = () => {
   ];
 
   return (
-    <section className="relative py-32 bg-background overflow-hidden">
+    <section className="relative py-32 bg-background overflow-hidden -mb-32">
       {/* Large handwritten-style "Collabs" text in background */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 z-0">
         <h2 

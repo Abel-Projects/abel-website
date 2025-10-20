@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const Contact = () => {
   return (
-    <section className="py-32 bg-background">
+    <section className="py-32 pt-64 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="text-center mb-16 animate-fade-up">
           <h2 className="text-5xl lg:text-7xl font-bold text-heading mb-6 tracking-tighter">
