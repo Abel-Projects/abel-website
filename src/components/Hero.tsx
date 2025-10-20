@@ -40,7 +40,7 @@ const Hero = () => {
   const loremText = "CONTENT CREATOR • BRAND STORYTELLER • DIGITAL MARKETING • VIDEO PRODUCTION • ";
 
   return (
-    <section className="relative h-[150vh] bg-primary">
+    <section className="relative h-[150vh] bg-background">
       {/* Fixed container for hero content */}
       <div className="sticky top-0 h-screen overflow-hidden">
         
@@ -82,7 +82,7 @@ const Hero = () => {
         >
           <div 
             ref={imageContainerRef}
-            className="relative w-full h-full flex items-center justify-center"
+            className="relative w-full h-full flex items-center justify-center bg-primary p-8"
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => {
