@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SocialSection from "@/components/SocialSection";
 const About = () => {
   return <div className="min-h-screen bg-background">
       <Header />
@@ -122,6 +123,11 @@ const About = () => {
                 </ul>
               </div>)}
           </div>
+        </div>
+
+        {/* Social Section */}
+        <div className="mt-32">
+          <SocialSection />
         </div>
       </div>
       <Footer />
