@@ -14,7 +14,6 @@ const SocialSection = () => {
     { id: 5, image: "/src/assets/gallery-5.jpg" },
     { id: 6, image: "/src/assets/gallery-6.jpg" },
     { id: 7, image: "/src/assets/gallery-7.jpg" },
-    { id: 8, image: "/src/assets/gallery-8.jpg" },
     // Add more images here as needed
   ];
 
