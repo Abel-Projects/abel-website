@@ -21,7 +21,7 @@ const About = () => {
               <p>
                 Since college, I've had the privilege of leveling up the brands of top-level companies, celebrities, and CEOs. My journey has been defined by a relentless pursuit of excellence in content creation and brand storytelling.
               </p>
-              <p>I  specialize in driving social media growth, producing content that resonates with audiences in an authentic way. My experience spans across writing engaging social posts, SEO ranking blogs, email campaigns and more.</p>
+              <p>I specialize in driving social media growth, producing content that resonates with audiences in an authentic way. My experience spans across writing engaging social posts, SEO ranking blogs, email campaigns and more.</p>
               <p>
                 My approach combines creative vision with data-driven strategy, ensuring every piece of content serves a purpose and tells a compelling story.
               </p>
