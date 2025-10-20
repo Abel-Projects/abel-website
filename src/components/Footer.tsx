@@ -1,6 +1,6 @@
 import { Linkedin, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
-import amLogo from "@/assets/am-logo-white.png";
+import amLogo from "@/assets/am-logo-white-updated.png";
 
 const Footer = () => {
   return (
