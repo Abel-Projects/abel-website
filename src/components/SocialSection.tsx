@@ -1,81 +1,106 @@
-import { Instagram } from "lucide-react";
+import { Download, X } from "lucide-react";
+import { useState } from "react";
 
 const SocialSection = () => {
-  // Sample Instagram posts - replace with actual Instagram feed integration
-  const instagramPosts = [
+  const [selectedImage, setSelectedImage] = useState<{ image: string; id: number } | null>(null);
+
+  const galleryImages = [
     {
       id: 1,
       image: "/src/assets/gallery-1.jpg",
-      link: "https://instagram.com/abelmesfinofficial"
     },
     {
       id: 2,
       image: "/src/assets/gallery-2.jpg",
-      link: "https://instagram.com/abelmesfinofficial"
     },
     {
       id: 3,
       image: "/src/assets/gallery-3.jpg",
-      link: "https://instagram.com/abelmesfinofficial"
     },
     {
       id: 4,
       image: "/src/assets/gallery-4.jpg",
-      link: "https://instagram.com/abelmesfinofficial"
     },
     {
       id: 5,
       image: "/src/assets/gallery-5.jpg",
-      link: "https://instagram.com/abelmesfinofficial"
     },
     {
       id: 6,
       image: "/src/assets/gallery-6.jpg",
-      link: "https://instagram.com/abelmesfinofficial"
     }
   ];
 
+  const handleDownload = (imageUrl: string, imageId: number) => {
+    const link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = `abel-mesfin-${imageId}.jpg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
-    <div className="animate-fade-up">
-      <div className="flex items-center justify-between mb-12">
-        <h2 className="text-4xl font-bold text-heading">
-          Gallery
-        </h2>
-        <a 
-          href="https://instagram.com/abelmesfinofficial" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
+    <>
+      <div className="animate-fade-up">
+        <div className="mb-12">
+          <h2 className="text-4xl font-bold text-heading">
+            Gallery
+          </h2>
+        </div>
+        
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {galleryImages.map((item, index) => (
+            <button
+              key={item.id}
+              onClick={() => setSelectedImage(item)}
+              className="group relative aspect-square overflow-hidden rounded-xl border border-card-border bg-card/20 cursor-pointer"
+              style={{
+                animationDelay: `${index * 0.05}s`
+              }}
+            >
+              <img 
+                src={item.image}
+                alt={`Gallery image ${item.id}`}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Image Preview Overlay */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 animate-fade-in"
+          onClick={() => setSelectedImage(null)}
         >
-          <Instagram className="w-6 h-6" />
-          <span className="font-semibold">@abelmesfinofficial</span>
-        </a>
-      </div>
-      
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {instagramPosts.map((post, index) => (
-          <a
-            key={post.id}
-            href={post.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative aspect-square overflow-hidden rounded-xl border border-card-border bg-card/20"
-            style={{
-              animationDelay: `${index * 0.05}s`
-            }}
+          <button
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-4 right-4 text-white hover:text-white/80 transition-colors"
           >
+            <X className="w-8 h-8" />
+          </button>
+          
+          <div className="relative max-w-5xl max-h-[90vh]" onClick={(e) => e.stopPropagation()}>
             <img 
-              src={post.image}
-              alt={`Instagram post ${post.id}`}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              src={selectedImage.image}
+              alt={`Gallery image ${selectedImage.id}`}
+              className="max-w-full max-h-[85vh] object-contain rounded-lg"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-              <Instagram className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
+            
+            <button
+              onClick={() => handleDownload(selectedImage.image, selectedImage.id)}
+              className="absolute bottom-4 right-4 bg-primary text-primary-foreground px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-primary/90 transition-colors"
+            >
+              <Download className="w-5 h-5" />
+              Download
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
