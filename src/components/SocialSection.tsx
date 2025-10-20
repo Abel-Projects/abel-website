@@ -13,6 +13,7 @@ const SocialSection = () => {
     { id: 4, image: "/src/assets/gallery-4.jpg" },
     { id: 5, image: "/src/assets/gallery-5.jpg" },
     { id: 6, image: "/src/assets/gallery-6.jpg" },
+    { id: 7, image: "/src/assets/gallery-7.jpg" },
     // Add more images here as needed
   ];
 
