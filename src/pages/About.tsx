@@ -32,7 +32,7 @@ const About = () => {
             </div>
           </div>
 
-          <div className="animate-fade-up" style={{ animationDelay: '0.2s' }}>
+          <div className="blob-animate animate-fade-up" style={{ animationDelay: '0.2s' }}>
             <div className="bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-3xl h-[500px] border border-card-border" />
           </div>
         </div>

@@ -181,6 +181,29 @@
     }
   }
   
+  @keyframes blob-morph {
+    0% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      transform: rotate(0deg);
+    }
+    25% {
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+      transform: rotate(90deg);
+    }
+    50% {
+      border-radius: 55% 45% 45% 55% / 40% 50% 50% 60%;
+      transform: rotate(180deg);
+    }
+    75% {
+      border-radius: 40% 60% 50% 50% / 55% 45% 55% 45%;
+      transform: rotate(270deg);
+    }
+    100% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      transform: rotate(360deg);
+    }
+  }
+  
   /* Apple-style Component Animations */
   .animate-fade-up {
     animation: fade-up 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -237,6 +260,17 @@
   .apple-blur {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+  }
+  
+  .blob-animate {
+    animation: blob-morph 15s ease-in-out infinite;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .blob-animate {
+      animation: none;
+    }
   }
 }
 
