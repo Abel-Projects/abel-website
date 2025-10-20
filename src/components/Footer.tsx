@@ -12,7 +12,7 @@ const Footer = () => {
             {/* Brand */}
             <div className="lg:col-span-2 space-y-6">
               <div className="space-y-4">
-                <img src={amLogo} alt="Abel Mesfin" className="h-[78px] w-auto" />
+                <img src={amLogo} alt="Abel Mesfin" className="h-[43px] w-auto" />
                 <p className="text-background/70 text-lg leading-relaxed font-light max-w-md">
                   Content marketing expert creating lead-generating campaigns and authentic brand stories for top companies and CEOs.
                 </p>
