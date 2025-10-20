@@ -51,19 +51,14 @@ const MissionStatement = () => {
               ref={(el) => (lineRefs.current[index] = el)}
               className="block mb-2 relative"
             >
-              <span className="relative inline-block overflow-hidden w-full">
+              <span 
+                className={`relative inline-block w-full transition-all duration-1000 ease-out ${
+                  visibleLines.includes(index)
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-8'
+                }`}
+              >
                 <span className="relative z-0 pb-2 block">{line}</span>
-                {/* Blue reveal box */}
-                <span 
-                  className={`absolute inset-0 bg-primary transition-transform duration-[2500ms] ease-out ${
-                    visibleLines.includes(index)
-                      ? 'translate-x-[200%]'
-                      : '-translate-x-full'
-                  }`}
-                  style={{
-                    zIndex: 10
-                  }}
-                />
               </span>
             </span>
           ))}
