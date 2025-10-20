@@ -43,7 +43,7 @@ const MissionStatement = () => {
       className="relative min-h-[150vh] bg-background flex items-center justify-center px-6 py-20"
     >
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-heading leading-tight">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-heading leading-tight">
           {lines.map((line, index) => (
             <span
               key={index}
