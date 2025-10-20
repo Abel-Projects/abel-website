@@ -31,10 +31,9 @@ const MissionStatement = () => {
   }, []);
 
   const lines = [
-    "Born in Denver, bred for hustle.",
-    "Since college, I've had the privilege in",
-    "leveling up the brands of top-level companies,",
-    "celebrities, and CEOs"
+    "Born in Denver, bred for hustle. Since college,",
+    "I've had the privilege in leveling up the brands",
+    "of top-level companies, celebrities, and CEOs"
   ];
 
   return (
@@ -42,8 +41,8 @@ const MissionStatement = () => {
       ref={sectionRef}
       className="relative min-h-[150vh] bg-background flex items-center justify-center px-6 py-20"
     >
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-heading leading-relaxed text-justify">
+      <div className="max-w-6xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-heading leading-relaxed inline-block text-justify" style={{ textAlignLast: 'justify' }}>
           {lines.map((line, index) => (
             <span
               key={index}
