@@ -1,33 +1,30 @@
 import { useEffect, useState, useRef } from "react";
 
 const MissionStatement = () => {
-  const [visibleLines, setVisibleLines] = useState<number[]>([]);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
-  const lineRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-
-    lineRefs.current.forEach((lineRef, index) => {
-      if (lineRef) {
-        const observer = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting) {
-              setVisibleLines((prev) => 
-                prev.includes(index) ? prev : [...prev, index]
-              );
-            }
-          },
-          { threshold: 0.5, rootMargin: '0px' }
-        );
-        observer.observe(lineRef);
-        observers.push(observer);
-      }
-    });
-
-    return () => {
-      observers.forEach((observer) => observer.disconnect());
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      
+      const section = sectionRef.current;
+      const rect = section.getBoundingClientRect();
+      const sectionHeight = section.offsetHeight;
+      const windowHeight = window.innerHeight;
+      
+      // Calculate scroll progress through the section
+      const scrollTop = -rect.top;
+      const scrollRange = sectionHeight - windowHeight;
+      const progress = Math.max(0, Math.min(1, scrollTop / scrollRange));
+      
+      setScrollProgress(progress);
     };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial calculation
+    
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const lines = [
@@ -36,36 +33,43 @@ const MissionStatement = () => {
     "of top-level companies, celebrities, and CEOs"
   ];
 
+  // Calculate opacity for each line based on scroll progress
+  const getLineOpacity = (index: number) => {
+    const lineProgress = scrollProgress * (lines.length + 1);
+    const lineStart = index;
+    const lineEnd = index + 1;
+    
+    if (lineProgress < lineStart) return 0;
+    if (lineProgress > lineEnd) return 1;
+    
+    return lineProgress - lineStart;
+  };
+
   return (
     <section 
       ref={sectionRef}
-      className="relative min-h-[200vh] bg-background"
+      className="relative min-h-[300vh] bg-muted"
     >
       <div className="sticky top-0 h-screen flex items-center justify-center px-6">
-
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-heading leading-relaxed inline-block text-justify" style={{ textAlignLast: 'justify' }}>
-          {lines.map((line, index) => (
-            <span
-              key={index}
-              ref={(el) => (lineRefs.current[index] = el)}
-              className="block mb-2 relative overflow-hidden"
-            >
-              <span 
-                className={`relative inline-block w-full transition-all duration-1000 ease-out ${
-                  visibleLines.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                }`}
+        {/* Video placeholder - replace with video element later */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-700 via-slate-600 to-slate-700" />
+        
+        <div className="relative z-10 max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-relaxed inline-block text-justify" style={{ textAlignLast: 'justify' }}>
+            {lines.map((line, index) => (
+              <span
+                key={index}
+                className="block mb-2"
+                style={{
+                  opacity: getLineOpacity(index),
+                  transition: 'opacity 0.3s ease-out'
+                }}
               >
-                <span 
-                  className="relative z-0 pb-2 block bg-gradient-to-r from-blue-500 via-blue-700 to-cyan-500 bg-clip-text text-transparent"
-                >
-                  {line}
-                </span>
+                {line}
               </span>
-            </span>
-          ))}
-        </h2>
-      </div>
+            ))}
+          </h2>
+        </div>
       </div>
     </section>
   );
