@@ -18,7 +18,7 @@ const MissionStatement = () => {
               );
             }
           },
-          { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
+          { threshold: 0.5, rootMargin: '0px' }
         );
         observer.observe(lineRef);
         observers.push(observer);
@@ -54,13 +54,12 @@ const MissionStatement = () => {
                 <span className="relative z-0 pb-2 inline-block">{line}</span>
                 {/* Blue reveal box */}
                 <span 
-                  className={`absolute inset-0 bg-primary transition-transform duration-1000 ease-out ${
+                  className={`absolute inset-0 bg-primary transition-transform duration-[1800ms] ease-out ${
                     visibleLines.includes(index)
                       ? 'translate-x-[200%]'
                       : '-translate-x-full'
                   }`}
                   style={{
-                    transitionDelay: visibleLines.includes(index) ? `${index * 200}ms` : '0ms',
                     zIndex: 10
                   }}
                 />
