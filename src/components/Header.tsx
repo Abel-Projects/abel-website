@@ -104,7 +104,7 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
                   <img 
                     src={abelLogo} 
                     alt="Abel Mesfin" 
-                    className="h-8 w-auto"
+                    className="h-16 w-auto"
                   />
                 </Link>
                 <button
