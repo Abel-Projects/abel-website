@@ -54,7 +54,7 @@ const MissionStatement = () => {
                 <span className="relative z-0 pb-2 inline-block">{line}</span>
                 {/* Blue reveal box */}
                 <span 
-                  className={`absolute inset-0 bg-primary transition-transform duration-[1800ms] ease-out ${
+                  className={`absolute inset-0 bg-primary transition-transform duration-[2500ms] ease-out ${
                     visibleLines.includes(index)
                       ? 'translate-x-[200%]'
                       : '-translate-x-full'
