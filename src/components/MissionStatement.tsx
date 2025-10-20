@@ -54,13 +54,14 @@ const MissionStatement = () => {
                 <span className="relative z-0 pb-2 inline-block">{line}</span>
                 {/* Blue reveal box */}
                 <span 
-                  className={`absolute inset-0 bg-primary z-10 transition-transform duration-1000 ease-out ${
+                  className={`absolute inset-0 bg-primary transition-all duration-1000 ease-out ${
                     visibleLines.includes(index)
-                      ? 'translate-x-[120%]'
-                      : '-translate-x-full'
+                      ? 'translate-x-[120%] opacity-0'
+                      : '-translate-x-full opacity-100'
                   }`}
                   style={{
-                    transitionDelay: visibleLines.includes(index) ? `${index * 200}ms` : '0ms'
+                    transitionDelay: visibleLines.includes(index) ? `${index * 200}ms` : '0ms',
+                    zIndex: visibleLines.includes(index) ? -1 : 10
                   }}
                 />
               </span>
