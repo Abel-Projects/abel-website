@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const SocialSection = () => {
   const [selectedImage, setSelectedImage] = useState<{ image: string; id: number } | null>(null);
-  const [displayCount, setDisplayCount] = useState(6);
+  const [displayCount, setDisplayCount] = useState(3);
 
   // Add new images to this array over time
   const galleryImages = [
@@ -34,7 +34,7 @@ const SocialSection = () => {
   };
 
   const showLess = () => {
-    setDisplayCount(6);
+    setDisplayCount(3);
   };
 
   return (
@@ -66,7 +66,7 @@ const SocialSection = () => {
           ))}
         </div>
 
-        {(hasMore || displayCount > 6) && (
+        {(hasMore || displayCount > 3) && (
           <div className="flex justify-center gap-4 mt-8">
             {hasMore && (
               <button
@@ -76,7 +76,7 @@ const SocialSection = () => {
                 Load More
               </button>
             )}
-            {displayCount > 6 && (
+            {displayCount > 3 && (
               <button
                 onClick={showLess}
                 className="px-8 py-3 bg-card border border-card-border text-heading rounded-lg hover:bg-card/80 transition-colors font-semibold"
