@@ -54,7 +54,7 @@ const ScrollGallery = () => {
     { num: 2, size: 'w-80 h-80', offsetY: 'mt-32', text: 'Flavor Flav, 2024', image: gallery2 },
     { num: 3, size: 'w-56 h-56', offsetY: 'mt-16', text: 'Daymond John, 2024', image: gallery3 },
     { num: 4, size: 'w-72 h-72', offsetY: 'mt-48', text: 'Black Entrepreneurs Day, 2024', image: gallery4 },
-    { num: 5, size: 'w-60 h-60', offsetY: 'mt-8', text: 'Waka Flocka, 2024', image: gallery5 },
+    { num: 5, size: 'w-60 h-60', offsetY: '', text: 'Waka Flocka, 2024', image: gallery5 },
   ];
 
   return (
