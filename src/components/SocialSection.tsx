@@ -33,6 +33,10 @@ const SocialSection = () => {
     setDisplayCount(prev => Math.min(prev + 6, galleryImages.length));
   };
 
+  const showLess = () => {
+    setDisplayCount(6);
+  };
+
   return (
     <>
       <div className="animate-fade-up">
@@ -62,14 +66,24 @@ const SocialSection = () => {
           ))}
         </div>
 
-        {hasMore && (
-          <div className="flex justify-center mt-8">
-            <button
-              onClick={loadMore}
-              className="px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-semibold"
-            >
-              Load More
-            </button>
+        {(hasMore || displayCount > 6) && (
+          <div className="flex justify-center gap-4 mt-8">
+            {hasMore && (
+              <button
+                onClick={loadMore}
+                className="px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-semibold"
+              >
+                Load More
+              </button>
+            )}
+            {displayCount > 6 && (
+              <button
+                onClick={showLess}
+                className="px-8 py-3 bg-card border border-card-border text-heading rounded-lg hover:bg-card/80 transition-colors font-semibold"
+              >
+                Show Less
+              </button>
+            )}
           </div>
         )}
       </div>
