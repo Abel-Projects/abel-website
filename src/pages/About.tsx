@@ -36,7 +36,8 @@ const About = () => {
             <img 
               src="/src/assets/abel-intro.jpg" 
               alt="Abel Mesfin" 
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover scale-125"
+              style={{ objectPosition: '70% center' }}
             />
           </div>
         </div>
