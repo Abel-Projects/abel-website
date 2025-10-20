@@ -35,9 +35,9 @@ const MissionStatement = () => {
 
   // Calculate opacity for each line based on scroll progress
   const getLineOpacity = (index: number) => {
-    const lineProgress = scrollProgress * (lines.length + 1);
-    const lineStart = index;
-    const lineEnd = index + 1;
+    const lineProgress = scrollProgress * (lines.length * 2);
+    const lineStart = index * 2;
+    const lineEnd = index * 2 + 1;
     
     if (lineProgress < lineStart) return 0;
     if (lineProgress > lineEnd) return 1;
@@ -52,8 +52,8 @@ const MissionStatement = () => {
     >
       <div className="sticky top-0 h-screen flex items-center justify-start px-6">
         {/* Video placeholder - replace with video element later */}
-        <div className="absolute inset-0 bg-heading" />
-        
+        <div className="absolute inset-0" style={{ backgroundColor: '#E3E3E3' }} />
+
         <div className="relative z-10 max-w-6xl mx-auto px-12 w-full">
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-relaxed text-left">
             {lines.map((line, index) => (
