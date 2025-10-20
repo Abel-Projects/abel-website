@@ -39,7 +39,7 @@ const SocialSection = () => {
     <div className="animate-fade-up">
       <div className="flex items-center justify-between mb-12">
         <h2 className="text-4xl font-bold text-heading">
-          Social
+          Gallery
         </h2>
         <a 
           href="https://instagram.com/abelmesfinofficial" 
