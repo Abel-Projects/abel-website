@@ -3,33 +3,21 @@ import { useState } from "react";
 
 const SocialSection = () => {
   const [selectedImage, setSelectedImage] = useState<{ image: string; id: number } | null>(null);
+  const [displayCount, setDisplayCount] = useState(6);
 
+  // Add new images to this array over time
   const galleryImages = [
-    {
-      id: 1,
-      image: "/src/assets/gallery-1.jpg",
-    },
-    {
-      id: 2,
-      image: "/src/assets/gallery-2.jpg",
-    },
-    {
-      id: 3,
-      image: "/src/assets/gallery-3.jpg",
-    },
-    {
-      id: 4,
-      image: "/src/assets/gallery-4.jpg",
-    },
-    {
-      id: 5,
-      image: "/src/assets/gallery-5.jpg",
-    },
-    {
-      id: 6,
-      image: "/src/assets/gallery-6.jpg",
-    }
+    { id: 1, image: "/src/assets/gallery-1.jpg" },
+    { id: 2, image: "/src/assets/gallery-2.jpg" },
+    { id: 3, image: "/src/assets/gallery-3.jpg" },
+    { id: 4, image: "/src/assets/gallery-4.jpg" },
+    { id: 5, image: "/src/assets/gallery-5.jpg" },
+    { id: 6, image: "/src/assets/gallery-6.jpg" },
+    // Add more images here as needed
   ];
+
+  const displayedImages = galleryImages.slice(0, displayCount);
+  const hasMore = displayCount < galleryImages.length;
 
   const handleDownload = (imageUrl: string, imageId: number) => {
     const link = document.createElement('a');
@@ -38,6 +26,10 @@ const SocialSection = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const loadMore = () => {
+    setDisplayCount(prev => Math.min(prev + 6, galleryImages.length));
   };
 
   return (
@@ -50,7 +42,7 @@ const SocialSection = () => {
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {galleryImages.map((item, index) => (
+          {displayedImages.map((item, index) => (
             <button
               key={item.id}
               onClick={() => setSelectedImage(item)}
@@ -68,6 +60,17 @@ const SocialSection = () => {
             </button>
           ))}
         </div>
+
+        {hasMore && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={loadMore}
+              className="px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-semibold"
+            >
+              Load More
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Image Preview Overlay */}
