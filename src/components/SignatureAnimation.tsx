@@ -8,7 +8,7 @@ const SignatureAnimation = ({ scrollProgress }: SignatureAnimationProps) => {
   const [hasStarted, setHasStarted] = useState(false);
 
   useEffect(() => {
-    if (scrollProgress > 0.05 && !hasStarted) {
+    if (scrollProgress > 0.1 && !hasStarted) {
       setHasStarted(true);
     }
   }, [scrollProgress, hasStarted]);
@@ -16,15 +16,16 @@ const SignatureAnimation = ({ scrollProgress }: SignatureAnimationProps) => {
   // Use exact path length from svgartista.net
   const pathLength = 13545.978515625;
   
-  // Map scroll progress to drawing progress (fully drawn at 50% scroll)
-  const drawProgress = Math.min(scrollProgress * 2, 1);
+  // Delay start and slow down - starts at 10% scroll, fully drawn at 80% scroll
+  const adjustedProgress = Math.max(0, (scrollProgress - 0.1) / 0.7);
+  const drawProgress = Math.min(adjustedProgress, 1);
   const strokeDashoffset = pathLength * (1 - drawProgress);
 
   return (
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[15]">
       <svg
         viewBox="0 0 3069.82 1801.58"
-        className="w-full max-w-3xl h-auto px-8 md:px-12"
+        className="w-full max-w-4xl h-auto px-8 md:px-12"
         style={{
           filter: 'drop-shadow(0 4px 20px rgba(0, 0, 0, 0.15))',
         }}
