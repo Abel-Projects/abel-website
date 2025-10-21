@@ -105,7 +105,15 @@ const Hero = () => {
         </div>
 
         {/* Signature Animation */}
-        <SignatureAnimation />
+        <div 
+          className="absolute inset-0 pointer-events-none z-[15]"
+          style={{
+            transform: `scale(${imageScale}) translateY(${imageY}px)`,
+            transition: 'transform 0.1s ease-out',
+          }}
+        >
+          <SignatureAnimation scrollProgress={scrollProgress} />
+        </div>
 
         {/* Scroll indicator */}
         <div 
