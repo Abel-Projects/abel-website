@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import heroImage from "@/assets/hero-image.avif";
+import SignatureAnimation from "@/components/SignatureAnimation";
 
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -102,6 +103,9 @@ const Hero = () => {
             />
           </div>
         </div>
+
+        {/* Signature Animation */}
+        <SignatureAnimation scrollProgress={scrollProgress} />
 
         {/* Scroll indicator */}
         <div 
