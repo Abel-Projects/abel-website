@@ -16,8 +16,8 @@ const SignatureAnimation = ({ scrollProgress }: SignatureAnimationProps) => {
   // Use exact path length from svgartista.net
   const pathLength = 13545.978515625;
   
-  // Delay start and slow down - starts at 10% scroll, fully drawn at 80% scroll
-  const adjustedProgress = Math.max(0, (scrollProgress - 0.1) / 0.7);
+  // Extended animation - starts at 5% scroll, fully drawn at 120% of viewport scroll
+  const adjustedProgress = Math.max(0, (scrollProgress - 0.05) / 1.15);
   const drawProgress = Math.min(adjustedProgress, 1);
   const strokeDashoffset = pathLength * (1 - drawProgress);
 
