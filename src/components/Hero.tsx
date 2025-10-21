@@ -105,7 +105,7 @@ const Hero = () => {
         </div>
 
         {/* Signature Animation */}
-        <SignatureAnimation scrollProgress={scrollProgress} />
+        <SignatureAnimation />
 
         {/* Scroll indicator */}
         <div 
