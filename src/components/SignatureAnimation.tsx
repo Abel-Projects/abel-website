@@ -4,10 +4,16 @@ const SignatureAnimation = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Trigger animation shortly after component mounts
-    const timer = setTimeout(() => setIsVisible(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
+    const handleScroll = () => {
+      // Start animation when user scrolls past 10% of viewport height
+      if (window.scrollY > window.innerHeight * 0.1 && !isVisible) {
+        setIsVisible(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isVisible]);
 
   return (
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[15]">
