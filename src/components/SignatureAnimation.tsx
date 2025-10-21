@@ -20,14 +20,8 @@ const SignatureAnimation = ({ scrollProgress }: SignatureAnimationProps) => {
   const drawProgress = Math.min(scrollProgress * 2, 1);
   const strokeDashoffset = pathLength * (1 - drawProgress);
 
-  // Fade in as we start scrolling
-  const opacity = hasStarted ? Math.min(scrollProgress * 3, 1) : 0;
-
   return (
-    <div 
-      className="absolute inset-0 flex items-center justify-center pointer-events-none z-[15]"
-      style={{ opacity }}
-    >
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[15]">
       <svg
         viewBox="0 0 3069.82 1801.58"
         className="w-full max-w-3xl h-auto px-8 md:px-12"
