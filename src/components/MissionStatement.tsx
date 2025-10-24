@@ -39,21 +39,47 @@ const MissionStatement = () => {
     "incididunt ut labore et dolore magna aliqua"
   ];
 
-  // Calculate opacity for first text set (fades in, then out)
-  const getFirstTextOpacity = () => {
-    if (scrollProgress < 0.15) return scrollProgress / 0.15; // Fade in
-    if (scrollProgress < 0.3) return 1; // Stay visible
-    if (scrollProgress < 0.4) return 1 - ((scrollProgress - 0.3) / 0.1); // Fade out
-    return 0;
+  // Calculate opacity and transform for first text set (scrolls up and fades out)
+  const getFirstTextStyle = () => {
+    if (scrollProgress < 0.15) {
+      return { opacity: scrollProgress / 0.15, transform: 'translateY(0)' };
+    }
+    if (scrollProgress < 0.3) {
+      return { opacity: 1, transform: 'translateY(0)' };
+    }
+    if (scrollProgress < 0.4) {
+      const fadeProgress = (scrollProgress - 0.3) / 0.1;
+      return { 
+        opacity: 1 - fadeProgress,
+        transform: `translateY(-${fadeProgress * 50}px)`
+      };
+    }
+    return { opacity: 0, transform: 'translateY(-50px)' };
   };
 
-  // Calculate opacity for second text set
-  const getSecondTextOpacity = () => {
-    if (scrollProgress < 0.45) return 0;
-    if (scrollProgress < 0.55) return (scrollProgress - 0.45) / 0.1; // Fade in
-    if (scrollProgress < 0.65) return 1; // Stay visible
-    if (scrollProgress < 0.75) return 1 - ((scrollProgress - 0.65) / 0.1); // Fade out
-    return 0;
+  // Calculate opacity and transform for second text set (fades in from bottom)
+  const getSecondTextStyle = () => {
+    if (scrollProgress < 0.35) {
+      return { opacity: 0, transform: 'translateY(50px)' };
+    }
+    if (scrollProgress < 0.45) {
+      const fadeProgress = (scrollProgress - 0.35) / 0.1;
+      return { 
+        opacity: fadeProgress,
+        transform: `translateY(${(1 - fadeProgress) * 50}px)`
+      };
+    }
+    if (scrollProgress < 0.65) {
+      return { opacity: 1, transform: 'translateY(0)' };
+    }
+    if (scrollProgress < 0.75) {
+      const fadeProgress = (scrollProgress - 0.65) / 0.1;
+      return { 
+        opacity: 1 - fadeProgress,
+        transform: `translateY(-${fadeProgress * 30}px)`
+      };
+    }
+    return { opacity: 0, transform: 'translateY(-30px)' };
   };
 
   // Calculate video opacity (fades to black)
@@ -62,6 +88,9 @@ const MissionStatement = () => {
     if (scrollProgress < 0.85) return 1 - ((scrollProgress - 0.75) / 0.1);
     return 0;
   };
+
+  const firstTextStyle = getFirstTextStyle();
+  const secondTextStyle = getSecondTextStyle();
 
   return (
     <section 
@@ -89,8 +118,9 @@ const MissionStatement = () => {
           <h2 
             className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-relaxed text-left absolute"
             style={{
-              opacity: getFirstTextOpacity(),
-              transition: 'opacity 0.5s ease-out'
+              opacity: firstTextStyle.opacity,
+              transform: firstTextStyle.transform,
+              transition: 'opacity 0.3s ease-out, transform 0.3s ease-out'
             }}
           >
             {firstTextSet.map((line, index) => (
@@ -104,8 +134,9 @@ const MissionStatement = () => {
           <h2 
             className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-relaxed text-left"
             style={{
-              opacity: getSecondTextOpacity(),
-              transition: 'opacity 0.5s ease-out'
+              opacity: secondTextStyle.opacity,
+              transform: secondTextStyle.transform,
+              transition: 'opacity 0.3s ease-out, transform 0.3s ease-out'
             }}
           >
             {secondTextSet.map((line, index) => (
