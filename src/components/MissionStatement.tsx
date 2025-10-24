@@ -39,58 +39,71 @@ const MissionStatement = () => {
     "incididunt ut labore et dolore magna aliqua"
   ];
 
-  // Calculate opacity and transform for first text set (scrolls up and fades out)
-  const getFirstTextStyle = () => {
-    if (scrollProgress < 0.15) {
-      return { opacity: scrollProgress / 0.15, transform: 'translateY(0)' };
-    }
-    if (scrollProgress < 0.3) {
-      return { opacity: 1, transform: 'translateY(0)' };
-    }
-    if (scrollProgress < 0.4) {
-      const fadeProgress = (scrollProgress - 0.3) / 0.1;
+  // Calculate opacity and transform for each line in first text set
+  const getFirstTextLineStyle = (index: number) => {
+    const baseProgress = scrollProgress;
+    const lineDelay = index * 0.03; // Stagger each line
+    
+    // Fade in
+    if (baseProgress < 0.05 + lineDelay) {
+      const fadeIn = (baseProgress - lineDelay) / 0.05;
       return { 
-        opacity: 1 - fadeProgress,
-        transform: `translateY(-${fadeProgress * 50}px)`
+        opacity: Math.max(0, fadeIn),
+        transform: `translateY(${Math.max(0, (1 - fadeIn) * 20)}px)`
       };
     }
-    return { opacity: 0, transform: 'translateY(-50px)' };
+    // Stay visible
+    if (baseProgress < 0.25) {
+      return { opacity: 1, transform: 'translateY(0)' };
+    }
+    // Scroll up and fade out
+    if (baseProgress < 0.35 + lineDelay) {
+      const fadeProgress = (baseProgress - 0.25 - lineDelay) / 0.1;
+      return { 
+        opacity: Math.max(0, 1 - fadeProgress),
+        transform: `translateY(-${fadeProgress * 60}px)`
+      };
+    }
+    return { opacity: 0, transform: 'translateY(-60px)' };
   };
 
-  // Calculate opacity and transform for second text set (fades in from bottom)
-  const getSecondTextStyle = () => {
-    if (scrollProgress < 0.35) {
-      return { opacity: 0, transform: 'translateY(50px)' };
+  // Calculate opacity and transform for each line in second text set
+  const getSecondTextLineStyle = (index: number) => {
+    const lineDelay = index * 0.03; // Stagger each line
+    
+    // Wait before starting
+    if (scrollProgress < 0.30 + lineDelay) {
+      return { opacity: 0, transform: 'translateY(40px)' };
     }
-    if (scrollProgress < 0.45) {
-      const fadeProgress = (scrollProgress - 0.35) / 0.1;
+    // Fade in from bottom
+    if (scrollProgress < 0.40 + lineDelay) {
+      const fadeProgress = (scrollProgress - 0.30 - lineDelay) / 0.1;
       return { 
         opacity: fadeProgress,
-        transform: `translateY(${(1 - fadeProgress) * 50}px)`
+        transform: `translateY(${(1 - fadeProgress) * 40}px)`
       };
     }
-    if (scrollProgress < 0.65) {
+    // Stay visible
+    if (scrollProgress < 0.60) {
       return { opacity: 1, transform: 'translateY(0)' };
     }
-    if (scrollProgress < 0.75) {
-      const fadeProgress = (scrollProgress - 0.65) / 0.1;
+    // Scroll up and fade out
+    if (scrollProgress < 0.70 + lineDelay) {
+      const fadeProgress = (scrollProgress - 0.60 - lineDelay) / 0.1;
       return { 
-        opacity: 1 - fadeProgress,
-        transform: `translateY(-${fadeProgress * 30}px)`
+        opacity: Math.max(0, 1 - fadeProgress),
+        transform: `translateY(-${fadeProgress * 40}px)`
       };
     }
-    return { opacity: 0, transform: 'translateY(-30px)' };
+    return { opacity: 0, transform: 'translateY(-40px)' };
   };
 
   // Calculate video opacity (fades to black)
   const getVideoOpacity = () => {
-    if (scrollProgress < 0.75) return 1;
-    if (scrollProgress < 0.85) return 1 - ((scrollProgress - 0.75) / 0.1);
+    if (scrollProgress < 0.70) return 1;
+    if (scrollProgress < 0.85) return 1 - ((scrollProgress - 0.70) / 0.15);
     return 0;
   };
-
-  const firstTextStyle = getFirstTextStyle();
-  const secondTextStyle = getSecondTextStyle();
 
   return (
     <section 
@@ -115,36 +128,44 @@ const MissionStatement = () => {
 
         <div className="relative z-10 max-w-6xl mx-auto px-12 w-full">
           {/* First Text Set */}
-          <h2 
-            className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-relaxed text-left absolute"
-            style={{
-              opacity: firstTextStyle.opacity,
-              transform: firstTextStyle.transform,
-              transition: 'opacity 0.3s ease-out, transform 0.3s ease-out'
-            }}
-          >
-            {firstTextSet.map((line, index) => (
-              <span key={index} className="block mb-2">
-                {line}
-              </span>
-            ))}
-          </h2>
+          <div className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-relaxed text-left absolute">
+            {firstTextSet.map((line, index) => {
+              const style = getFirstTextLineStyle(index);
+              return (
+                <span 
+                  key={index} 
+                  className="block mb-2"
+                  style={{
+                    opacity: style.opacity,
+                    transform: style.transform,
+                    transition: 'opacity 0.3s ease-out, transform 0.3s ease-out'
+                  }}
+                >
+                  {line}
+                </span>
+              );
+            })}
+          </div>
 
           {/* Second Text Set */}
-          <h2 
-            className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-relaxed text-left"
-            style={{
-              opacity: secondTextStyle.opacity,
-              transform: secondTextStyle.transform,
-              transition: 'opacity 0.3s ease-out, transform 0.3s ease-out'
-            }}
-          >
-            {secondTextSet.map((line, index) => (
-              <span key={index} className="block mb-2">
-                {line}
-              </span>
-            ))}
-          </h2>
+          <div className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-relaxed text-left">
+            {secondTextSet.map((line, index) => {
+              const style = getSecondTextLineStyle(index);
+              return (
+                <span 
+                  key={index} 
+                  className="block mb-2"
+                  style={{
+                    opacity: style.opacity,
+                    transform: style.transform,
+                    transition: 'opacity 0.3s ease-out, transform 0.3s ease-out'
+                  }}
+                >
+                  {line}
+                </span>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
