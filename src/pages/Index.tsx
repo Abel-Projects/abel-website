@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import MissionStatement from "@/components/MissionStatement";
+import AppleTVSection from "@/components/AppleTVSection";
 import ScrollGallery from "@/components/ScrollGallery";
 import Partners from "@/components/Partners";
 import Contact from "@/components/Contact";
@@ -21,6 +22,9 @@ const Index = () => {
           </section>
           <section className="snap-section min-h-screen">
             <MissionStatement />
+          </section>
+          <section className="snap-section min-h-screen">
+            <AppleTVSection />
           </section>
           <ScrollGallery />
           <section className="snap-section">
