@@ -41,7 +41,7 @@ const SignatureAnimation = ({ scrollProgress }: SignatureAnimationProps) => {
           style={{
             strokeDasharray: pathLength,
             strokeDashoffset: strokeDashoffset,
-            transition: 'stroke-dashoffset 0.1s linear',
+            transition: 'stroke-dashoffset 0.1s ease-out',
           }}
         />
       </svg>
