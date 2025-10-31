@@ -27,18 +27,19 @@ const Hero = () => {
     setMousePosition({ x, y });
   };
 
-  // Two-stage scroll effect: shrink first, then scroll
-  // Stage 1 (0-100vh): Shrink animation while page stays in place
-  // Stage 2 (100vh+): Normal page scroll
-  const shrinkProgress = Math.min(scrollY / (window.innerHeight * 0.8), 1); // Shrink happens in first 80vh
-  const scrollProgress = Math.max(0, (scrollY - window.innerHeight * 0.8) / (window.innerHeight * 0.2));
+  // Two-stage scroll: shrink in place first, then allow page scroll
+  const shrinkThreshold = window.innerHeight * 1; // Shrink happens in first 100vh
+  const shrinkProgress = Math.min(scrollY / shrinkThreshold, 1);
   
-  const imageScale = 1 - shrinkProgress * 0.6; // Shrinks to 40%
-  const imageOpacity = 1 - shrinkProgress * 0.8; // Fades out during shrink
-  const imageY = scrollProgress * 100; // Only moves after shrink is done
-  const borderOpacity = 1 - shrinkProgress * 0.5; // Border fades during shrink
+  // Only start fading/moving after shrink is complete
+  const fadeProgress = Math.max(0, (scrollY - shrinkThreshold) / (window.innerHeight * 0.5));
+  
+  const imageScale = 1 - shrinkProgress * 0.65; // Shrinks to 35%
+  const imageOpacity = shrinkProgress < 1 ? 1 : 1 - fadeProgress; // Stay visible during shrink
+  const imageY = 0; // No vertical movement
+  const signatureOpacity = shrinkProgress < 1 ? 1 - shrinkProgress * 0.3 : 1 - fadeProgress;
 
-  // Calculate 3D tilt based on mouse position (reduced by 20%)
+  // Calculate 3D tilt based on mouse position
   const rotateX = isHovering ? mousePosition.y * 8 : 0;
   const rotateY = isHovering ? mousePosition.x * -8 : 0;
 
@@ -112,17 +113,18 @@ const Hero = () => {
         <div 
           className="absolute inset-0 pointer-events-none z-[15]"
           style={{
-            transform: `scale(${imageScale}) translateY(${imageY}px)`,
-            transition: 'transform 0.1s ease-out',
+            transform: `scale(${imageScale})`,
+            opacity: signatureOpacity,
+            transition: 'transform 0.1s ease-out, opacity 0.1s ease-out',
           }}
         >
-          <SignatureAnimation scrollProgress={scrollProgress} />
+          <SignatureAnimation scrollProgress={shrinkProgress} />
         </div>
 
         {/* Scroll indicator */}
         <div 
           className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white text-sm z-20 animate-bounce"
-          style={{ opacity: 1 - scrollProgress * 2 }}
+          style={{ opacity: 1 - shrinkProgress * 2 }}
         >
           <div className="flex flex-col items-center gap-2">
             <span>Scroll to explore</span>
