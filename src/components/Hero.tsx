@@ -27,12 +27,16 @@ const Hero = () => {
     setMousePosition({ x, y });
   };
 
-  // Calculate scroll-based transformations
-  const scrollProgress = Math.min(scrollY / window.innerHeight, 1);
-  const imageScale = 1 - scrollProgress * 0.5; // Shrinks to 50%
-  const imageOpacity = 1 - scrollProgress * 0.7; // Fades out
-  const imageY = scrollProgress * 100; // Moves up
-  const borderOpacity = 1 - scrollProgress * 0.3; // Border fades slightly
+  // Two-stage scroll effect: shrink first, then scroll
+  // Stage 1 (0-100vh): Shrink animation while page stays in place
+  // Stage 2 (100vh+): Normal page scroll
+  const shrinkProgress = Math.min(scrollY / (window.innerHeight * 0.8), 1); // Shrink happens in first 80vh
+  const scrollProgress = Math.max(0, (scrollY - window.innerHeight * 0.8) / (window.innerHeight * 0.2));
+  
+  const imageScale = 1 - shrinkProgress * 0.6; // Shrinks to 40%
+  const imageOpacity = 1 - shrinkProgress * 0.8; // Fades out during shrink
+  const imageY = scrollProgress * 100; // Only moves after shrink is done
+  const borderOpacity = 1 - shrinkProgress * 0.5; // Border fades during shrink
 
   // Calculate 3D tilt based on mouse position (reduced by 20%)
   const rotateX = isHovering ? mousePosition.y * 8 : 0;
