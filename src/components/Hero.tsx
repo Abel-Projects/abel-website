@@ -100,13 +100,16 @@ const Hero = () => {
               transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
               transition: isHovering ? 'transform 0.1s ease-out' : 'transform 0.5s ease-out',
             }}
-          >
-            {/* Hero Image */}
-            <img
-              src={heroImage}
-              alt="Abel Mesfin"
-              className="w-auto h-full max-h-screen object-contain mx-auto relative z-10"
-            />
+            >
+              {/* White background container */}
+              <div className="absolute inset-0 bg-background z-0" />
+              
+              {/* Hero Image */}
+              <img
+                src={heroImage}
+                alt="Abel Mesfin"
+                className="w-auto h-full max-h-screen object-contain mx-auto relative z-10"
+              />
           </div>
         </div>
 
