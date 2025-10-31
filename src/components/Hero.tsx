@@ -114,9 +114,8 @@ const Hero = () => {
         <div 
           className="absolute inset-0 pointer-events-none z-[15]"
           style={{
-            transform: `scale(${imageScale})`,
             opacity: signatureOpacity,
-            transition: 'transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+            transition: 'opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
           }}
         >
           <SignatureAnimation scrollProgress={shrinkProgress} />
