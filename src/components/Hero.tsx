@@ -27,17 +27,18 @@ const Hero = () => {
     setMousePosition({ x, y });
   };
 
-  // Two-stage scroll: shrink in place first, then allow page scroll
+  // Three-stage scroll: shrink, buffer, then allow page scroll
   const shrinkThreshold = window.innerHeight * 1; // Shrink happens in first 100vh
+  const bufferThreshold = window.innerHeight * 1.3; // 30vh buffer after shrink
   const shrinkProgress = Math.min(scrollY / shrinkThreshold, 1);
   
-  // Only start fading/moving after shrink is complete
-  const fadeProgress = Math.max(0, (scrollY - shrinkThreshold) / (window.innerHeight * 0.5));
+  // Only start fading/moving after buffer zone
+  const fadeProgress = Math.max(0, (scrollY - bufferThreshold) / (window.innerHeight * 0.5));
   
   const imageScale = 1 - shrinkProgress * 0.65; // Shrinks to 35%
-  const imageOpacity = shrinkProgress < 1 ? 1 : 1 - fadeProgress; // Stay visible during shrink
+  const imageOpacity = scrollY < bufferThreshold ? 1 : 1 - fadeProgress; // Stay visible during shrink and buffer
   const imageY = 0; // No vertical movement
-  const signatureOpacity = shrinkProgress < 1 ? 1 - shrinkProgress * 0.3 : 1 - fadeProgress;
+  const signatureOpacity = scrollY < bufferThreshold ? 1 - shrinkProgress * 0.2 : 1 - fadeProgress;
 
   // Calculate 3D tilt based on mouse position
   const rotateX = isHovering ? mousePosition.y * 8 : 0;
@@ -115,7 +116,7 @@ const Hero = () => {
           style={{
             transform: `scale(${imageScale})`,
             opacity: signatureOpacity,
-            transition: 'transform 0.1s ease-out, opacity 0.1s ease-out',
+            transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           }}
         >
           <SignatureAnimation scrollProgress={shrinkProgress} />
