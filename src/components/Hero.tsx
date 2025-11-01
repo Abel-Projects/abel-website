@@ -54,7 +54,7 @@ const Hero = () => {
       <div className="sticky top-0 h-screen overflow-hidden">
         
         {/* Scrolling Background Text */}
-        <div className="absolute inset-0 flex flex-col justify-center gap-12 pointer-events-none overflow-hidden opacity-10">
+        <div className="absolute inset-0 flex flex-col justify-center pointer-events-none overflow-hidden opacity-10" style={{ gap: '1rem' }}>
           {/* First line - scrolls left */}
           <div className="whitespace-nowrap">
             <div className="inline-block animate-scroll-left">
