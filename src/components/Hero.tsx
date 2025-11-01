@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import heroImage from "@/assets/hero-image.avif";
 import SignatureAnimation from "@/components/SignatureAnimation";
+import { ChevronDown } from "lucide-react";
 
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -39,6 +40,7 @@ const Hero = () => {
   const imageOpacity = scrollY < bufferThreshold ? 1 : 1 - fadeProgress; // Stay visible during shrink and buffer
   const imageY = 0; // No vertical movement
   const signatureOpacity = scrollY < bufferThreshold ? 1 - shrinkProgress * 0.2 : 1 - fadeProgress;
+  const grayscaleFilter = shrinkProgress; // Gradually turns to grayscale as it shrinks (0 to 1)
 
   // Calculate 3D tilt based on mouse position
   const rotateX = isHovering ? mousePosition.y * 8 : 0;
@@ -56,10 +58,10 @@ const Hero = () => {
           {/* First line - scrolls left */}
           <div className="whitespace-nowrap">
             <div className="inline-block animate-scroll-left">
-              <span className="text-8xl font-bold text-heading">
+              <span className="text-8xl font-scroll font-black text-heading">
                 {loremText.repeat(3)}
               </span>
-              <span className="text-8xl font-bold text-heading">
+              <span className="text-8xl font-scroll font-black text-heading">
                 {loremText.repeat(3)}
               </span>
             </div>
@@ -68,10 +70,10 @@ const Hero = () => {
           {/* Second line - scrolls right */}
           <div className="whitespace-nowrap">
             <div className="inline-block animate-scroll-right">
-              <span className="text-8xl font-bold text-heading">
+              <span className="text-8xl font-scroll font-medium text-heading">
                 {loremText.repeat(3)}
               </span>
-              <span className="text-8xl font-bold text-heading">
+              <span className="text-8xl font-scroll font-medium text-heading">
                 {loremText.repeat(3)}
               </span>
             </div>
@@ -109,6 +111,10 @@ const Hero = () => {
                 src={heroImage}
                 alt="Abel Mesfin"
                 className="w-auto h-full max-h-screen object-contain mx-auto relative z-10"
+                style={{
+                  filter: `grayscale(${grayscaleFilter * 100}%)`,
+                  transition: 'filter 0.1s ease-out',
+                }}
               />
           </div>
         </div>
@@ -125,12 +131,25 @@ const Hero = () => {
 
         {/* Scroll indicator */}
         <div 
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white text-sm z-20 animate-bounce"
+          className="absolute bottom-12 left-0 right-0 flex justify-center text-white text-sm z-20 animate-bounce"
           style={{ opacity: 1 - shrinkProgress * 2 }}
         >
           <div className="flex flex-col items-center gap-2">
-            <span>Scroll to explore</span>
-            <div className="w-px h-12 bg-white animate-pulse" />
+            <span 
+              className="font-menu font-medium"
+              style={{ 
+                textShadow: '0 0 40px rgba(0, 0, 0, 0.15), 0 0 80px rgba(0, 0, 0, 0.1)' 
+              }}
+            >
+              Scroll to explore
+            </span>
+            <ChevronDown 
+              className="w-4 h-8 text-white animate-pulse" 
+              strokeWidth={1.5}
+              style={{ 
+                filter: 'drop-shadow(0 0 20px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 40px rgba(0, 0, 0, 0.1))'
+              }}
+            />
           </div>
         </div>
       </div>
