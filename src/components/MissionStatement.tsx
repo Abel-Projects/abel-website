@@ -347,10 +347,11 @@ const MissionStatement = () => {
                   fontFamily: 'Gotham, sans-serif',
                   fontWeight: blockIndex === 0 ? 700 : 500, // Bold for first block, Medium for rest
                   fontSize: blockIndex === 0 
-                    ? 'clamp(2.415rem, 6.44vw, 6.44rem)' 
-                    : 'clamp(1.2075rem, 3.22vw, 3.22rem)', // Half size for subsequent blocks
+                    ? 'clamp(2.1rem, 5.6vw, 5.6rem)' 
+                    : 'clamp(1.2075rem, 3.22vw, 3.22rem)', // Reduced size for first block to compensate for uppercase
                   lineHeight: '1.1',
                   letterSpacing: '-0.02em',
+                  textTransform: blockIndex === 0 ? 'uppercase' : 'none',
                   paddingLeft: `${baseX}px`,
                   paddingRight: '24px',
                   maxWidth: `calc(100vw - ${baseX}px - 48px)`,
@@ -361,7 +362,14 @@ const MissionStatement = () => {
                 }}
               >
                 {block.map((line, lineIndex) => (
-                  <div key={lineIndex} style={{ margin: 0, padding: 0 }}>
+                  <div 
+                    key={lineIndex} 
+                    style={{ 
+                      margin: 0, 
+                      padding: 0,
+                      fontWeight: (blockIndex === 0 && lineIndex === 1) ? 500 : (blockIndex === 0 ? 700 : 500)
+                    }}
+                  >
                     {line}
                   </div>
                 ))}
