@@ -46,28 +46,39 @@ const Portfolio = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-32">
-        {/* Hero Section with Parallax Effect */}
-        <div 
-          className="mb-32 text-center"
-          style={{
-            transform: `translateY(${scrollY * 0.1}px)`,
-            transition: 'transform 0.1s ease-out'
-          }}
-        >
-          <p className="text-sm text-muted-text font-semibold tracking-wide uppercase mb-4 animate-fade-in">
-            Best in Class
-          </p>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-heading mb-8 leading-tight">
-            <span className="block animate-fade-up" style={{ animationDelay: '0.1s' }}>MARKETER</span>
-            <span className="block animate-fade-up" style={{ animationDelay: '0.2s' }}>Storyteller</span>
-            <span className="block animate-fade-up" style={{ animationDelay: '0.3s' }}>BRAND PARTNER</span>
-          </h1>
-          <p className="text-2xl lg:text-3xl text-body-text font-light animate-fade-up" style={{ animationDelay: '0.4s' }}>
-            Dream Big, I'll Handle The Execution
-          </p>
+      {/* Full Viewport Section */}
+      <div className="h-screen w-full flex items-center justify-center">
+        <div className="flex flex-col items-center justify-center w-full">
+          <div className="flex flex-col gap-[0.5vh]">
+            <div 
+              className="text-[1.5vw] font-normal uppercase tracking-[-0.02em] text-black mb-0"
+              style={{ marginLeft: 'calc(7.9em - 175px)', fontFamily: 'Gotham, sans-serif', fontWeight: 300 }}
+            >
+              BEST IN CLASS
+            </div>
+            <div 
+              className="text-[9vw] font-black uppercase tracking-[-0.06em] leading-[0.8] text-black"
+              style={{ marginLeft: 'calc(1.16em - 100px)', fontFamily: 'Gotham, sans-serif', fontWeight: 500 }}
+            >
+              MARKETER
+            </div>
+            <div 
+              className="text-[9vw] font-black uppercase tracking-[-0.06em] leading-[0.8] text-black"
+              style={{ marginLeft: 'calc(3em - 100px)', fontFamily: 'Gotham, sans-serif', fontWeight: 500 }}
+            >
+              STORYTELLER
+            </div>
+            <div 
+              className="text-[9vw] font-black uppercase tracking-[-0.06em] leading-[0.8] text-black"
+              style={{ marginLeft: 'calc(0.89em - 100px)', fontFamily: 'Gotham, sans-serif', fontWeight: 500 }}
+            >
+              BRAND PARTNER
+            </div>
+          </div>
         </div>
+      </div>
 
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-32">
         {/* Commercials Section with Stagger Animation */}
         <div className="mb-32">
           <h2 className="text-5xl font-bold text-heading mb-16 animate-fade-up hover:scale-105 transition-transform duration-300">
