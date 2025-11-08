@@ -59,7 +59,7 @@ const ScrollGallery = () => {
 
   return (
     // Container with extra height to create scroll distance - exclude from snap
-    <div ref={containerRef} className="relative h-[400vh] bg-background no-snap">
+    <div ref={containerRef} className="relative h-[400vh] bg-black no-snap">
       {/* Sticky container that pins to viewport */}
       <div className="sticky top-0 h-screen overflow-hidden flex items-center">
         <div 
@@ -77,7 +77,7 @@ const ScrollGallery = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="text-center text-sm font-thin tracking-wide text-gray-400">
+              <p className="text-center text-sm font-thin tracking-wide text-white">
                 {text}
               </p>
             </div>
