@@ -1,5 +1,4 @@
 import { Mail, Share2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const Contact = () => {
   return (
@@ -10,8 +9,7 @@ const Contact = () => {
             Let's Create Together
           </h2>
           <p className="text-xl lg:text-2xl text-body-text font-light max-w-3xl mx-auto">
-            Ready to elevate your brand and tell stories that convert? 
-            Let's discuss how we can work together.
+            Ready to elevate your brand and discuss how we can work together?
           </p>
         </div>
 
@@ -72,19 +70,6 @@ const Contact = () => {
               </a>
             </div>
           </div>
-        </div>
-
-        {/* CTA Button */}
-        <div className="text-center mt-16 animate-fade-up" style={{ animationDelay: '0.3s' }}>
-          <Button 
-            asChild
-            size="lg" 
-            className="bg-primary text-primary-foreground hover:bg-primary/90 px-12 py-6 text-xl font-semibold rounded-full"
-          >
-            <a href="mailto:abelgmesfin@gmail.com">
-              Start a Conversation
-            </a>
-          </Button>
         </div>
       </div>
     </section>
