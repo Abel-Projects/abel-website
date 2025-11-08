@@ -87,6 +87,7 @@ const Partners = () => {
   // Smooth animation using requestAnimationFrame
   useEffect(() => {
     let lastTime = performance.now();
+    let lastDirection = scrollDirection;
     
     const animate = (currentTime: number) => {
       const deltaTime = (currentTime - lastTime) / 1000; // Convert to seconds
@@ -96,16 +97,20 @@ const Partners = () => {
       const direction = scrollDirection === 'up' ? -1 : 1;
       const increment = (deltaTime / speed) * direction;
       
-      progressRef.current = progressRef.current + increment;
+      // Check if direction changed
+      const directionChanged = lastDirection !== scrollDirection;
+      lastDirection = scrollDirection;
       
-      // Handle wrapping for seamless loop
-      if (progressRef.current >= 1) {
-        progressRef.current = progressRef.current - 1;
-      } else if (progressRef.current < 0) {
-        progressRef.current = progressRef.current + 1;
+      // If direction changed, don't add increment this frame to prevent jump
+      if (!directionChanged) {
+        progressRef.current = progressRef.current + increment;
       }
       
-      setAnimationProgress(progressRef.current);
+      // Keep progress continuous - let it grow/shrink without bounds
+      // Use modulo only when calculating the displayed progress for seamless loop
+      const displayProgress = ((progressRef.current % 1) + 1) % 1;
+      
+      setAnimationProgress(displayProgress);
       animationRef.current = requestAnimationFrame(animate);
     };
 
@@ -162,7 +167,6 @@ const Partners = () => {
               style={{ 
                 width: 'max-content',
                 transform: `translateX(${-50 * animationProgress}%)`,
-                transition: 'transform 0.2s ease-out',
                 willChange: 'transform'
               }}
             >
