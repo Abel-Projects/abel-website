@@ -3,9 +3,14 @@ import { useEffect, useState, useRef } from "react";
 const Partners = () => {
   const [scrollSpeed, setScrollSpeed] = useState(80); // Base animation duration in seconds (slower = longer duration)
   const [scrollDelta, setScrollDelta] = useState(0);
+  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
+  const [animationProgress, setAnimationProgress] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const animationRef = useRef<number | null>(null);
   const lastScrollY = useRef(0);
   const isInView = useRef(false);
+  const lastDirection = useRef<'up' | 'down'>('down');
+  const progressRef = useRef(0);
 
   const partners = [
     { id: 1, logo: 'https://img.logo.dev/walmart.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Walmart' },
@@ -48,44 +53,27 @@ const Partners = () => {
       isInView.current = inView;
 
       if (inView && Math.abs(delta) > 0) {
-        setScrollSpeed((prevSpeed) => {
-          // Calculate speed multiplier based on scroll delta
-          // Positive delta (scrolling down) speeds up, negative (scrolling up) slows down
-          // Map scroll delta to speed: larger delta = faster animation (lower duration)
-          const speedMultiplier = Math.abs(delta) / 20; // Less aggressive: divided by 20 instead of 10
-          const minSpeed = 50; // Fastest when scrolling (50s duration - still faster than base 80s)
-          const maxSpeed = 100; // Slowest (100s duration)
-          
-          // Calculate new speed based on delta direction
-          let newSpeed = prevSpeed;
-          if (delta > 0) {
-            // Scrolling down - speed up (reduce duration, but not too aggressive)
-            newSpeed = Math.max(minSpeed, prevSpeed - speedMultiplier);
-          } else {
-            // Scrolling up - slow down (increase duration)
-            newSpeed = Math.min(maxSpeed, prevSpeed + speedMultiplier);
-          }
-          
-          return newSpeed;
-        });
+        // When scrolling, set speed to double the base speed (half the duration = double speed)
+        const baseSpeed = 80; // Base speed when not scrolling
+        const scrollSpeed = baseSpeed / 2; // Double speed = half duration (40s)
+        setScrollSpeed(scrollSpeed);
         setScrollDelta(delta);
-      } else if (!inView) {
-        // Gradually return to base speed when not in view
+        
+        // Update scroll direction
+        const newDirection = delta > 0 ? 'down' : 'up';
+        if (newDirection !== lastDirection.current) {
+          // Direction changed - preserve current progress
+          lastDirection.current = newDirection;
+        }
+        setScrollDirection(newDirection);
+      } else {
+        // When not scrolling or not in view, return to base speed
+        const baseSpeed = 80;
         setScrollSpeed((prevSpeed) => {
-          const baseSpeed = 80; // Base speed when just looking (slower)
           if (Math.abs(prevSpeed - baseSpeed) > 0.5) {
             return prevSpeed + (baseSpeed - prevSpeed) * 0.1;
           }
-          return prevSpeed;
-        });
-      } else {
-        // When in view but not scrolling, return to base speed
-        setScrollSpeed((prevSpeed) => {
-          const baseSpeed = 80;
-          if (Math.abs(prevSpeed - baseSpeed) > 0.5) {
-            return prevSpeed + (baseSpeed - prevSpeed) * 0.05;
-          }
-          return prevSpeed;
+          return baseSpeed;
         });
       }
     };
@@ -95,6 +83,40 @@ const Partners = () => {
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Smooth animation using requestAnimationFrame
+  useEffect(() => {
+    let lastTime = performance.now();
+    
+    const animate = (currentTime: number) => {
+      const deltaTime = (currentTime - lastTime) / 1000; // Convert to seconds
+      lastTime = currentTime;
+      
+      const speed = scrollSpeed; // Duration in seconds
+      const direction = scrollDirection === 'up' ? -1 : 1;
+      const increment = (deltaTime / speed) * direction;
+      
+      progressRef.current = progressRef.current + increment;
+      
+      // Handle wrapping for seamless loop
+      if (progressRef.current >= 1) {
+        progressRef.current = progressRef.current - 1;
+      } else if (progressRef.current < 0) {
+        progressRef.current = progressRef.current + 1;
+      }
+      
+      setAnimationProgress(progressRef.current);
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+    
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [scrollSpeed, scrollDirection]);
 
   return (
     <section ref={sectionRef} className="relative py-32 bg-background overflow-hidden -mb-32">
@@ -139,7 +161,9 @@ const Partners = () => {
               className="flex items-start gap-8 md:gap-12" 
               style={{ 
                 width: 'max-content',
-                animation: `scroll-right ${scrollSpeed}s linear infinite`
+                transform: `translateX(${-50 * animationProgress}%)`,
+                transition: 'transform 0.2s ease-out',
+                willChange: 'transform'
               }}
             >
               {/* First set */}
