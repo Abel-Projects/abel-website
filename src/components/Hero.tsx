@@ -58,10 +58,10 @@ const Hero = () => {
           {/* First line - scrolls left */}
           <div className="whitespace-nowrap">
             <div className="inline-block animate-scroll-left">
-              <span className="text-8xl font-scroll font-black text-heading">
+              <span className="text-8xl font-scroll font-black text-primary">
                 {loremText.repeat(3)}
               </span>
-              <span className="text-8xl font-scroll font-black text-heading">
+              <span className="text-8xl font-scroll font-black text-primary">
                 {loremText.repeat(3)}
               </span>
             </div>
@@ -70,10 +70,10 @@ const Hero = () => {
           {/* Second line - scrolls right */}
           <div className="whitespace-nowrap">
             <div className="inline-block animate-scroll-right">
-              <span className="text-8xl font-scroll font-medium text-heading">
+              <span className="text-8xl font-scroll font-medium text-primary">
                 {loremText.repeat(3)}
               </span>
-              <span className="text-8xl font-scroll font-medium text-heading">
+              <span className="text-8xl font-scroll font-medium text-primary">
                 {loremText.repeat(3)}
               </span>
             </div>
