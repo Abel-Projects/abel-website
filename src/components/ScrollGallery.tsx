@@ -45,12 +45,18 @@ const ScrollGallery = () => {
 
   // Start with first photo centered, end with last photo centered
   const startPosition = 45;
-  const endPosition = -100; // Center the last (5th) photo
-  const translateX = startPosition + (scrollProgress * (endPosition - startPosition));
+  // Calculate end position to perfectly center the last photo (5th image)
+  // Images: w-64 (256px), w-80 (320px), w-56 (224px), w-72 (288px), w-60 (240px)
+  // Gap between images: 200px
+  // To center last image, move left by: (320 + 200 + 224 + 200 + 288 + 200) / viewport * 100
+  // Approximate: ~52% to center the last image perfectly
+  const endPosition = -52; // Adjusted to perfectly center the last image
+  // Calculate translateX, but cap it at the end position
+  const translateX = Math.max(endPosition, startPosition + (scrollProgress * (endPosition - startPosition)));
 
   // Define different sizes and vertical offsets for variety
   const boxes = [
-    { num: 1, size: 'w-64 h-64', offsetY: 'mt-0', text: 'CU Denver Celebration of Success, 2023', image: gallery1 },
+    { num: 1, size: 'w-64 h-64', offsetY: 'mt-0', text: ['CU Denver', 'Celebration of Success, 2023'], image: gallery1 },
     { num: 2, size: 'w-80 h-80', offsetY: 'mt-32', text: 'Flavor Flav, 2024', image: gallery2 },
     { num: 3, size: 'w-56 h-56', offsetY: 'mt-16', text: 'Daymond John, 2024', image: gallery3 },
     { num: 4, size: 'w-72 h-72', offsetY: 'mt-48', text: 'Black Entrepreneurs Day, 2024', image: gallery4 },
@@ -66,22 +72,50 @@ const ScrollGallery = () => {
           className="flex gap-[200px] transition-transform duration-100 ease-out w-full"
           style={{ transform: `translateX(${translateX}%)` }}
         >
-          {boxes.map(({ num, size, offsetY, text, image }) => (
-            <div key={num} className={`flex-shrink-0 ${offsetY}`}>
-              <div
-                className={`${size} rounded-lg overflow-hidden mb-4 shadow-lg`}
-              >
-                <img 
-                  src={image} 
-                  alt={text}
-                  className="w-full h-full object-cover"
-                />
+          {boxes.map(({ num, size, offsetY, text, image }) => {
+            const isTextAbove = num === 2 || num === 4; // Flavor Flav and Black Entrepreneurs Day
+            return (
+              <div key={num} className={`flex-shrink-0 ${offsetY}`}>
+                {isTextAbove && (
+                  <div 
+                    className="text-left text-xs tracking-wide text-white mb-2"
+                    style={{ fontFamily: 'Gotham, sans-serif', fontWeight: 100, lineHeight: '1.2' }}
+                  >
+                    {Array.isArray(text) ? (
+                      text.map((line, index) => (
+                        <div key={index}>{line}</div>
+                      ))
+                    ) : (
+                      <div>{text}</div>
+                    )}
+                  </div>
+                )}
+                <div
+                  className={`${size} rounded-lg overflow-hidden ${isTextAbove ? '' : 'mb-2'} shadow-lg`}
+                >
+                  <img 
+                    src={image} 
+                    alt={Array.isArray(text) ? text.join(' ') : text}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {!isTextAbove && (
+                  <div 
+                    className="text-left text-xs tracking-wide text-white"
+                    style={{ fontFamily: 'Gotham, sans-serif', fontWeight: 100, lineHeight: '1.2' }}
+                  >
+                    {Array.isArray(text) ? (
+                      text.map((line, index) => (
+                        <div key={index}>{line}</div>
+                      ))
+                    ) : (
+                      <div>{text}</div>
+                    )}
+                  </div>
+                )}
               </div>
-              <p className="text-center text-sm font-thin tracking-wide text-white">
-                {text}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
