@@ -99,8 +99,8 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
           {/* Background with fade animation */}
           <div className={`fixed inset-0 z-[100] bg-background ${isClosing ? 'animate-fade-out' : 'animate-fade-in'}`} />
           
-          {/* Header bar - no animation, always visible */}
-          <div className="fixed top-0 left-0 right-0 z-[101]">
+          {/* Header bar - with fade animation */}
+          <div className={`fixed top-0 left-0 right-0 z-[101] ${isClosing ? 'animate-fade-out' : 'animate-fade-in'}`}>
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
               <div className="flex items-center justify-between h-20">
                 <Link to="/">
@@ -121,7 +121,7 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
           </div>
 
           {/* Navigation Items */}
-          <div className={`fixed inset-0 z-[100] flex flex-col items-center justify-center space-y-8 px-6 ${isClosing ? 'animate-fade-out' : 'animate-fade-in'}`}>
+          <div className={`fixed inset-0 z-[102] flex flex-col items-center justify-center space-y-8 px-6 pt-20 pb-24 ${isClosing ? 'animate-fade-out' : 'animate-fade-in'}`}>
             {navigation.map((item, index) => (
               <Link
                 key={item.name}
