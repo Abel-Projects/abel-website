@@ -104,7 +104,7 @@ const Hero = () => {
             }}
             >
               {/* White background container */}
-              <div className="absolute inset-0 bg-background z-0" />
+              <div className="absolute inset-0 bg-background z-0 shadow-2xl rounded-2xl overflow-hidden" style={{ boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)' }} />
               
               {/* Hero Image */}
               <img

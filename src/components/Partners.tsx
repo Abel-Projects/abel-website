@@ -130,8 +130,8 @@ const Partners = () => {
         <h2 
           className="text-[20rem] font-bold text-blue-500 select-none"
           style={{ 
-            fontFamily: 'Brush Script MT, cursive',
-            transform: 'rotate(-5deg)',
+            fontFamily: '"Norican", "Brush Script MT", "Lucida Handwriting", cursive',
+            transform: 'rotate(-5deg) translateY(100px)',
             letterSpacing: '-0.02em'
           }}
         >
