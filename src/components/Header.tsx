@@ -95,9 +95,12 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
 
       {/* Full Viewport Dropdown Menu */}
       {isMenuOpen && (
-        <div className={`fixed inset-0 z-[100] bg-background ${isClosing ? 'animate-fade-out' : 'animate-fade-in'}`}>
-          {/* Close Button */}
-          <div className="absolute top-0 left-0 right-0 z-10">
+        <>
+          {/* Background with fade animation */}
+          <div className={`fixed inset-0 z-[100] bg-background ${isClosing ? 'animate-fade-out' : 'animate-fade-in'}`} />
+          
+          {/* Header bar - no animation, always visible */}
+          <div className="fixed top-0 left-0 right-0 z-[101]">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
               <div className="flex items-center justify-between h-20">
                 <Link to="/">
@@ -118,7 +121,7 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
           </div>
 
           {/* Navigation Items */}
-          <div className="flex flex-col items-center justify-center h-full space-y-8 px-6">
+          <div className={`fixed inset-0 z-[100] flex flex-col items-center justify-center space-y-8 px-6 ${isClosing ? 'animate-fade-out' : 'animate-fade-in'}`}>
             {navigation.map((item, index) => (
               <Link
                 key={item.name}
@@ -134,7 +137,7 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
           </div>
 
           {/* Footer Info */}
-          <div className="absolute bottom-12 left-0 right-0">
+          <div className={`fixed bottom-12 left-0 right-0 z-[101] ${isClosing ? 'animate-fade-out' : 'animate-fade-in'}`}>
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
               <div className="flex justify-center items-center text-muted-text text-sm">
                 <div className="flex gap-8">
@@ -154,7 +157,7 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
               </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );
