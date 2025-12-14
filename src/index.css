@@ -44,9 +44,9 @@
     --foreground: 0 0% 10%;
     
     /* Accent Color - Single Bold Color */
-    --primary: 220 90% 60%;
+    --primary: 225 72% 53%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 220 90% 70%;
+    --primary-glow: 225 72% 63%;
     
     /* Grayscale Palette */
     --accent: 0 0% 95%;
@@ -66,11 +66,11 @@
     /* Interactive Elements */
     --border: 0 0% 88%;
     --input: 0 0% 96%;
-    --ring: 220 90% 60%;
+    --ring: 225 72% 53%;
     
     /* Minimal Gradients */
     --gradient-hero: linear-gradient(180deg, hsl(0 0% 98%) 0%, hsl(0 0% 100%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(220 90% 60%) 0%, hsl(220 90% 70%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(225 72% 53%) 0%, hsl(225 72% 63%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
     
     /* Subtle Shadows */

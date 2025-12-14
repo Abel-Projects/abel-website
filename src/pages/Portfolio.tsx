@@ -26,7 +26,7 @@ const Portfolio = () => {
     {
       title: "Captain D's",
       description: "Captain D's teamed up with Daymond to create a new value proposition and product offering for the seafood giant including a new hand-breaded Chick-N-D's and a $5.99 Meal Deal offering. Captain D's saw a notable increase in brand awareness among the 25-44 age demographics and extended beyond digital, reaching audiences on linear TV across 20 key markets.",
-      image: "from-blue-500/20 to-blue-600/20"
+      image: "from-primary/20 to-primary/30"
     },
     {
       title: "Aflac",
@@ -168,7 +168,7 @@ const Portfolio = () => {
             {[1, 2, 3, 4, 5, 6].map((num) => (
               <div 
                 key={num} 
-                className="bg-gradient-to-br from-purple-500/20 to-blue-600/20 rounded-2xl h-[250px] border border-card-border transition-all duration-300 animate-fade-up"
+                className="bg-gradient-to-br from-purple-500/20 to-primary/30 rounded-2xl h-[250px] border border-card-border transition-all duration-300 animate-fade-up"
                 style={{ animationDelay: `${num * 0.1}s` }}
               />
             ))}
@@ -280,7 +280,7 @@ const Portfolio = () => {
             {[1, 2, 3].map((num) => (
               <div 
                 key={num} 
-                className="bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-2xl h-[200px] border border-card-border hover:scale-105 transition-transform duration-500"
+                className="bg-gradient-to-br from-primary/20 to-purple-600/20 rounded-2xl h-[200px] border border-card-border hover:scale-105 transition-transform duration-500"
               />
             ))}
           </div>

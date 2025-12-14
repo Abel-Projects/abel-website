@@ -1,11 +1,9 @@
 import { useEffect, useState, useRef } from "react";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
-import gallery5 from "@/assets/gallery-5.jpg";
-import gallery6 from "@/assets/gallery-6.jpg";
-import gallery7 from "@/assets/gallery-7.jpg";
+import abelCuDenverGala from "@/assets/abel-cu-denver-gala.jpg";
+import abelFlavorFlav from "@/assets/abel-flavor-flav.jpg";
+import abelDaymondJohn from "@/assets/abel-daymond-john.jpg";
+import abelPortrait2 from "@/assets/abel-portrait-2.jpg";
+import abelGraduation from "@/assets/abel-graduation.jpg";
 
 const ScrollGallery = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -60,13 +58,13 @@ const ScrollGallery = () => {
   const translateX = Math.max(endPosition, startPosition + (scrollProgress * (endPosition - startPosition)));
 
   // Define different sizes and vertical offsets for variety
-  // Waka Flocka is last and should be perfectly centered vertically
+  // Graduation is last and should be perfectly centered vertically
   const boxes = [
-    { num: 1, size: 'w-64 h-64', offsetY: 'mt-0', text: ['CU Denver', 'Celebration of Success, 2023'], image: gallery1 },
-    { num: 2, size: 'w-80 h-80', offsetY: 'mt-32', text: 'Flavor Flav, 2024', image: gallery2 },
-    { num: 3, size: 'w-56 h-56', offsetY: 'mt-16', text: 'Daymond John, 2024', image: gallery3 },
-    { num: 4, size: 'w-72 h-72', offsetY: 'mt-48', text: 'Black Entrepreneurs Day, 2024', image: gallery4 },
-    { num: 5, size: 'w-60 h-60', offsetY: 'mt-0', text: 'Waka Flocka, 2024', image: gallery5 },
+    { num: 1, size: 'w-64 h-64', offsetY: 'mt-0', text: ['CU Denver', 'Celebration of Success, 2023'], image: abelCuDenverGala },
+    { num: 2, size: 'w-80 h-80', offsetY: 'mt-32', text: 'Flavor Flav, 2024', image: abelFlavorFlav },
+    { num: 3, size: 'w-56 h-56', offsetY: 'mt-16', text: 'Daymond John, 2024', image: abelDaymondJohn },
+    { num: 4, size: 'w-72 h-72', offsetY: 'mt-48', text: 'Portrait, 2024', image: abelPortrait2 },
+    { num: 5, size: 'w-60 h-60', offsetY: 'mt-0', text: 'Graduation, 2024', image: abelGraduation },
   ];
 
   return (
