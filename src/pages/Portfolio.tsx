@@ -48,7 +48,7 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <Header variant="static" />
       
       {/* Full Viewport Section */}
       <div className="h-screen w-full flex items-center justify-center">

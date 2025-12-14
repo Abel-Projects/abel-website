@@ -47,6 +47,7 @@ const Footer = () => {
                 <li><Link to="/portfolio" onClick={scrollToTop} className="text-background/70 hover:text-background transition-colors font-medium">Portfolio</Link></li>
                 <li><Link to="/about" onClick={scrollToTop} className="text-background/70 hover:text-background transition-colors font-medium">About</Link></li>
                 <li><Link to="/overview-deck" onClick={scrollToTop} className="text-background/70 hover:text-background transition-colors font-medium">Overview Deck</Link></li>
+                <li><Link to="/media-kit" onClick={scrollToTop} className="text-background/70 hover:text-background transition-colors font-medium">Media Kit</Link></li>
               </ul>
             </div>
           </div>
