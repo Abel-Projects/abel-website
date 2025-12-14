@@ -50,7 +50,7 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
 
   const navigation = [
     { name: "About", href: "/about" },
-    { name: "Portfolio", href: "/portfolio" },
+    // { name: "Portfolio", href: "/portfolio" }, // Hidden on main branch
     { name: "Overview Deck", href: "/overview-deck" },
     { name: "Media/Brand Kit", href: "/media-kit" },
   ];

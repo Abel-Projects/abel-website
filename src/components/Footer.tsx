@@ -44,7 +44,7 @@ const Footer = () => {
               <h4 className="font-bold text-lg">Navigation</h4>
               <ul className="grid grid-cols-2 gap-x-8 gap-y-4">
                 <li><Link to="/" onClick={scrollToTop} className="text-background/70 hover:text-background transition-colors font-medium">Home</Link></li>
-                <li><Link to="/portfolio" onClick={scrollToTop} className="text-background/70 hover:text-background transition-colors font-medium">Portfolio</Link></li>
+                {/* <li><Link to="/portfolio" onClick={scrollToTop} className="text-background/70 hover:text-background transition-colors font-medium">Portfolio</Link></li> */} {/* Hidden on main branch */}
                 <li><Link to="/about" onClick={scrollToTop} className="text-background/70 hover:text-background transition-colors font-medium">About</Link></li>
                 <li><Link to="/overview-deck" onClick={scrollToTop} className="text-background/70 hover:text-background transition-colors font-medium">Overview Deck</Link></li>
               </ul>
