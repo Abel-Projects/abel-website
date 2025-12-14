@@ -110,7 +110,7 @@ const Hero = () => {
               <img
                 src={heroImage}
                 alt="Abel Mesfin"
-                className="w-auto h-full max-h-screen object-contain mx-auto relative z-10"
+                className="w-full h-screen md:w-auto md:h-full md:max-h-screen object-cover md:object-contain mx-auto relative z-10"
                 style={{
                   filter: `grayscale(${grayscaleFilter * 100}%)`,
                   transition: 'filter 0.1s ease-out',
