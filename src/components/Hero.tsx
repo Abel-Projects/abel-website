@@ -121,7 +121,7 @@ const Hero = () => {
 
         {/* Signature Animation */}
         <div 
-          className="absolute inset-0 pointer-events-none z-[15]"
+          className="absolute inset-0 pointer-events-none z-[15] overflow-visible"
           style={{
             opacity: 1,
           }}

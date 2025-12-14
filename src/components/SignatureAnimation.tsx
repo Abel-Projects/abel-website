@@ -22,16 +22,17 @@ const SignatureAnimation = ({ scrollProgress }: SignatureAnimationProps) => {
   const strokeDashoffset = pathLength * (1 - drawProgress);
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[15]">
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[15] overflow-visible">
       <svg
         viewBox="0 0 3069.82 1801.58"
         className="w-full max-w-4xl h-auto px-8 md:px-12"
+        style={{ overflow: 'visible' }}
       >
         <defs>
-          <filter id="signature-shadow">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="15" result="blur" />
+          <filter id="signature-shadow" x="-150%" y="-150%" width="400%" height="400%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="25" result="blur" />
             <feOffset in="blur" dx="0" dy="4" result="offsetBlur" />
-            <feFlood floodColor="rgba(0, 0, 0, 0.3)" result="shadowColor" />
+            <feFlood floodColor="rgba(0, 0, 0, 0.45)" result="shadowColor" />
             <feComposite in="shadowColor" in2="offsetBlur" operator="in" result="shadow" />
             <feMerge>
               <feMergeNode in="shadow" />
@@ -51,7 +52,7 @@ const SignatureAnimation = ({ scrollProgress }: SignatureAnimationProps) => {
           style={{
             strokeDasharray: pathLength,
             strokeDashoffset: strokeDashoffset,
-            transition: 'stroke-dashoffset 0.1s ease-out',
+            transition: 'stroke-dashoffset 0s',
           }}
         />
       </svg>
