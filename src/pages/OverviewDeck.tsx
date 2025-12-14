@@ -8,6 +8,7 @@ const OverviewDeck = () => {
   const [pdfUrl] = useState<string>("/Abel_Mesfin_Overview_Deck.pdf");
 
   useEffect(() => {
+    document.title = "Abel Mesfin | Overview Deck";
     window.scrollTo(0, 0);
   }, []);
 

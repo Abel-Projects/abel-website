@@ -10,6 +10,10 @@ const Portfolio = () => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
+    document.title = "Abel Mesfin | Portfolio";
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };

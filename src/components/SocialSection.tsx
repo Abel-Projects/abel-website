@@ -1,5 +1,13 @@
 import { Download, X } from "lucide-react";
 import { useState } from "react";
+import gallery1 from "@/assets/gallery-1.jpg";
+import gallery2 from "@/assets/gallery-2.jpg";
+import gallery3 from "@/assets/gallery-3.jpg";
+import gallery4 from "@/assets/gallery-4.jpg";
+import gallery5 from "@/assets/gallery-5.jpg";
+import gallery6 from "@/assets/gallery-6.jpg";
+import gallery7 from "@/assets/gallery-7.jpg";
+import gallery8 from "@/assets/gallery-8.jpg";
 
 const SocialSection = () => {
   const [selectedImage, setSelectedImage] = useState<{ image: string; id: number } | null>(null);
@@ -7,14 +15,14 @@ const SocialSection = () => {
 
   // Add new images to this array over time
   const galleryImages = [
-    { id: 1, image: "/src/assets/gallery-1.jpg" },
-    { id: 2, image: "/src/assets/gallery-2.jpg" },
-    { id: 3, image: "/src/assets/gallery-3.jpg" },
-    { id: 4, image: "/src/assets/gallery-4.jpg" },
-    { id: 5, image: "/src/assets/gallery-5.jpg" },
-    { id: 6, image: "/src/assets/gallery-6.jpg" },
-    { id: 7, image: "/src/assets/gallery-7.jpg" },
-    { id: 8, image: "/src/assets/gallery-8.jpg" },
+    { id: 1, image: gallery1 },
+    { id: 2, image: gallery2 },
+    { id: 3, image: gallery3 },
+    { id: 4, image: gallery4 },
+    { id: 5, image: gallery5 },
+    { id: 6, image: gallery6 },
+    { id: 7, image: gallery7 },
+    { id: 8, image: gallery8 },
     // Add more images here as needed
   ];
 

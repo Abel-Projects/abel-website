@@ -1,7 +1,13 @@
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SocialSection from "@/components/SocialSection";
+import abelIntro from "@/assets/abel-intro.jpg";
+
 const About = () => {
+  useEffect(() => {
+    document.title = "Abel Mesfin | About";
+  }, []);
   return <div className="min-h-screen bg-background">
       <Header />
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-32">
@@ -28,7 +34,7 @@ const About = () => {
           <div className="blob-animate animate-fade-up relative h-[500px] overflow-hidden border border-card-border" style={{
           animationDelay: '0.2s'
         }}>
-            <img src="/src/assets/abel-intro.jpg" alt="Abel Mesfin" className="absolute inset-0 w-full h-full object-cover scale-125" style={{
+            <img src={abelIntro} alt="Abel Mesfin" className="absolute inset-0 w-full h-full object-cover scale-125" style={{
             objectPosition: '70% center'
           }} />
           </div>

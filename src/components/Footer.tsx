@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import amLogo from "@/assets/am-logo-white-updated.png";
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="bg-heading text-background" id="contact">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -12,7 +16,7 @@ const Footer = () => {
             {/* Brand */}
             <div className="lg:col-span-2 space-y-6">
               <div className="space-y-4">
-                <Link to="/">
+                <Link to="/" onClick={scrollToTop}>
                   <img src={amLogo} alt="Abel Mesfin" className="h-[43px] w-auto hover:opacity-80 transition-opacity cursor-pointer" />
                 </Link>
                 <p className="text-background/70 text-lg leading-relaxed font-light max-w-md">
@@ -39,10 +43,10 @@ const Footer = () => {
             <div className="space-y-6">
               <h4 className="font-bold text-lg">Navigation</h4>
               <ul className="grid grid-cols-2 gap-x-8 gap-y-4">
-                <li><Link to="/" className="text-background/70 hover:text-background transition-colors font-medium">Home</Link></li>
-                <li><Link to="/portfolio" className="text-background/70 hover:text-background transition-colors font-medium">Portfolio</Link></li>
-                <li><Link to="/about" className="text-background/70 hover:text-background transition-colors font-medium">About</Link></li>
-                <li><Link to="/overview-deck" className="text-background/70 hover:text-background transition-colors font-medium">Overview Deck</Link></li>
+                <li><Link to="/" onClick={scrollToTop} className="text-background/70 hover:text-background transition-colors font-medium">Home</Link></li>
+                <li><Link to="/portfolio" onClick={scrollToTop} className="text-background/70 hover:text-background transition-colors font-medium">Portfolio</Link></li>
+                <li><Link to="/about" onClick={scrollToTop} className="text-background/70 hover:text-background transition-colors font-medium">About</Link></li>
+                <li><Link to="/overview-deck" onClick={scrollToTop} className="text-background/70 hover:text-background transition-colors font-medium">Overview Deck</Link></li>
               </ul>
             </div>
           </div>

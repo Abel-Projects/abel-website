@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import MissionStatement from "@/components/MissionStatement";
@@ -10,6 +10,10 @@ import Loading from "@/components/Loading";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    document.title = "Abel Mesfin";
+  }, []);
 
   return (
     <>
