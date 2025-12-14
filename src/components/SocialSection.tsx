@@ -1,28 +1,26 @@
 import { Download, X } from "lucide-react";
-import { useState } from "react";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
-import gallery5 from "@/assets/gallery-5.jpg";
-import gallery6 from "@/assets/gallery-6.jpg";
-import gallery7 from "@/assets/gallery-7.jpg";
-import gallery8 from "@/assets/gallery-8.jpg";
+import { useState, useEffect } from "react";
+import abelCuDenverGala from "@/assets/abel-cu-denver-gala.jpg";
+import abelFlavorFlav from "@/assets/abel-flavor-flav.jpg";
+import abelDaymondJohn from "@/assets/abel-daymond-john.jpg";
+import abelPortrait2 from "@/assets/abel-portrait-2.jpg";
+import abelWakaFlocka from "@/assets/abel-waka-flocka.jpg";
+import abelGraduation from "@/assets/abel-graduation.jpg";
+import abelMediaKit1 from "@/assets/abel-media-kit-1.jpg";
 
 const SocialSection = () => {
   const [selectedImage, setSelectedImage] = useState<{ image: string; id: number } | null>(null);
+  const [imageMetadata, setImageMetadata] = useState<{ width: number; height: number; fileName: string; fileType: string } | null>(null);
   const [displayCount, setDisplayCount] = useState(3);
 
   // Add new images to this array over time
   const galleryImages = [
-    { id: 1, image: gallery1 },
-    { id: 2, image: gallery2 },
-    { id: 3, image: gallery3 },
-    { id: 4, image: gallery4 },
-    { id: 5, image: gallery5 },
-    { id: 6, image: gallery6 },
-    { id: 7, image: gallery7 },
-    { id: 8, image: gallery8 },
+    { id: 1, image: abelCuDenverGala },
+    { id: 2, image: abelFlavorFlav },
+    { id: 3, image: abelDaymondJohn },
+    { id: 4, image: abelPortrait2 },
+    { id: 5, image: abelGraduation },
+    { id: 6, image: abelMediaKit1 },
     // Add more images here as needed
   ];
 
@@ -45,6 +43,31 @@ const SocialSection = () => {
   const showLess = () => {
     setDisplayCount(3);
   };
+
+  useEffect(() => {
+    if (selectedImage) {
+      const img = new Image();
+      img.onload = () => {
+        // Extract filename from the image path
+        const imagePath = selectedImage.image;
+        const fileName = imagePath.split('/').pop() || `gallery-${selectedImage.id}.jpg`;
+        
+        // Determine file type from extension
+        const extension = fileName.split('.').pop()?.toUpperCase() || 'JPG';
+        const fileType = extension === 'JPG' || extension === 'JPEG' ? 'JPEG' : extension;
+        
+        setImageMetadata({
+          width: img.naturalWidth,
+          height: img.naturalHeight,
+          fileName: fileName,
+          fileType: fileType,
+        });
+      };
+      img.src = selectedImage.image;
+    } else {
+      setImageMetadata(null);
+    }
+  }, [selectedImage]);
 
   return (
     <>
@@ -100,7 +123,7 @@ const SocialSection = () => {
       {/* Image Preview Overlay */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 animate-fade-in"
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
           <button
@@ -110,20 +133,31 @@ const SocialSection = () => {
             <X className="w-8 h-8" />
           </button>
           
-          <div className="relative max-w-5xl max-h-[90vh]" onClick={(e) => e.stopPropagation()}>
+          <div className="relative max-w-5xl max-h-[90vh] flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
             <img 
               src={selectedImage.image}
               alt={`Gallery image ${selectedImage.id}`}
-              className="max-w-full max-h-[85vh] object-contain rounded-lg"
+              className="max-w-full max-h-[75vh] object-contain rounded-lg"
             />
             
-            <button
-              onClick={() => handleDownload(selectedImage.image, selectedImage.id)}
-              className="absolute bottom-4 right-4 bg-primary text-primary-foreground px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-primary/90 transition-colors"
-            >
-              <Download className="w-5 h-5" />
-              Download
-            </button>
+            {/* Image Metadata and Download Button */}
+            {imageMetadata && (
+              <div className="mt-4 w-full flex items-center justify-between gap-4">
+                <div className="text-left text-white/80 text-sm space-y-1">
+                  <div className="font-medium">{imageMetadata.fileName}</div>
+                  <div className="text-white/60">
+                    {imageMetadata.width} × {imageMetadata.height}px • {imageMetadata.fileType}
+                  </div>
+                </div>
+                <button
+                  onClick={() => handleDownload(selectedImage.image, selectedImage.id)}
+                  className="bg-primary text-primary-foreground px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-primary/90 transition-colors flex-shrink-0"
+                >
+                  <Download className="w-5 h-5" />
+                  Download
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

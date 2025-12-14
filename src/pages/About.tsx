@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import SocialSection from "@/components/SocialSection";
 import abelIntro from "@/assets/abel-intro.jpg";
 
 const About = () => {
@@ -129,11 +128,6 @@ const About = () => {
                 </ul>
               </div>)}
           </div>
-        </div>
-
-        {/* Social Section */}
-        <div className="mt-32">
-          <SocialSection />
         </div>
       </div>
       <Footer />

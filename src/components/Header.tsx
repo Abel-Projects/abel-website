@@ -49,9 +49,10 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
   }, [lastScrollY]);
 
   const navigation = [
-    { name: "Portfolio", href: "/portfolio" },
     { name: "About", href: "/about" },
+    { name: "Portfolio", href: "/portfolio" },
     { name: "Overview Deck", href: "/overview-deck" },
+    { name: "Media/Brand Kit", href: "/media-kit" },
   ];
 
   return (
@@ -100,7 +101,7 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
           <div className={`fixed inset-0 z-[100] bg-background ${isClosing ? 'animate-fade-out' : 'animate-fade-in'}`} />
           
           {/* Header bar - with fade animation */}
-          <div className={`fixed top-0 left-0 right-0 z-[101] ${isClosing ? 'animate-fade-out' : 'animate-fade-in'}`}>
+          <div className={`fixed top-0 left-0 right-0 z-[103] ${isClosing ? 'animate-fade-out' : 'animate-fade-in'}`}>
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
               <div className="flex items-center justify-between h-20">
                 <Link to="/">
