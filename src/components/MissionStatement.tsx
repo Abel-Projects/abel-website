@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 
 const textBlocks = [
-  ["Born in Denver,", "Bred for Hustle"],
+  ["Born in Denver,", "Bred for Hustle."],
   ["I've had the privilege in leveling up the brands of top-level companies, celebrities, and CEOs"],
   ["Transforming visions into viral moments."],
   ["Where storytelling meets strategy, and brands become unforgettable"],
@@ -12,21 +12,24 @@ const easeInOutQuart = (t: number) =>
   t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
 
 const getScrollRevealProgress = (elementTop: number, viewportHeight: number) => {
-  const triggerStart = viewportHeight * 0.9;
-  const triggerEnd = viewportHeight * 0.72;
+  const triggerStart = viewportHeight * 0.95;
+  const triggerEnd = viewportHeight * 0.52;
   const range = triggerStart - triggerEnd;
   const raw = range > 0 ? (triggerStart - elementTop) / range : 1;
   const clamped = Math.max(0, Math.min(1, raw));
   return easeInOutQuart(clamped);
 };
 
+const easeInOutSine = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;
+
 const getHeadlineFadeOut = (sectionProgress: number) => {
-  const fadeStart = 0.05;
-  const fadeEnd = 0.2;
+  // Delayed start (~1s more scroll) and a longer, gentler fade window
+  const fadeStart = 0.2;
+  const fadeEnd = 0.52;
   if (sectionProgress < fadeStart) return 0;
   if (sectionProgress > fadeEnd) return 1;
   const raw = (sectionProgress - fadeStart) / (fadeEnd - fadeStart);
-  return easeInOutQuart(raw);
+  return easeInOutSine(raw);
 };
 
 type TextBlockProps = {
@@ -38,8 +41,8 @@ type TextBlockProps = {
 const ScrollTextBlock = ({ lines, isHeadline = false, sectionProgress = 0 }: TextBlockProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const maxRevealRef = useRef(0);
-  const [opacity, setOpacity] = useState(0);
-  const [slideOffset, setSlideOffset] = useState(48);
+  const [opacity, setOpacity] = useState(isHeadline ? 1 : 0);
+  const [slideOffset, setSlideOffset] = useState(isHeadline ? 0 : 48);
 
   useEffect(() => {
     const update = () => {
@@ -51,13 +54,13 @@ const ScrollTextBlock = ({ lines, isHeadline = false, sectionProgress = 0 }: Tex
 
       if (isHeadline) {
         const fadeOut = getHeadlineFadeOut(sectionProgress);
-        setOpacity(reveal * (1 - fadeOut));
-        setSlideOffset((1 - reveal) * 48);
+        setOpacity(1 - fadeOut);
+        setSlideOffset(0);
       } else {
         maxRevealRef.current = Math.max(maxRevealRef.current, reveal);
-        const locked = maxRevealRef.current;
-        setOpacity(locked);
-        setSlideOffset(locked >= 1 ? 0 : (1 - reveal) * 48);
+        const progress = maxRevealRef.current;
+        setOpacity(progress);
+        setSlideOffset((1 - progress) * 48);
       }
     };
 
