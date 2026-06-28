@@ -8,7 +8,6 @@ const textBlocks = [
   ["Building legacies through content that doesn't just perform, it transforms"],
 ];
 
-// Fast ease-in-out — most of the motion completes quickly, then settles
 const easeInOutQuart = (t: number) =>
   t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
 
@@ -21,14 +20,26 @@ const getScrollRevealProgress = (elementTop: number, viewportHeight: number) => 
   return easeInOutQuart(clamped);
 };
 
+const getHeadlineFadeOut = (sectionProgress: number) => {
+  const fadeStart = 0.05;
+  const fadeEnd = 0.2;
+  if (sectionProgress < fadeStart) return 0;
+  if (sectionProgress > fadeEnd) return 1;
+  const raw = (sectionProgress - fadeStart) / (fadeEnd - fadeStart);
+  return easeInOutQuart(raw);
+};
+
 type TextBlockProps = {
   lines: string[];
   isHeadline?: boolean;
+  sectionProgress?: number;
 };
 
-const ScrollTextBlock = ({ lines, isHeadline = false }: TextBlockProps) => {
+const ScrollTextBlock = ({ lines, isHeadline = false, sectionProgress = 0 }: TextBlockProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0);
+  const maxRevealRef = useRef(0);
+  const [opacity, setOpacity] = useState(0);
+  const [slideOffset, setSlideOffset] = useState(48);
 
   useEffect(() => {
     const update = () => {
@@ -36,7 +47,18 @@ const ScrollTextBlock = ({ lines, isHeadline = false }: TextBlockProps) => {
       if (!node) return;
 
       const rect = node.getBoundingClientRect();
-      setProgress(getScrollRevealProgress(rect.top, window.innerHeight));
+      const reveal = getScrollRevealProgress(rect.top, window.innerHeight);
+
+      if (isHeadline) {
+        const fadeOut = getHeadlineFadeOut(sectionProgress);
+        setOpacity(reveal * (1 - fadeOut));
+        setSlideOffset((1 - reveal) * 48);
+      } else {
+        maxRevealRef.current = Math.max(maxRevealRef.current, reveal);
+        const locked = maxRevealRef.current;
+        setOpacity(locked);
+        setSlideOffset(locked >= 1 ? 0 : (1 - reveal) * 48);
+      }
     };
 
     window.addEventListener("scroll", update, { passive: true });
@@ -47,9 +69,7 @@ const ScrollTextBlock = ({ lines, isHeadline = false }: TextBlockProps) => {
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
     };
-  }, []);
-
-  const slideOffset = (1 - progress) * 48;
+  }, [isHeadline, sectionProgress]);
 
   return (
     <div
@@ -57,27 +77,20 @@ const ScrollTextBlock = ({ lines, isHeadline = false }: TextBlockProps) => {
       className="w-full text-left text-white"
       style={{
         fontFamily: "Gotham, sans-serif",
-        fontWeight: isHeadline ? 700 : 500,
+        fontWeight: isHeadline ? 700 : 400,
         fontSize: isHeadline
-          ? "clamp(2.75rem, 5.8vw, 4.875rem)"
+          ? "clamp(4.121rem, 8.691vw, 7.301rem)"
           : "clamp(1.875rem, 3.5vw, 3.125rem)",
         lineHeight: 1.08,
         letterSpacing: isHeadline ? "-0.02em" : "0.01em",
         textTransform: isHeadline ? "uppercase" : "none",
-        opacity: progress,
+        opacity,
         transform: `translate3d(0, ${slideOffset}px, 0)`,
         willChange: "transform, opacity",
       }}
     >
       {lines.map((line, lineIndex) => (
-        <div
-          key={lineIndex}
-          style={{
-            fontWeight: isHeadline && lineIndex === 1 ? 500 : isHeadline ? 700 : 500,
-          }}
-        >
-          {line}
-        </div>
+        <div key={lineIndex}>{line}</div>
       ))}
     </div>
   );
@@ -85,6 +98,7 @@ const ScrollTextBlock = ({ lines, isHeadline = false }: TextBlockProps) => {
 
 const MissionStatement = () => {
   const [fadeOpacity, setFadeOpacity] = useState(0);
+  const [sectionProgress, setSectionProgress] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -97,10 +111,12 @@ const MissionStatement = () => {
 
       if (rect.top > 0 || scrollRange <= 0) {
         setFadeOpacity(0);
+        setSectionProgress(0);
         return;
       }
 
       const scrollProgress = Math.max(0, Math.min(1, -rect.top / scrollRange));
+      setSectionProgress(scrollProgress);
       const fade = Math.max(0, Math.min(1, (scrollProgress - 0.72) / 0.2));
       setFadeOpacity(fade);
     };
@@ -116,7 +132,6 @@ const MissionStatement = () => {
   return (
     <section ref={sectionRef} className="relative bg-black">
       <div className="grid">
-        {/* Sticky video background */}
         <div className="sticky top-0 col-start-1 row-start-1 h-screen self-start overflow-hidden">
           <video
             autoPlay
@@ -136,11 +151,10 @@ const MissionStatement = () => {
           />
         </div>
 
-        {/* Scrolling text */}
         <div className="relative z-10 col-start-1 row-start-1 w-full px-6 md:px-10">
           <div className="mx-auto w-full max-w-7xl text-left">
             <div className="flex min-h-screen flex-col justify-end pb-16 md:pb-24">
-              <ScrollTextBlock lines={headline} isHeadline />
+              <ScrollTextBlock lines={headline} isHeadline sectionProgress={sectionProgress} />
             </div>
 
             {bodyBlocks.map((block, index) => (
