@@ -1,14 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import abelIntro from "@/assets/abel-intro.jpg";
 
 const About = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   useEffect(() => {
     document.title = "Abel Mesfin | About";
   }, []);
   return <div className="min-h-screen bg-background">
-      <Header />
+      <Header variant="static" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-32">
         {/* Header */}
         <div className="mb-20 animate-fade-up">
@@ -33,9 +35,16 @@ const About = () => {
           <div className="blob-animate animate-fade-up relative h-[500px] overflow-hidden border border-card-border" style={{
           animationDelay: '0.2s'
         }}>
-            <img src={abelIntro} alt="Abel Mesfin" className="absolute inset-0 w-full h-full object-cover scale-125" style={{
-            objectPosition: '70% center'
-          }} />
+            <img 
+              src={abelIntro} 
+              alt="Abel Mesfin" 
+              className="absolute inset-0 w-full h-full object-cover scale-125 transition-opacity duration-300" 
+              style={{
+                objectPosition: '70% center',
+                opacity: imageLoaded ? 1 : 0
+              }}
+              onLoad={() => setImageLoaded(true)}
+            />
           </div>
         </div>
 

@@ -63,6 +63,10 @@ const SocialSection = () => {
           fileType: fileType,
         });
       };
+      img.onerror = () => {
+        // Clear metadata if image fails to load
+        setImageMetadata(null);
+      };
       img.src = selectedImage.image;
     } else {
       setImageMetadata(null);
@@ -123,7 +127,7 @@ const SocialSection = () => {
       {/* Image Preview Overlay */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/90 z-[110] flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
           <button

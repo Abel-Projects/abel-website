@@ -2,6 +2,7 @@ import { Menu, X, Mail, Linkedin, Instagram } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import abelLogo from "@/assets/abel-logo.png";
+import { headerNavigation } from "@/config/site";
 
 const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,12 +49,7 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
-  const navigation = [
-    { name: "About", href: "/about" },
-    // { name: "Portfolio", href: "/portfolio" }, // Hidden on main branch
-    { name: "Overview Deck", href: "/overview-deck" },
-    { name: "Media/Brand Kit", href: "/media-kit" },
-  ];
+  const navigation = headerNavigation;
 
   return (
     <>
