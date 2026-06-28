@@ -21,9 +21,11 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          {/* Routes kept for later launch — hidden from nav via src/config/site.ts */}
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/about" element={<About />} />
           <Route path="/overview-deck" element={<OverviewDeck />} />
+          {/* Routes kept for later launch — hidden from nav via src/config/site.ts */}
           <Route path="/media-kit" element={<MediaKit />} />
           <Route path="/resume" element={<Navigate to="/overview-deck" replace />} />
           
