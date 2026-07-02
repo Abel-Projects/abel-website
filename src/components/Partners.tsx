@@ -128,7 +128,7 @@ const Partners = () => {
       {/* Large handwritten-style "Collabs" text in background */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 z-0">
         <h2 
-          className="text-[5rem] sm:text-[9rem] md:text-[14rem] lg:text-[20rem] font-bold text-primary select-none"
+          className="text-[18vw] md:text-[14rem] lg:text-[20rem] font-bold text-primary select-none whitespace-nowrap"
           style={{ 
             fontFamily: '"Norican", "Brush Script MT", "Lucida Handwriting", cursive',
             transform: 'rotate(-5deg) translateY(100px)',
