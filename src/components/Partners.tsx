@@ -128,7 +128,7 @@ const Partners = () => {
       {/* Large handwritten-style "Collabs" text in background */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 z-0">
         <h2 
-          className="text-[20rem] font-bold text-primary select-none"
+          className="text-[5rem] sm:text-[9rem] md:text-[14rem] lg:text-[20rem] font-bold text-primary select-none"
           style={{ 
             fontFamily: '"Norican", "Brush Script MT", "Lucida Handwriting", cursive',
             transform: 'rotate(-5deg) translateY(100px)',
@@ -154,11 +154,11 @@ const Partners = () => {
 
         {/* Logo container with fade edges and infinite scroll */}
         <div className="relative">
-          {/* Left fade */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
+          {/* Left fade - desktop only; on mobile logos simply scroll off the edge */}
+          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
           
-          {/* Right fade */}
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none" />
+          {/* Right fade - desktop only; on mobile logos simply scroll off the edge */}
+          <div className="hidden md:block absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none" />
 
           {/* Partner logos - infinite scroll */}
           <div className="overflow-hidden relative py-4">
