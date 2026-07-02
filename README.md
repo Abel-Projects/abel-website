@@ -15,11 +15,11 @@ Personal website and portfolio for Abel Mesfin.
 The only requirement is having Node.js & npm installed — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Step 1: Clone the repository.
+git clone https://github.com/Abel-Projects/abel-website.git
 
 # Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+cd abel-website
 
 # Step 3: Install the necessary dependencies.
 npm install
