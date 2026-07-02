@@ -8,18 +8,6 @@ const textBlocks = [
   ["Building legacies through content that doesn't just perform, it transforms"],
 ];
 
-const easeInOutQuart = (t: number) =>
-  t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
-
-const getScrollRevealProgress = (elementTop: number, viewportHeight: number) => {
-  const triggerStart = viewportHeight * 0.95;
-  const triggerEnd = viewportHeight * 0.52;
-  const range = triggerStart - triggerEnd;
-  const raw = range > 0 ? (triggerStart - elementTop) / range : 1;
-  const clamped = Math.max(0, Math.min(1, raw));
-  return easeInOutQuart(clamped);
-};
-
 const easeInOutSine = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;
 
 const getHeadlineFadeOut = (sectionProgress: number) => {
@@ -32,72 +20,83 @@ const getHeadlineFadeOut = (sectionProgress: number) => {
   return easeInOutSine(raw);
 };
 
-type TextBlockProps = {
-  lines: string[];
+type TextLineProps = {
+  text: string;
   isHeadline?: boolean;
-  sectionProgress?: number;
+  delay?: number;
+  fadeOut?: number;
 };
 
-const ScrollTextBlock = ({ lines, isHeadline = false, sectionProgress = 0 }: TextBlockProps) => {
+const ScrollTextLine = ({ text, isHeadline = false, delay = 0, fadeOut = 0 }: TextLineProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const maxRevealRef = useRef(0);
-  const [opacity, setOpacity] = useState(isHeadline ? 1 : 0);
-  const [slideOffset, setSlideOffset] = useState(isHeadline ? 0 : 48);
+  const [hasEntered, setHasEntered] = useState(false);
 
   useEffect(() => {
-    const update = () => {
-      const node = ref.current;
-      if (!node) return;
+    const node = ref.current;
+    if (!node) return;
 
-      const rect = node.getBoundingClientRect();
-      const reveal = getScrollRevealProgress(rect.top, window.innerHeight);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasEntered(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -12% 0px" }
+    );
 
-      if (isHeadline) {
-        const fadeOut = getHeadlineFadeOut(sectionProgress);
-        setOpacity(1 - fadeOut);
-        setSlideOffset(0);
-      } else {
-        maxRevealRef.current = Math.max(maxRevealRef.current, reveal);
-        const progress = maxRevealRef.current;
-        setOpacity(progress);
-        setSlideOffset((1 - progress) * 48);
-      }
-    };
-
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update, { passive: true });
-    update();
-
-    return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
-  }, [isHeadline, sectionProgress]);
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div
-      ref={ref}
-      className="w-full text-left text-white"
-      style={{
-        fontFamily: "Gotham, sans-serif",
-        fontWeight: isHeadline ? 700 : 400,
-        fontSize: isHeadline
-          ? "clamp(4.121rem, 8.691vw, 7.301rem)"
-          : "clamp(1.875rem, 3.5vw, 3.125rem)",
-        lineHeight: 1.08,
-        letterSpacing: isHeadline ? "-0.02em" : "0.01em",
-        textTransform: isHeadline ? "uppercase" : "none",
-        opacity,
-        transform: `translate3d(0, ${slideOffset}px, 0)`,
-        willChange: "transform, opacity",
-      }}
-    >
-      {lines.map((line, lineIndex) => (
-        <div key={lineIndex}>{line}</div>
-      ))}
+    // Outer layer handles the scroll-linked headline fade-out (no transition so
+    // it stays tightly coupled to scroll position).
+    <div style={{ opacity: isHeadline ? 1 - fadeOut : 1 }}>
+      {/* Inner layer handles the one-shot swipe/ease-in from the bottom. */}
+      <div
+        ref={ref}
+        className="w-full text-left text-white"
+        style={{
+          fontFamily: "Gotham, sans-serif",
+          fontWeight: isHeadline ? 700 : 400,
+          fontSize: isHeadline
+            ? "clamp(4.121rem, 8.691vw, 7.301rem)"
+            : "clamp(1.875rem, 3.5vw, 3.125rem)",
+          lineHeight: 1.08,
+          letterSpacing: isHeadline ? "-0.02em" : "0.01em",
+          textTransform: isHeadline ? "uppercase" : "none",
+          opacity: hasEntered ? 1 : 0,
+          transform: hasEntered ? "translate3d(0, 0, 0)" : "translate3d(0, 56px, 0)",
+          transition: `opacity 0.7s ease-out ${delay}s, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`,
+          willChange: "transform, opacity",
+        }}
+      >
+        {text}
+      </div>
     </div>
   );
 };
+
+type TextBlockProps = {
+  lines: string[];
+  isHeadline?: boolean;
+  fadeOut?: number;
+};
+
+const ScrollTextBlock = ({ lines, isHeadline = false, fadeOut = 0 }: TextBlockProps) => (
+  <>
+    {lines.map((line, lineIndex) => (
+      <ScrollTextLine
+        key={lineIndex}
+        text={line}
+        isHeadline={isHeadline}
+        fadeOut={fadeOut}
+        delay={lineIndex * 0.08}
+      />
+    ))}
+  </>
+);
 
 const MissionStatement = () => {
   const [fadeOpacity, setFadeOpacity] = useState(0);
@@ -157,7 +156,7 @@ const MissionStatement = () => {
         <div className="relative z-10 col-start-1 row-start-1 w-full px-6 md:px-10">
           <div className="mx-auto w-full max-w-7xl text-left">
             <div className="flex min-h-screen flex-col justify-end pb-16 md:pb-24">
-              <ScrollTextBlock lines={headline} isHeadline sectionProgress={sectionProgress} />
+              <ScrollTextBlock lines={headline} isHeadline fadeOut={getHeadlineFadeOut(sectionProgress)} />
             </div>
 
             {bodyBlocks.map((block, index) => (

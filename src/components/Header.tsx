@@ -4,12 +4,19 @@ import { Link } from "react-router-dom";
 import abelLogo from "@/assets/abel-logo.png";
 import { headerNavigation } from "@/config/site";
 
-const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => {
+const Header = ({
+  variant = "dynamic",
+  hideLogoTargetId,
+}: {
+  variant?: "static" | "dynamic";
+  hideLogoTargetId?: string;
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hideLogo, setHideLogo] = useState(false);
 
   const handleMenuClose = () => {
     setIsClosing(true);
@@ -39,15 +46,26 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
       }
       
       setIsScrolled(currentScrollY > 50);
+
+      // Hide the logo once the target section reaches the top of the viewport.
+      if (hideLogoTargetId) {
+        const target = document.getElementById(hideLogoTargetId);
+        if (target) {
+          // h-20 header is 80px tall; hide the logo as the section meets it.
+          setHideLogo(target.getBoundingClientRect().top <= 80);
+        }
+      }
+
       setLastScrollY(currentScrollY);
     };
 
     // Initial check - hide at top
     setIsVisible(window.scrollY > 0);
+    handleScroll();
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, hideLogoTargetId]);
 
   const navigation = headerNavigation;
 
@@ -62,8 +80,15 @@ const Header = ({ variant = "dynamic" }: { variant?: "static" | "dynamic" }) => 
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
-            {/* Logo - Always Visible */}
-            <Link to="/" className="flex-shrink-0">
+            {/* Logo - hidden once the target section is reached */}
+            <Link
+              to="/"
+              className={`flex-shrink-0 transition-opacity duration-500 ${
+                hideLogo ? 'opacity-0 pointer-events-none' : 'opacity-100'
+              }`}
+              aria-hidden={hideLogo}
+              tabIndex={hideLogo ? -1 : undefined}
+            >
               <img 
                 src={abelLogo} 
                 alt="Abel Mesfin" 
