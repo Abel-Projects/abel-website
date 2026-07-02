@@ -148,7 +148,7 @@ const Header = ({
               <Link
                 key={item.name}
                 to={item.href}
-                className="group text-6xl lg:text-8xl font-menu font-medium text-heading hover:text-primary transition-colors animate-fade-up relative"
+                className="group text-6xl lg:text-8xl font-menu font-medium text-heading hover:text-primary transition-colors animate-fade-up relative text-center"
                 style={{ animationDelay: `${index * 0.1}s` }}
                 onClick={handleMenuClose}
               >
