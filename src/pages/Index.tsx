@@ -18,12 +18,12 @@ const Index = () => {
   return (
     <>
       <div className="min-h-screen bg-background relative z-0">
-        <Header />
+        <Header hideLogoTargetId="mission-section" />
         <main>
           <section className="snap-section min-h-screen">
             <Hero />
           </section>
-          <section className="snap-section min-h-screen">
+          <section id="mission-section" className="snap-section min-h-screen">
             <MissionStatement />
           </section>
           <ScrollGallery />
