@@ -244,7 +244,7 @@ const FolderIcon = ({ c, open }: { c: CaseFile; open?: boolean }) => (
     </svg>
 
     {/* Brand "sticker" on the front of the folder */}
-    <div className="absolute left-1/2 top-[63%] -translate-x-1/2 -translate-y-1/2 w-[34%] aspect-square rounded-[22%] bg-white/95 shadow-sm flex items-center justify-center p-[6%]">
+    <div className="absolute left-1/2 top-[63%] -translate-x-1/2 -translate-y-1/2 w-[42%] aspect-square rounded-[22%] bg-white/95 shadow-sm flex items-center justify-center p-[7%]">
       {c.logo ? (
         <img src={c.logo} alt="" className="max-w-full max-h-full object-contain" draggable={false} />
       ) : (
