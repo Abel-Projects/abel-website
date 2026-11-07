@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import TextReveal from "@/components/TextReveal";
 
 const Partners = () => {
   const [scrollSpeed, setScrollSpeed] = useState(80); // Base animation duration in seconds (slower = longer duration)
@@ -143,12 +144,12 @@ const Partners = () => {
       <div className="relative z-10 container mx-auto px-6">
         <div className="mb-16">
           <h2 className="text-5xl md:text-6xl text-heading leading-tight mb-2">
-            <span className="font-bold">Partners</span>
+            <TextReveal className="font-bold">Partners</TextReveal>
             <br />
-            <span className="font-normal">& Campaigns</span>
+            <TextReveal className="font-normal" delay={150}>& Campaigns</TextReveal>
           </h2>
           <p className="text-lg font-thin text-muted-foreground max-w-2xl">
-            Trusted by leading brands to create impactful content
+            <TextReveal delay={300}>Trusted by leading brands to create impactful content</TextReveal>
           </p>
         </div>
 
