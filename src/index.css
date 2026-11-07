@@ -380,7 +380,8 @@
 }
 .text-reveal-content {
   display: inline-block;
-  clip-path: inset(0 100% 0 0);
+  /* Negative top/bottom/left insets so ascenders & descenders (g, y, p) aren't trimmed */
+  clip-path: inset(-0.3em 100% -0.3em -0.1em);
 }
 .text-reveal-bar {
   position: absolute;
@@ -402,9 +403,9 @@
   100%   { transform: scaleX(0); transform-origin: right center; }
 }
 @keyframes text-reveal-content {
-  0%, 49% { clip-path: inset(0 100% 0 0); }
-  50%     { clip-path: inset(0 0 0 0); }
-  100%    { clip-path: inset(0 0 0 0); }
+  0%, 49% { clip-path: inset(-0.3em 100% -0.3em -0.1em); }
+  50%     { clip-path: inset(-0.3em -0.1em -0.3em -0.1em); }
+  100%    { clip-path: inset(-0.3em -0.1em -0.3em -0.1em); }
 }
 @media (prefers-reduced-motion: reduce) {
   .text-reveal-content { clip-path: none; }
