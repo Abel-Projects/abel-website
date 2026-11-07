@@ -8,6 +8,20 @@ import bedLogo from "@/assets/bed-logo.png";
 
 const Portfolio = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  // Scroll-driven motion is desktop-only; on phones it pushed content off-screen.
+  const fxScroll = isMobile ? 0 : scrollY;
 
   useEffect(() => {
     document.title = "Abel Mesfin | Portfolio";
@@ -47,34 +61,34 @@ const Portfolio = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-clip">
       <Header variant="static" />
       
       {/* Full Viewport Section */}
-      <div className="h-screen w-full flex items-center justify-center">
+      <div className="h-[100svh] w-full flex items-center justify-center px-6 md:px-0">
         <div className="flex flex-col items-center justify-center w-full">
           <div className="flex flex-col gap-[0.5vh]">
             <div 
-              className="text-[1.5vw] font-normal uppercase tracking-[-0.02em] text-black mb-0"
-              style={{ marginLeft: 'calc(7.9em - 175px)', fontFamily: 'Gotham, sans-serif', fontWeight: 300 }}
+              className="text-[3.5vw] md:text-[1.5vw] font-normal uppercase tracking-[-0.02em] text-black mb-1 md:mb-0 md:ml-[calc(7.9em_-_175px)]"
+              style={{ fontFamily: 'Gotham, sans-serif', fontWeight: 300 }}
             >
               BEST IN CLASS
             </div>
             <div 
-              className="text-[9vw] font-black uppercase tracking-[-0.06em] leading-[0.8] text-black"
-              style={{ marginLeft: 'calc(1.16em - 100px)', fontFamily: 'Gotham, sans-serif', fontWeight: 500 }}
+              className="text-[11vw] md:text-[9vw] font-black uppercase tracking-[-0.06em] leading-[0.8] text-black md:ml-[calc(1.16em_-_100px)]"
+              style={{ fontFamily: 'Gotham, sans-serif', fontWeight: 500 }}
             >
               MARKETER
             </div>
             <div 
-              className="text-[9vw] font-black uppercase tracking-[-0.06em] leading-[0.8] text-black"
-              style={{ marginLeft: 'calc(3em - 100px)', fontFamily: 'Gotham, sans-serif', fontWeight: 500 }}
+              className="text-[11vw] md:text-[9vw] font-black uppercase tracking-[-0.06em] leading-[0.8] text-black md:ml-[calc(3em_-_100px)]"
+              style={{ fontFamily: 'Gotham, sans-serif', fontWeight: 500 }}
             >
               STORYTELLER
             </div>
             <div 
-              className="text-[9vw] font-black uppercase tracking-[-0.06em] leading-[0.8] text-black"
-              style={{ marginLeft: 'calc(0.89em - 100px)', fontFamily: 'Gotham, sans-serif', fontWeight: 500 }}
+              className="text-[11vw] md:text-[9vw] font-black uppercase tracking-[-0.06em] leading-[0.8] text-black md:ml-[calc(0.89em_-_100px)]"
+              style={{ fontFamily: 'Gotham, sans-serif', fontWeight: 500 }}
             >
               BRAND PARTNER
             </div>
@@ -85,7 +99,7 @@ const Portfolio = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-32">
         {/* Commercials Section with Stagger Animation */}
         <div className="mb-32">
-          <h2 className="text-5xl font-bold text-heading mb-16 animate-fade-up hover:scale-105 transition-transform duration-300">
+          <h2 className="text-4xl md:text-5xl font-bold text-heading mb-16 animate-fade-up hover:scale-105 transition-transform duration-300">
             Commercials
           </h2>
           <div className="space-y-20">
@@ -95,7 +109,7 @@ const Portfolio = () => {
                 className="grid lg:grid-cols-5 gap-8 items-center animate-fade-up group"
                 style={{ 
                   animationDelay: `${index * 0.2}s`,
-                  transform: `translateX(${index % 2 === 0 ? -scrollY * 0.02 : scrollY * 0.02}px)`,
+                  transform: `translateX(${index % 2 === 0 ? -fxScroll * 0.02 : fxScroll * 0.02}px)`,
                   transition: 'transform 0.1s ease-out'
                 }}
               >
@@ -119,7 +133,7 @@ const Portfolio = () => {
         <div 
           className="mb-32 animate-fade-up"
           style={{
-            transform: `scale(${1 + scrollY * 0.00005})`,
+            transform: `scale(${1 + fxScroll * 0.00005})`,
             transition: 'transform 0.1s ease-out'
           }}
         >
@@ -224,7 +238,7 @@ const Portfolio = () => {
                 className="group animate-fade-up"
                 style={{ 
                   animationDelay: `${index * 0.15}s`,
-                  transform: `translateY(${Math.sin(scrollY * 0.01 + index) * 10}px)`,
+                  transform: `translateY(${Math.sin(fxScroll * 0.01 + index) * 10}px)`,
                   transition: 'transform 0.3s ease-out'
                 }}
               >

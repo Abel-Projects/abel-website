@@ -48,6 +48,21 @@ const ScrollGallery = () => {
   const trackRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
 
+  // Photo sizes are designed for desktop (up to 416px). On narrow screens,
+  // shrink sizes, offsets and gaps proportionally so the widest photo fits.
+  const getSizeScale = () => {
+    if (typeof window === "undefined") return 1;
+    const maxWidth = Math.max(...boxes.map((b) => b.width));
+    return window.innerWidth < 768 ? Math.min(1, (window.innerWidth * 0.78) / maxWidth) : 1;
+  };
+  const [sizeScale, setSizeScale] = useState(getSizeScale);
+
+  useEffect(() => {
+    const onResize = () => setSizeScale(getSizeScale());
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   const measureTranslateRange = useCallback(() => {
     const track = trackRef.current;
     const sticky = stickyRef.current;
@@ -127,8 +142,9 @@ const ScrollGallery = () => {
       >
         <div
           ref={trackRef}
-          className="flex gap-[200px] w-max min-w-full"
+          className="flex w-max min-w-full"
           style={{
+            gap: Math.round(200 * sizeScale),
             transform: `translate3d(${translateX}px, 0, 0)`,
             willChange: "transform",
           }}
@@ -151,7 +167,7 @@ const ScrollGallery = () => {
               <div
                 key={num}
                 className="flex-shrink-0"
-                style={{ marginTop: offsetY }}
+                style={{ marginTop: offsetY * sizeScale }}
               >
                 {textAbove && (
                   <div
@@ -167,7 +183,7 @@ const ScrollGallery = () => {
                 )}
                 <div
                   className={`rounded-lg overflow-hidden ${textAbove ? "" : "mb-2"} shadow-lg relative`}
-                  style={{ width, height: width }}
+                  style={{ width: width * sizeScale, height: width * sizeScale }}
                 >
                   <img
                     src={image}

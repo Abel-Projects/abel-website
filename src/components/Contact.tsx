@@ -30,7 +30,7 @@ const Contact = () => {
             </p>
             <a 
               href="mailto:abelgmesfin@gmail.com" 
-              className="text-primary font-semibold hover:underline block text-center"
+              className="text-primary font-semibold hover:underline block text-center py-2"
             >
               abelgmesfin@gmail.com
             </a>
@@ -55,16 +55,16 @@ const Contact = () => {
                 href="https://linkedin.com/in/abelgmesfin" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary font-semibold hover:underline"
+                className="text-primary font-semibold hover:underline inline-block py-2"
               >
                 LinkedIn
               </a>
-              <span className="text-muted-text">•</span>
+              <span className="text-muted-text self-center">•</span>
               <a 
                 href="https://instagram.com/abelmesfinofficial" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary font-semibold hover:underline"
+                className="text-primary font-semibold hover:underline inline-block py-2"
               >
                 Instagram
               </a>

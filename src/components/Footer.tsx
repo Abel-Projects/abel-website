@@ -43,13 +43,13 @@ const Footer = () => {
             {/* Navigation */}
             <div className="space-y-6">
               <h4 className="font-bold text-lg">Navigation</h4>
-              <ul className="grid grid-cols-2 gap-x-8 gap-y-4">
+              <ul className="grid grid-cols-2 gap-x-8 gap-y-1">
                 {footerNavigation.map((item) => (
                   <li key={item.href}>
                     <Link
                       to={item.href}
                       onClick={scrollToTop}
-                      className="text-background/70 hover:text-background transition-colors font-medium"
+                      className="text-background/70 hover:text-background transition-colors font-medium inline-block py-2"
                     >
                       {item.name}
                     </Link>

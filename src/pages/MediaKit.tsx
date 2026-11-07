@@ -178,22 +178,22 @@ const MediaKit = () => {
         <section className="mb-32 animate-fade-up" style={{ animationDelay: '0.3s' }}>
           <h2 className="text-4xl font-bold text-heading mb-12">Typography</h2>
           
-          <div className="bg-card rounded-2xl border border-card-border p-12 lg:p-16">
+          <div className="bg-card rounded-2xl border border-card-border p-6 md:p-12 lg:p-16">
             <h3 className="text-2xl font-semibold text-heading mb-8">Font Families</h3>
-            <div className="grid md:grid-cols-2 gap-12">
-              <div>
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+              <div className="min-w-0">
                 <h4 className="text-xl font-semibold text-heading mb-4">Gotham</h4>
                 <p className="text-base text-body-text mb-6">Primary typeface for headings and display text. Available in Thin, Medium, Bold, and Black weights.</p>
-                <div className="font-bold text-heading text-2xl" style={{ fontFamily: 'Gotham, sans-serif' }}>
+                <div className="font-bold text-heading text-lg sm:text-2xl break-all" style={{ fontFamily: 'Gotham, sans-serif' }}>
                   ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />
                   abcdefghijklmnopqrstuvwxyz<br />
                   0123456789
                 </div>
               </div>
-              <div>
+              <div className="min-w-0">
                 <h4 className="text-xl font-semibold text-heading mb-4">Inter</h4>
                 <p className="text-base text-body-text mb-6">Secondary typeface for body text and UI elements. Clean, modern, and highly readable.</p>
-                <div className="text-heading text-2xl" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <div className="text-heading text-lg sm:text-2xl break-all" style={{ fontFamily: 'Inter, sans-serif' }}>
                   ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />
                   abcdefghijklmnopqrstuvwxyz<br />
                   0123456789
