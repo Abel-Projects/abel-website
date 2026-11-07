@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import TextReveal from "@/components/TextReveal";
 
 const textBlocks = [
   ["Born in Denver,", "Bred for Hustle."],
@@ -66,13 +67,18 @@ const ScrollTextLine = ({ text, isHeadline = false, delay = 0, fadeOut = 0 }: Te
           lineHeight: 1.08,
           letterSpacing: isHeadline ? "-0.02em" : "0.01em",
           textTransform: isHeadline ? "uppercase" : "none",
-          opacity: hasEntered ? 1 : 0,
-          transform: hasEntered ? "translate3d(0, 0, 0)" : "translate3d(0, 56px, 0)",
-          transition: `opacity 0.7s ease-out ${delay}s, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`,
-          willChange: "transform, opacity",
+          // Headline uses the bar-sweep reveal instead of the fade/swipe-in.
+          ...(isHeadline
+            ? {}
+            : {
+                opacity: hasEntered ? 1 : 0,
+                transform: hasEntered ? "translate3d(0, 0, 0)" : "translate3d(0, 56px, 0)",
+                transition: `opacity 0.7s ease-out ${delay}s, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`,
+                willChange: "transform, opacity",
+              }),
         }}
       >
-        {text}
+        {isHeadline ? <TextReveal delay={delay * 1000}>{text}</TextReveal> : text}
       </div>
     </div>
   );
@@ -92,7 +98,7 @@ const ScrollTextBlock = ({ lines, isHeadline = false, fadeOut = 0 }: TextBlockPr
         text={line}
         isHeadline={isHeadline}
         fadeOut={fadeOut}
-        delay={lineIndex * 0.08}
+        delay={lineIndex * (isHeadline ? 0.15 : 0.08)}
       />
     ))}
   </>
