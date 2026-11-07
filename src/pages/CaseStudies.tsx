@@ -207,12 +207,15 @@ const XP_CORRECT = 150;
 const XP_MISS = 75;
 const MAX_XP = CASES.length * XP_CORRECT;
 
+// Levels are earned by files opened (so a missed question never blocks the
+// finale); XP is the score — a perfect run is MAX_XP.
 const LEVELS = [
   { at: 0, name: "Rookie" },
-  { at: 300, name: "Strategist" },
-  { at: 600, name: "Campaign Lead" },
-  { at: MAX_XP, name: "Brand Builder" },
+  { at: 2, name: "Strategist" },
+  { at: 4, name: "Campaign Lead" },
+  { at: CASES.length, name: "Brand Builder" },
 ];
+const levelFor = (files: number) => [...LEVELS].reverse().find((l) => files >= l.at) ?? LEVELS[0];
 
 type Result = { xp: number; correct: boolean };
 const STORAGE_KEY = "case-files-v1";
@@ -270,8 +273,8 @@ const CaseStudies = () => {
 
   const xp = useMemo(() => Object.values(progress).reduce((s, r) => s + r.xp, 0), [progress]);
   const done = Object.keys(progress).length;
-  const level = [...LEVELS].reverse().find((l) => xp >= l.at) ?? LEVELS[0];
-  const nextLevel = LEVELS.find((l) => l.at > xp);
+  const level = levelFor(done);
+  const nextLevel = LEVELS.find((l) => l.at > done);
   const allDone = done === CASES.length;
 
   const active = CASES.find((c) => c.id === openId) ?? null;
@@ -285,9 +288,8 @@ const CaseStudies = () => {
 
   const award = (id: string, result: Result) => {
     if (progress[id]) return;
-    const before = [...LEVELS].reverse().find((l) => xp >= l.at)?.name;
-    const afterXp = xp + result.xp;
-    const after = [...LEVELS].reverse().find((l) => afterXp >= l.at)?.name;
+    const before = levelFor(done).name;
+    const after = levelFor(done + 1).name;
     setProgress((p) => ({ ...p, [id]: result }));
     if (after && after !== before) {
       setJustLeveled(after);
@@ -362,7 +364,13 @@ const CaseStudies = () => {
               <span>
                 {xp} / {MAX_XP} XP
               </span>
-              <span>{nextLevel ? `Next: ${nextLevel.name}` : "Max level"}</span>
+              <span>
+                {nextLevel
+                  ? `${nextLevel.at - done} more to ${nextLevel.name}`
+                  : xp === MAX_XP
+                  ? "Perfect run"
+                  : "Max level"}
+              </span>
             </div>
           </div>
           <div className="shrink-0 text-right">
@@ -377,7 +385,8 @@ const CaseStudies = () => {
       {/* Level-up toast */}
       <div
         aria-live="polite"
-        className={`fixed left-1/2 -translate-x-1/2 bottom-6 z-50 transition-all duration-500 ${
+        data-levelup-toast=""
+        className={`fixed left-1/2 -translate-x-1/2 bottom-6 z-[60] transition-all duration-500 ${
           justLeveled ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
         }`}
       >
@@ -471,7 +480,8 @@ const CaseStudies = () => {
               <Trophy className="w-10 h-10 mx-auto mb-4" aria-hidden="true" />
               <h2 className="text-3xl md:text-5xl font-bold mb-3">Brand Builder unlocked.</h2>
               <p className="text-lg opacity-90 max-w-xl mx-auto mb-8">
-                You've opened every file. The next case file could be yours.
+                You've opened every file with {xp} / {MAX_XP} XP
+                {xp === MAX_XP ? ", a perfect run" : ""}. The next case file could be yours.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <a
