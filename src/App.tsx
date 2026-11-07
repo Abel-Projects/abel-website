@@ -8,6 +8,7 @@ import Portfolio from "./pages/Portfolio";
 import About from "./pages/About";
 import OverviewDeck from "./pages/OverviewDeck";
 import MediaKit from "./pages/MediaKit";
+import CaseStudies from "./pages/CaseStudies";
 
 import NotFound from "./pages/NotFound";
 
@@ -27,6 +28,8 @@ const App = () => (
           <Route path="/overview-deck" element={<OverviewDeck />} />
           {/* Routes kept for later launch — hidden from nav via src/config/site.ts */}
           <Route path="/media-kit" element={<MediaKit />} />
+          {/* Prototype: gamified case studies — not linked in nav */}
+          <Route path="/case-files" element={<CaseStudies />} />
           <Route path="/resume" element={<Navigate to="/overview-deck" replace />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
