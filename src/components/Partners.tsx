@@ -21,7 +21,6 @@ const Partners = () => {
     { id: 5, logo: 'https://img.logo.dev/meta.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Meta' },
     { id: 6, logo: 'https://img.logo.dev/starkey.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Starkey' },
     { id: 7, logo: 'https://img.logo.dev/rocketlawyer.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Rocket Lawyer' },
-    { id: 8, logo: 'https://img.logo.dev/aroma360.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Aroma360' },
     { id: 9, logo: 'https://img.logo.dev/trainual.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Trainual' },
     { id: 10, logo: 'https://img.logo.dev/nationaldebtrelief.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'National Debt Relief' },
     { id: 11, logo: 'https://img.logo.dev/crashchampions.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Crash Champions' },
@@ -34,12 +33,11 @@ const Partners = () => {
     { id: 18, logo: 'https://img.logo.dev/linkedin.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'LinkedIn' },
     { id: 19, logo: 'https://img.logo.dev/vari.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'VariDesk' },
     { id: 20, logo: 'https://img.logo.dev/gohighlevel.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'HighLevel' },
-    { id: 21, logo: 'https://img.logo.dev/meta.ai?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Muse by Meta' },
+    { id: 21, logo: '/logos/muse.png', name: 'Muse by Meta' },
     { id: 22, logo: 'https://img.logo.dev/ray-ban.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Ray-Ban Meta' },
     { id: 23, logo: 'https://img.logo.dev/getjobber.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Jobber' },
     { id: 24, logo: 'https://img.logo.dev/redpocket.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Red Pocket' },
     { id: 25, logo: 'https://img.logo.dev/siphoxhealth.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'SiPhox Health' },
-    { id: 26, logo: 'https://img.logo.dev/discoveriestoday.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Discoveries Today' },
   ];
 
   useEffect(() => {
