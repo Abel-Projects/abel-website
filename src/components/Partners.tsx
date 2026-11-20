@@ -33,6 +33,13 @@ const Partners = () => {
     { id: 17, logo: 'https://img.logo.dev/salesforce.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Salesforce' },
     { id: 18, logo: 'https://img.logo.dev/linkedin.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'LinkedIn' },
     { id: 19, logo: 'https://img.logo.dev/vari.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'VariDesk' },
+    { id: 20, logo: 'https://img.logo.dev/gohighlevel.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'HighLevel' },
+    { id: 21, logo: 'https://img.logo.dev/meta.ai?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Muse by Meta' },
+    { id: 22, logo: 'https://img.logo.dev/ray-ban.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Ray-Ban Meta' },
+    { id: 23, logo: 'https://img.logo.dev/getjobber.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Jobber' },
+    { id: 24, logo: 'https://img.logo.dev/redpocket.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Red Pocket' },
+    { id: 25, logo: 'https://img.logo.dev/siphoxhealth.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'SiPhox Health' },
+    { id: 26, logo: 'https://img.logo.dev/discoveriestoday.com?token=pk_A1SO0ovWSZa0TRYGcw69Og&size=80&retina=true', name: 'Discoveries Today' },
   ];
 
   useEffect(() => {

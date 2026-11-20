@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Download } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { getEmail } from "@/lib/email";
 import SocialSection from "@/components/SocialSection";
 import amLogoBlack from "@/assets/am-logo-black-updated.png";
 import amLogoWhite from "@/assets/am-logo-white-updated.png";
@@ -210,12 +211,13 @@ const MediaKit = () => {
             <p className="text-lg text-body-text mb-6 max-w-2xl mx-auto">
               For questions about logo usage, brand assets, or permission requests, please reach out.
             </p>
-            <a 
-              href="mailto:abelgmesfin@gmail.com" 
+            <button
+              type="button"
+              onClick={() => { window.location.href = `mailto:${getEmail()}`; }}
               className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-semibold"
             >
               Contact for Brand Assets
-            </a>
+            </button>
           </div>
         </section>
       </div>

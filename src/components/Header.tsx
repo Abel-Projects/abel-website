@@ -1,4 +1,4 @@
-import { Menu, X, Mail, Linkedin, Instagram } from "lucide-react";
+import { Menu, X, Linkedin, Instagram } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import abelLogo from "@/assets/abel-logo.png";
@@ -163,10 +163,6 @@ const Header = ({
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
               <div className="flex justify-center items-center text-muted-text text-sm">
                 <div className="flex gap-8">
-                  <a href="mailto:abelgmesfin@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
-                    <Mail size={18} />
-                    Email
-                  </a>
                   <a href="https://linkedin.com/in/abelgmesfin" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
                     <Linkedin size={18} />
                     LinkedIn
